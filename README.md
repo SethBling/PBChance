@@ -20,6 +20,6 @@ PBChance is a LiveSplit component that displays the chance of obtaining a PB on 
 
 ## Troubleshooting:
 
-It always displays "0%" or "-"
+**It always displays "0%" or "-"**
 
 You may need to configure the plugin to use a different number of attempts. For instance, it may not be reading any attempts in which you've completed a run. Additionally, you may have reset your split data at some point, which will remove the data necessary for PBChance to calculate its probability. If you want to debug the issue, try opening your splits file in a text editor (it's XML formatted). You may be able to spot missing splits, and it will inform you how to configure the PBChance component.
