@@ -28,7 +28,7 @@ Valid values: 1-999 Suggestion: 10-25
 The number of calculations. A lower number will calculate faster, a higher number gives a more stable result.
 Valid values: 1-999,999 Suggestion: 100,000
 3. Update automatically every # seconds when the chance drops.
-During a run, PBChance compares the current split time with the best split time. If it's slower, and the chance is above zero, PBChance calculate in background the chance. If that chance becomes lower than the displayed one, the chance will be updated automatically. 0 means as fast as possible.
+During a run, PBChance compares the current split time with the best split time. If it's slower, and the chance is above zero, PBChance calculates in background the chance. If that chance becomes lower than the displayed one, the chance will be updated automatically. 0 means as fast as possible.
 Valid values: 0-999 Suggestion: 1
 4. Display survival chance
 This will display in addition a percent number. The formula is simply [successfully runs]/[total remaining runs].
