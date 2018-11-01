@@ -30,7 +30,7 @@ During a run, PBChance compares the current split time with the best split time.
 Valid values: 0-999 Suggestion: 1
 4. Display survival chance
 This will add percent number. The formula is [successfully runs]/[total remaining runs].
-5. # Newer split times are more important than old ones
+5. Newer split times are more important than old ones
 Newer attempts will be selected more often during a simulated run.
 Valid values: 0-100 Suggestion: 100
 6. Malus on failures # seconds
