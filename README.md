@@ -10,7 +10,8 @@ PBChance is a LiveSplit component that displays the chance of obtaining a PB on 
 1. Place PBChance.dll into the Components directory of your LiveSplit installation.
 2. Open LiveSplit. Right click -> Edit Layout -> [Giant "+" Button] -> Information -> PB Chance
 3. You can configure how many of your most recent attempts will be used to calculate the PB chance. Go to Layout Settings and click on the PB Chance tab. You can either have it use a percentage of your most recent attempts, or just a fixed number of your most recent attempts.
-4. Speedrun!
+4. For advanced setting read bellow.
+5. Speedrun!
 
 ## Features
 
