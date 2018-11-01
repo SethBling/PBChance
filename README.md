@@ -16,7 +16,7 @@ PBChance is a LiveSplit component that displays the chance of obtaining a PB on 
 ## Features
 
 1. The calculation will perform in background in an own thread. Even if the number of calculations is set to a high number, LiveSplit will not be stopped during the calculation.
-2. Debug file. To retrace the calculation. This includes: Headerdata, Failed Runs, clipped splits, added times, count of times per split, first generated route, results of successfully runs and 10 failures if possible, the result, the detailed split times and the execution time.
+2. Debug file. To retrace the calculation. This includes: Headerdata, Failed Runs, clipped splits, added times, count of times per split, first generated route, results of successfully runs and 10 failures if possible, the results, the detailed split times and the execution time.
 
 ## Advanced Settings:
 
