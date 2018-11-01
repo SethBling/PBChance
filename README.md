@@ -46,15 +46,15 @@ Hint: The displaying chance on the start should be realistic. But rather too sma
 
 ## Debuging settings (should be 0 during regular runs)
 
-1. Timedifference # seconds
+1. Timedifference # seconds.
 This will simply adds to the pb-time.
 Valid values: -86400-86400 (24h)
-2. Skip the newest attempts #
+2. Skip the newest attempts #.
 To see how high the chance was before.
 Valid values: 0-99999
-3. Only calc to split #
+3. Only calc to split #.
 The calculation will stop at split #, if it's not set to 0.
-4. Generate Debug File
+4. Generate Debug File.
 This will generate a debug file "pbchance_debug.txt", and will be saved in your LiveSplit folder. You can open it with any text editor. See Features 3. for more information.
 
 ## Pictures:
@@ -67,4 +67,4 @@ This will generate a debug file "pbchance_debug.txt", and will be saved in your 
 
 **It displays E# no times found / too many failure attempts in S# [Segment name]*
 
-PBChance can't find historical times. This can in certain circumstances happen, if the Setting "Only consider splits, which are faster than {best Split x X percent" is set too low. Please set it to a higher number, eg. 200%. Skip the newest attempts should be set to 0.
+PBChance can't find historical times. This can in certain circumstances happen, if the Setting "Only consider splits, which are faster than {best Split x X percent" is set too low. Please set it to a higher number, >120%. Skip the newest attempts should be set to 0.
