@@ -40,7 +40,7 @@ For each discontinued run, a failed split will be generated. It's added every ti
 Valid values: 0-999 Suggestion: it depends. Can be set to 0, if "Display survival chance" is set.
 7. Only consider splits, which are faster than {bestSplit[s] x # percent}
 Very slow split times will be eliminated. Should set to a number, which are clearly too slow for a normal run. Should be checked with the debug file (clipped splits), for the correct setting and result.
-Valid values: 100-999 Suggestion: 150-250
+Valid values: 100-999 Suggestion: 150-200
 
 Hint: The displaying chance on the start should be realistic. But rather too small than too high, for more motivation during a run. Try with these settings to optimize the chance estimation.
 
