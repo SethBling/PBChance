@@ -3,7 +3,7 @@ PBChance Component for LiveSplit
 
 ## What it is:
 
-PBChance is a LiveSplit component that displays the chance of obtaining a PB on your current run. Whenever you reset or split, it runs a variable number (100,000 recomended) of simulations by randomly drawing the remaining splits from your splits in previous attempts, and computes how many of those would result in a PB.
+PBChance is a LiveSplit component that displays the chance of obtaining a PB on your current run. Whenever you reset, split or the run becomes slow, it runs a variable number (100,000 recomended) of simulations by randomly drawing the remaining splits from your splits in previous attempts, and computes how many of those would result in a PB.
 
 ## Installation:
 
