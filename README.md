@@ -31,7 +31,7 @@ Valid values: 1-999,999 Suggestion: 100,000
 During a run, PBChance compares the current split time with the best split time. If it's slower, and the chance is above zero, PBChance calculates in background the chance. If that chance becomes lower than the displayed one, the chance will be updated automatically. 0 means as fast as possible.
 Valid values: 0-999 Suggestion: 1
 4. Display survival chance
-This will display in addition a percent number. The formula is simply [successfully runs]/[total remaining runs].
+This will display in addition a percent number. The formula is simply [finished runs]/[total remaining runs].
 5. Newer split times are more important than old ones
 Newer attempts will be selected more often during a simulated run.
 Valid values: 0-100 Suggestion: 100
