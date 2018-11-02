@@ -65,6 +65,10 @@ This will generate a debug file "pbchance_debug.txt", and will be saved in your 
 
 ## Troubleshooting:
 
-**It displays E# no times found / too many failure attempts in S# [Segment name]*
+**It displays E3 no times found in S# [Segment name] for a moment*
 
-PBChance can't find historical times. This can in certain circumstances happen, if the Setting "Only consider splits, which are faster than {best Split x X percent" is set too low. Please set it to a higher number, >120%. Skip the newest attempts should be set to 0.
+PBChance can't find historical times, gives a warning and uses best split time instead. This can happen, if "Skip the newest attempts" is set (or in rare cases the split file contains a negative number <Time id="-X">), and the Setting "Only consider splits, which are faster than {best Split x X percent" is set too low (arround 100%).
+
+**What's the difference between 0.00% and 0%?
+
+If it displays 0%, then there are zero success runs found. If it displays 0.00%, then there are a few success runs found, but the chance is rounded to 0.00%.
