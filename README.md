@@ -67,7 +67,7 @@ This will generate a debug file "pbchance_debug.txt", and will be saved in your 
 
 **It displays E3 no times found in S# [Segment name] for a moment*
 
-PBChance can't find historical times, gives a warning and uses best split time instead. This can happen, if "Skip the newest attempts" is set (or in rare cases the split file contains a negative number in Time id="-X"), and the setting "Only consider splits, which are faster than best Split x # percent" is set too low.
+PBChance can't find historical times, gives a warning and uses best split time instead. This can happen, if the setting "Only consider splits, which are faster than best Split x # percent" is set too low.
 
 **What's the difference between 0.00% and 0%?*
 
