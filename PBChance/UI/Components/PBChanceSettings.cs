@@ -27,6 +27,7 @@ namespace PBChance.UI.Components
         public int iOptimistic { get; set; }
         public bool bRebalance { get; set; }
         public bool bValueRuns { get; set; }
+        public bool bExpSplitsvalue { get; set; }
         public int iMinTimes { get; set; }
         public int iUpdate { get; set; }
         public int iSplitsvalue { get; set; }
@@ -63,6 +64,7 @@ namespace PBChance.UI.Components
             iSplitsvalue = 20;
             iSkipNewest = 0;
             iCalcToSplit = 0;
+            bExpSplitsvalue = false;
 
         PercentOfAttempts.DataBindings.Add("Checked", this, "UsePercentOfAttempts", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             FixedAttempts.DataBindings.Add("Checked", this, "UseFixedAttempts", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
@@ -84,6 +86,7 @@ namespace PBChance.UI.Components
 
             SkipNewestCountBox.DataBindings.Add("Value", this, "iSkipNewest", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             CalcToSplitUpDown.DataBindings.Add("Value", this, "iCalcToSplit", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+            chkExpSplitsvalue.DataBindings.Add("Checked", this, "bExpSplitsvalue", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
         }
 
         private void OnSettingChanged(object sender, BindingCompleteEventArgs e)
@@ -118,12 +121,13 @@ namespace PBChance.UI.Components
                 SettingsHelper.CreateSetting(document, parent, "IgnoreRunCount", IgnoreRunCount) ^
                 SettingsHelper.CreateSetting(document, parent, "MalusCount", MalusCount) ^
                 SettingsHelper.CreateSetting(document, parent, "SplitclipCount", SplitclipCount) ^
-                //SettingsHelper.CreateSetting(document, parent, "TimediffCount", TimediffCount) ^
+                SettingsHelper.CreateSetting(document, parent, "TimediffCount", TimediffCount) ^
                 SettingsHelper.CreateSetting(document, parent, "SamplesCount", SamplesCount) ^
                 SettingsHelper.CreateSetting(document, parent, "iOptimistic", iOptimistic) ^
                 SettingsHelper.CreateSetting(document, parent, "chkRebalance", bRebalance) ^
                 SettingsHelper.CreateSetting(document, parent, "chkSurvival", bSurvival) ^
                 SettingsHelper.CreateSetting(document, parent, "bValueRuns", bValueRuns) ^
+                SettingsHelper.CreateSetting(document, parent, "bExpSplitsvalue", bValueRuns) ^
                 SettingsHelper.CreateSetting(document, parent, "iMinTimes", iMinTimes) ^
                 SettingsHelper.CreateSetting(document, parent, "iUpdate", iUpdate) ^
                 SettingsHelper.CreateSetting(document, parent, "iSplitsvalue", iSplitsvalue);
@@ -138,22 +142,40 @@ namespace PBChance.UI.Components
             IgnoreRunCount       = SettingsHelper.ParseBool(settings["IgnoreRunCount"]);
             MalusCount           = SettingsHelper.ParseInt (settings["MalusCount"]);
             SplitclipCount       = SettingsHelper.ParseInt (settings["SplitclipCount"]);
-            //TimediffCount        = SettingsHelper.ParseInt (settings["TimediffCount"]);
+            TimediffCount        = SettingsHelper.ParseInt (settings["TimediffCount"]);
             SamplesCount         = SettingsHelper.ParseInt (settings["SamplesCount"]);
-            iOptimistic          = SettingsHelper.ParseInt(settings["iOptimistic"]);
+            iOptimistic          = SettingsHelper.ParseInt (settings["iOptimistic"]);
             bSurvival            = SettingsHelper.ParseBool(settings["chkSurvival"]);
             bRebalance           = SettingsHelper.ParseBool(settings["chkRebalance"]);
-
             bValueRuns           = SettingsHelper.ParseBool(settings["bValueRuns"]);
-            iMinTimes            = SettingsHelper.ParseInt(settings["iMinTimes"]);
-            iUpdate              = SettingsHelper.ParseInt(settings["iUpdate"]);
-            iSplitsvalue         = SettingsHelper.ParseInt(settings["iSplitsvalue"]);
+            iMinTimes            = SettingsHelper.ParseInt (settings["iMinTimes"]);
+            iUpdate              = SettingsHelper.ParseInt (settings["iUpdate"]);
+            iSplitsvalue         = SettingsHelper.ParseInt (settings["iSplitsvalue"]);
+            bExpSplitsvalue      = SettingsHelper.ParseBool(settings["bExpSplitsvalue"]);
         }
 
         private void btnDebug_Click(object sender, EventArgs e)
         {
             bDebug = true;
             SettingChanged?.Invoke(this, e);
+        }
+
+        private void PercentOfAttempts_CheckedChanged(object sender, EventArgs e)
+        {
+            //UsePercentOfAttempts = UseFixedAttempts;
+            //UseFixedAttempts = !UseFixedAttempts;
+        }
+
+        private void FixedAttempts_CheckedChanged(object sender, EventArgs e)
+        {
+            //UsePercentOfAttempts = UseFixedAttempts;
+            //UseFixedAttempts = !UseFixedAttempts;
+        }
+
+        private void label26_DoubleClick(object sender, EventArgs e)
+        {
+            if(!bExpSplitsvalue)
+                chkExpSplitsvalue.Visible = !chkExpSplitsvalue.Visible;
         }
     }
 }

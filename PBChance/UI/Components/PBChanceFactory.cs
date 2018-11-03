@@ -8,7 +8,7 @@ namespace PBChance.UI.Components
 {
     class PBChanceFactory : IComponentFactory
     {
-        public string ComponentName => "PB Chance";
+        public string ComponentName => "PB Chance ";
 
         public string Description => "Shows the probability of obtaining a new Personal Best this run.";
 
@@ -22,6 +22,6 @@ namespace PBChance.UI.Components
 
         public string UpdateURL => "http://livesplit.org/update/";
 
-        public Version Version => Version.Parse("0.1.1");
+        public Version Version => Version.Parse("1.3.5");
     }
 }

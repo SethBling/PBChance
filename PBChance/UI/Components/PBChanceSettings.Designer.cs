@@ -45,15 +45,8 @@
             this.TimediffCountBox = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.SamplesCountBox = new System.Windows.Forms.NumericUpDown();
-            this.label15 = new System.Windows.Forms.Label();
-            this.chkSurvival = new System.Windows.Forms.CheckBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.btnDebug = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -61,40 +54,47 @@
             this.RebalanceCountBox = new System.Windows.Forms.NumericUpDown();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.chkRebalance = new System.Windows.Forms.CheckBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.MinTimesCountBox = new System.Windows.Forms.NumericUpDown();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.SplitsvalueCountBox = new System.Windows.Forms.NumericUpDown();
-            this.label27 = new System.Windows.Forms.Label();
-            this.UpdateCountBox = new System.Windows.Forms.NumericUpDown();
-            this.label28 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.chkValueRuns = new System.Windows.Forms.CheckBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.SkipNewestCountBox = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.CalcToSplitUpDown = new System.Windows.Forms.NumericUpDown();
-            this.label33 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.SamplesCountBox = new System.Windows.Forms.NumericUpDown();
+            this.label15 = new System.Windows.Forms.Label();
+            this.chkSurvival = new System.Windows.Forms.CheckBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.chkExpSplitsvalue = new System.Windows.Forms.CheckBox();
+            this.MinTimesCountBox = new System.Windows.Forms.NumericUpDown();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.SplitsvalueCountBox = new System.Windows.Forms.NumericUpDown();
+            this.label26 = new System.Windows.Forms.Label();
+            this.UpdateCountBox = new System.Windows.Forms.NumericUpDown();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AttemptCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MalusCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitclipCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimediffCountBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SamplesCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RebalanceCountBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SkipNewestCountBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CalcToSplitUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SamplesCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinTimesCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitsvalueCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpdateCountBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SkipNewestCountBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CalcToSplitUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // RecentLabel
@@ -109,7 +109,6 @@
             // PercentOfAttempts
             // 
             this.PercentOfAttempts.AutoSize = true;
-            this.PercentOfAttempts.Checked = true;
             this.PercentOfAttempts.Location = new System.Drawing.Point(148, 41);
             this.PercentOfAttempts.Name = "PercentOfAttempts";
             this.PercentOfAttempts.Size = new System.Drawing.Size(117, 17);
@@ -117,6 +116,7 @@
             this.PercentOfAttempts.TabStop = true;
             this.PercentOfAttempts.Text = "Percent of attempts";
             this.PercentOfAttempts.UseVisualStyleBackColor = true;
+            this.PercentOfAttempts.CheckedChanged += new System.EventHandler(this.PercentOfAttempts_CheckedChanged);
             // 
             // FixedAttempts
             // 
@@ -128,6 +128,7 @@
             this.FixedAttempts.TabStop = true;
             this.FixedAttempts.Text = "Attempts";
             this.FixedAttempts.UseVisualStyleBackColor = true;
+            this.FixedAttempts.CheckedChanged += new System.EventHandler(this.FixedAttempts_CheckedChanged);
             // 
             // AttemptCountBox
             // 
@@ -157,7 +158,7 @@
             this.CreditsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreditsLabel.Location = new System.Drawing.Point(11, 18);
             this.CreditsLabel.Name = "CreditsLabel";
-            this.CreditsLabel.Size = new System.Drawing.Size(235, 13);
+            this.CreditsLabel.Size = new System.Drawing.Size(146, 13);
             this.CreditsLabel.TabIndex = 4;
             this.CreditsLabel.Tag = "";
             this.CreditsLabel.Text = "PBChance by SethBling*";
@@ -307,16 +308,6 @@
             this.label9.TabIndex = 18;
             this.label9.Text = "higher number -> higher chance. Can be negative.";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label10.Location = new System.Drawing.Point(14, 182);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(247, 13);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "higher number -> smaller variance. Default 100000.";
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -326,25 +317,6 @@
             this.label11.Size = new System.Drawing.Size(222, 13);
             this.label11.TabIndex = 20;
             this.label11.Text = "higher number -> lower chance. Default 150%";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(11, 97);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(177, 13);
-            this.label12.TabIndex = 21;
-            this.label12.Text = "Advanced settings by kasi777";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(14, 168);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(117, 13);
-            this.label13.TabIndex = 22;
-            this.label13.Text = "Random sample survey";
             // 
             // label14
             // 
@@ -356,62 +328,6 @@
             this.label14.TabIndex = 23;
             this.label14.Text = "It\'s added every time to a simulated run, if a failed split is selected. Default " +
     "30s";
-            // 
-            // SamplesCountBox
-            // 
-            this.SamplesCountBox.Increment = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.SamplesCountBox.Location = new System.Drawing.Point(137, 161);
-            this.SamplesCountBox.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.SamplesCountBox.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.SamplesCountBox.Name = "SamplesCountBox";
-            this.SamplesCountBox.Size = new System.Drawing.Size(60, 20);
-            this.SamplesCountBox.TabIndex = 10;
-            this.SamplesCountBox.Value = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(203, 168);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(69, 13);
-            this.label15.TabIndex = 25;
-            this.label15.Text = "combinations";
-            // 
-            // chkSurvival
-            // 
-            this.chkSurvival.AutoSize = true;
-            this.chkSurvival.Location = new System.Drawing.Point(17, 233);
-            this.chkSurvival.Name = "chkSurvival";
-            this.chkSurvival.Size = new System.Drawing.Size(138, 17);
-            this.chkSurvival.TabIndex = 27;
-            this.chkSurvival.Text = "Display survival chance";
-            this.chkSurvival.UseVisualStyleBackColor = true;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label16.Location = new System.Drawing.Point(14, 248);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(238, 13);
-            this.label16.TabIndex = 28;
-            this.label16.Text = "Formula: [successfully runs]/[total remaining runs]";
             // 
             // btnDebug
             // 
@@ -489,23 +405,12 @@
             // 
             this.label22.AutoSize = true;
             this.label22.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label22.Location = new System.Drawing.Point(130, 0);
+            this.label22.Location = new System.Drawing.Point(143, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(265, 13);
             this.label22.TabIndex = 36;
             this.label22.Text = "Gives a lower weighting for slower splits if it\'s optimistic.";
             this.label22.Visible = false;
-            // 
-            // chkRebalance
-            // 
-            this.chkRebalance.AutoSize = true;
-            this.chkRebalance.Location = new System.Drawing.Point(159, -2);
-            this.chkRebalance.Name = "chkRebalance";
-            this.chkRebalance.Size = new System.Drawing.Size(194, 17);
-            this.chkRebalance.TabIndex = 38;
-            this.chkRebalance.Text = "Display chance without rebalancing";
-            this.chkRebalance.UseVisualStyleBackColor = true;
-            this.chkRebalance.Visible = false;
             // 
             // label19
             // 
@@ -516,102 +421,6 @@
             this.label19.Size = new System.Drawing.Size(242, 13);
             this.label19.TabIndex = 39;
             this.label19.Text = "Use it for building scenarios or to shift the PB-time.";
-            // 
-            // MinTimesCountBox
-            // 
-            this.MinTimesCountBox.Location = new System.Drawing.Point(106, 120);
-            this.MinTimesCountBox.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.MinTimesCountBox.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.MinTimesCountBox.Name = "MinTimesCountBox";
-            this.MinTimesCountBox.Size = new System.Drawing.Size(40, 20);
-            this.MinTimesCountBox.TabIndex = 40;
-            this.MinTimesCountBox.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(15, 127);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(85, 13);
-            this.label24.TabIndex = 41;
-            this.label24.Text = "Consider at least";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(152, 127);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(73, 13);
-            this.label25.TabIndex = 42;
-            this.label25.Text = "times per split.";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(58, 274);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(251, 13);
-            this.label26.TabIndex = 44;
-            this.label26.Text = "Newer splits times are more important than old ones.";
-            // 
-            // SplitsvalueCountBox
-            // 
-            this.SplitsvalueCountBox.Location = new System.Drawing.Point(17, 274);
-            this.SplitsvalueCountBox.Name = "SplitsvalueCountBox";
-            this.SplitsvalueCountBox.Size = new System.Drawing.Size(40, 20);
-            this.SplitsvalueCountBox.TabIndex = 43;
-            this.SplitsvalueCountBox.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(14, 208);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(135, 13);
-            this.label27.TabIndex = 47;
-            this.label27.Text = "Update automatically every";
-            // 
-            // UpdateCountBox
-            // 
-            this.UpdateCountBox.Location = new System.Drawing.Point(151, 201);
-            this.UpdateCountBox.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.UpdateCountBox.Name = "UpdateCountBox";
-            this.UpdateCountBox.Size = new System.Drawing.Size(40, 20);
-            this.UpdateCountBox.TabIndex = 46;
-            this.UpdateCountBox.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(197, 208);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(165, 13);
-            this.label28.TabIndex = 48;
-            this.label28.Text = "seconds when the chance drops.";
             // 
             // label1
             // 
@@ -627,7 +436,7 @@
             // chkValueRuns
             // 
             this.chkValueRuns.AutoSize = true;
-            this.chkValueRuns.Location = new System.Drawing.Point(200, -2);
+            this.chkValueRuns.Location = new System.Drawing.Point(222, 1);
             this.chkValueRuns.Name = "chkValueRuns";
             this.chkValueRuns.Size = new System.Drawing.Size(162, 17);
             this.chkValueRuns.TabIndex = 50;
@@ -645,16 +454,6 @@
             this.label23.TabIndex = 51;
             this.label23.Text = "Highest priority. Default: 5";
             this.label23.Visible = false;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label29.Location = new System.Drawing.Point(58, 287);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(359, 13);
-            this.label29.TabIndex = 52;
-            this.label29.Text = "Newer attempts be selected more often during a simulated run. Default 100";
             // 
             // label30
             // 
@@ -719,16 +518,6 @@
             this.CalcToSplitUpDown.Size = new System.Drawing.Size(40, 20);
             this.CalcToSplitUpDown.TabIndex = 57;
             // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label33.Location = new System.Drawing.Point(15, 141);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(254, 13);
-            this.label33.TabIndex = 59;
-            this.label33.Text = "Missing times will be filled with older ones. Default 20";
-            // 
             // label34
             // 
             this.label34.AutoSize = true;
@@ -748,6 +537,219 @@
             this.label35.Size = new System.Drawing.Size(35, 13);
             this.label35.TabIndex = 61;
             this.label35.Text = "0 = all";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label10.Location = new System.Drawing.Point(14, 182);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(247, 13);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "higher number -> smaller variance. Default 100000.";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(11, 97);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(177, 13);
+            this.label12.TabIndex = 21;
+            this.label12.Text = "Advanced settings by kasi777";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(14, 168);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(117, 13);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "Random sample survey";
+            // 
+            // SamplesCountBox
+            // 
+            this.SamplesCountBox.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.SamplesCountBox.Location = new System.Drawing.Point(137, 161);
+            this.SamplesCountBox.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.SamplesCountBox.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.SamplesCountBox.Name = "SamplesCountBox";
+            this.SamplesCountBox.Size = new System.Drawing.Size(60, 20);
+            this.SamplesCountBox.TabIndex = 10;
+            this.SamplesCountBox.Value = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(203, 168);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(69, 13);
+            this.label15.TabIndex = 25;
+            this.label15.Text = "combinations";
+            // 
+            // chkSurvival
+            // 
+            this.chkSurvival.AutoSize = true;
+            this.chkSurvival.Location = new System.Drawing.Point(17, 233);
+            this.chkSurvival.Name = "chkSurvival";
+            this.chkSurvival.Size = new System.Drawing.Size(138, 17);
+            this.chkSurvival.TabIndex = 27;
+            this.chkSurvival.Text = "Display survival chance";
+            this.chkSurvival.UseVisualStyleBackColor = true;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label16.Location = new System.Drawing.Point(14, 248);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(238, 13);
+            this.label16.TabIndex = 28;
+            this.label16.Text = "Formula: [successfully runs]/[total remaining runs]";
+            // 
+            // chkExpSplitsvalue
+            // 
+            this.chkExpSplitsvalue.AutoSize = true;
+            this.chkExpSplitsvalue.Location = new System.Drawing.Point(315, 273);
+            this.chkExpSplitsvalue.Name = "chkExpSplitsvalue";
+            this.chkExpSplitsvalue.Size = new System.Drawing.Size(158, 17);
+            this.chkExpSplitsvalue.TabIndex = 38;
+            this.chkExpSplitsvalue.Text = "Exponential instead of linear";
+            this.chkExpSplitsvalue.UseVisualStyleBackColor = true;
+            this.chkExpSplitsvalue.Visible = false;
+            // 
+            // MinTimesCountBox
+            // 
+            this.MinTimesCountBox.Location = new System.Drawing.Point(106, 120);
+            this.MinTimesCountBox.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.MinTimesCountBox.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.MinTimesCountBox.Name = "MinTimesCountBox";
+            this.MinTimesCountBox.Size = new System.Drawing.Size(40, 20);
+            this.MinTimesCountBox.TabIndex = 40;
+            this.MinTimesCountBox.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(15, 127);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(85, 13);
+            this.label24.TabIndex = 41;
+            this.label24.Text = "Consider at least";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(152, 127);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(73, 13);
+            this.label25.TabIndex = 42;
+            this.label25.Text = "times per split.";
+            // 
+            // SplitsvalueCountBox
+            // 
+            this.SplitsvalueCountBox.Location = new System.Drawing.Point(17, 274);
+            this.SplitsvalueCountBox.Name = "SplitsvalueCountBox";
+            this.SplitsvalueCountBox.Size = new System.Drawing.Size(40, 20);
+            this.SplitsvalueCountBox.TabIndex = 43;
+            this.SplitsvalueCountBox.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(58, 274);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(251, 13);
+            this.label26.TabIndex = 44;
+            this.label26.Text = "Newer splits times are more important than old ones.";
+            this.label26.DoubleClick += new System.EventHandler(this.label26_DoubleClick);
+            // 
+            // UpdateCountBox
+            // 
+            this.UpdateCountBox.Location = new System.Drawing.Point(151, 201);
+            this.UpdateCountBox.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.UpdateCountBox.Name = "UpdateCountBox";
+            this.UpdateCountBox.Size = new System.Drawing.Size(40, 20);
+            this.UpdateCountBox.TabIndex = 46;
+            this.UpdateCountBox.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(14, 208);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(135, 13);
+            this.label27.TabIndex = 47;
+            this.label27.Text = "Update automatically every";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(197, 208);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(165, 13);
+            this.label28.TabIndex = 48;
+            this.label28.Text = "seconds when the chance drops.";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label29.Location = new System.Drawing.Point(58, 287);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(387, 13);
+            this.label29.TabIndex = 52;
+            this.label29.Text = "Newer attempts be selected more often during a simulated run. Default 100 linear";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label33.Location = new System.Drawing.Point(15, 141);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(254, 13);
+            this.label33.TabIndex = 59;
+            this.label33.Text = "Missing times will be filled with older ones. Default 20";
             // 
             // PBChanceSettings
             // 
@@ -775,7 +777,7 @@
             this.Controls.Add(this.label24);
             this.Controls.Add(this.MinTimesCountBox);
             this.Controls.Add(this.label19);
-            this.Controls.Add(this.chkRebalance);
+            this.Controls.Add(this.chkExpSplitsvalue);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label20);
@@ -810,18 +812,18 @@
             this.Controls.Add(this.PercentOfAttempts);
             this.Controls.Add(this.RecentLabel);
             this.Name = "PBChanceSettings";
-            this.Size = new System.Drawing.Size(464, 536);
+            this.Size = new System.Drawing.Size(474, 536);
             ((System.ComponentModel.ISupportInitialize)(this.AttemptCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MalusCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitclipCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimediffCountBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SamplesCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RebalanceCountBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SkipNewestCountBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CalcToSplitUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SamplesCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinTimesCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitsvalueCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpdateCountBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SkipNewestCountBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CalcToSplitUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -845,15 +847,8 @@
         private System.Windows.Forms.NumericUpDown TimediffCountBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.NumericUpDown SamplesCountBox;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.CheckBox chkSurvival;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button btnDebug;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
@@ -861,28 +856,35 @@
         private System.Windows.Forms.NumericUpDown RebalanceCountBox;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.CheckBox chkRebalance;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.NumericUpDown MinTimesCountBox;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.NumericUpDown SplitsvalueCountBox;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.NumericUpDown UpdateCountBox;
-        private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chkValueRuns;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.NumericUpDown SkipNewestCountBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.NumericUpDown CalcToSplitUpDown;
-        private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.NumericUpDown SamplesCountBox;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.CheckBox chkSurvival;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.CheckBox chkExpSplitsvalue;
+        private System.Windows.Forms.NumericUpDown MinTimesCountBox;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.NumericUpDown SplitsvalueCountBox;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.NumericUpDown UpdateCountBox;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label33;
     }
 }
