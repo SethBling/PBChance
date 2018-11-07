@@ -1,11 +1,11 @@
 # PBChance
 PBChance Component for LiveSplit
 
-## What it is:
+## What it is
 
 PBChance is a LiveSplit component that displays the chance of obtaining a PB on your current run. Whenever you reset, split or the run becomes slow, it runs a variable number (100,000 recomended) of simulations by randomly drawing the remaining splits from your splits in previous attempts, and computes how many of those would result in a PB.
 
-## Installation:
+## Installation
 
 1. Place PBChance.dll into the Components directory of your LiveSplit installation.
 2. Open LiveSplit. Right click -> Edit Layout -> [Giant "+" Button] -> Information -> PB Chance
@@ -19,7 +19,7 @@ PBChance is a LiveSplit component that displays the chance of obtaining a PB on 
 2. Autoupdate. The chance will be automatically updated if the chance drops during the run.
 3. Debug file. To retrace the calculation. This includes: Headerdata, Failed Runs, clipped splits, added times, count of times per split, first generated route, results of successfully runs and 10 failures if possible, the results, the detailed split times and the execution time.
 
-## Advanced Settings:
+## Advanced Settings
 
 1. Consider at least # times per split.
 This will fill up times, if there are not enough because of the Setting "Use the most recent [x] attempts."
@@ -57,13 +57,13 @@ The calculation will stop at split #, if it's not set to 0.
 4. Generate Debug File.
 This will generate a debug file "pbchance_debug.txt", and will be saved in your LiveSplit folder. You can open it with any text editor. See Features 3. for more information.
 
-## Pictures:
+## Pictures
 
 [The component in action.](http://i.imgur.com/YIjln5P.png)
 
 [The configuration screen.](https://ibb.co/hcZFV0)
 
-## Troubleshooting:
+## Troubleshooting
 
 **It displays W3 no times found in S# [Segment name] for a moment*
 
