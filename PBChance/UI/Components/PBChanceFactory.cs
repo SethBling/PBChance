@@ -8,7 +8,7 @@ namespace PBChance.UI.Components
 {
     class PBChanceFactory : IComponentFactory
     {
-        public string ComponentName => "PB Chance ";
+        public string ComponentName => "PB Chance";
 
         public string Description => "Shows the probability of obtaining a new Personal Best this run.";
 

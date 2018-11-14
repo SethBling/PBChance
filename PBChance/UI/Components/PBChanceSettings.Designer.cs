@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.RecentLabel = new System.Windows.Forms.Label();
-            this.PercentOfAttempts = new System.Windows.Forms.RadioButton();
-            this.FixedAttempts = new System.Windows.Forms.RadioButton();
             this.AttemptCountBox = new System.Windows.Forms.NumericUpDown();
             this.CreditsLabel = new System.Windows.Forms.Label();
             this.DisplayOddsCheckbox = new System.Windows.Forms.CheckBox();
@@ -84,6 +82,8 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
+            this.rdoAbsAttempt = new System.Windows.Forms.RadioButton();
+            this.rdoPercentAttempt = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.AttemptCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MalusCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitclipCountBox)).BeginInit();
@@ -105,30 +105,6 @@
             this.RecentLabel.Size = new System.Drawing.Size(87, 13);
             this.RecentLabel.TabIndex = 1;
             this.RecentLabel.Text = "Use most recent:";
-            // 
-            // PercentOfAttempts
-            // 
-            this.PercentOfAttempts.AutoSize = true;
-            this.PercentOfAttempts.Location = new System.Drawing.Point(148, 41);
-            this.PercentOfAttempts.Name = "PercentOfAttempts";
-            this.PercentOfAttempts.Size = new System.Drawing.Size(117, 17);
-            this.PercentOfAttempts.TabIndex = 2;
-            this.PercentOfAttempts.TabStop = true;
-            this.PercentOfAttempts.Text = "Percent of attempts";
-            this.PercentOfAttempts.UseVisualStyleBackColor = true;
-            this.PercentOfAttempts.CheckedChanged += new System.EventHandler(this.PercentOfAttempts_CheckedChanged);
-            // 
-            // FixedAttempts
-            // 
-            this.FixedAttempts.AutoSize = true;
-            this.FixedAttempts.Location = new System.Drawing.Point(148, 60);
-            this.FixedAttempts.Name = "FixedAttempts";
-            this.FixedAttempts.Size = new System.Drawing.Size(66, 17);
-            this.FixedAttempts.TabIndex = 3;
-            this.FixedAttempts.TabStop = true;
-            this.FixedAttempts.Text = "Attempts";
-            this.FixedAttempts.UseVisualStyleBackColor = true;
-            this.FixedAttempts.CheckedChanged += new System.EventHandler(this.FixedAttempts_CheckedChanged);
             // 
             // AttemptCountBox
             // 
@@ -324,10 +300,9 @@
             this.label14.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.label14.Location = new System.Drawing.Point(14, 327);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(372, 13);
+            this.label14.Size = new System.Drawing.Size(315, 13);
             this.label14.TabIndex = 23;
-            this.label14.Text = "It\'s added every time to a simulated run, if a failed split is selected. Default " +
-    "30s";
+            this.label14.Text = "It\'s added every time to a simulated run, if a failed split is selected.";
             // 
             // btnDebug
             // 
@@ -737,9 +712,9 @@
             this.label29.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.label29.Location = new System.Drawing.Point(58, 287);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(387, 13);
+            this.label29.Size = new System.Drawing.Size(376, 13);
             this.label29.TabIndex = 52;
-            this.label29.Text = "Newer attempts be selected more often during a simulated run. Default 100 linear";
+            this.label29.Text = "Newer attempts will be selected more often during a simulated run. Default 100";
             // 
             // label33
             // 
@@ -751,10 +726,38 @@
             this.label33.TabIndex = 59;
             this.label33.Text = "Missing times will be filled with older ones. Default 20";
             // 
+            // rdoAbsAttempt
+            // 
+            this.rdoAbsAttempt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.rdoAbsAttempt.AutoSize = true;
+            this.rdoAbsAttempt.Location = new System.Drawing.Point(151, 41);
+            this.rdoAbsAttempt.Name = "rdoAbsAttempt";
+            this.rdoAbsAttempt.Size = new System.Drawing.Size(66, 17);
+            this.rdoAbsAttempt.TabIndex = 62;
+            this.rdoAbsAttempt.TabStop = true;
+            this.rdoAbsAttempt.Text = "Attempts";
+            this.rdoAbsAttempt.UseVisualStyleBackColor = true;
+            this.rdoAbsAttempt.CheckedChanged += new System.EventHandler(this.rdoAbsAttempt_CheckedChanged);
+            // 
+            // rdoPercentAttempt
+            // 
+            this.rdoPercentAttempt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.rdoPercentAttempt.AutoSize = true;
+            this.rdoPercentAttempt.Location = new System.Drawing.Point(151, 59);
+            this.rdoPercentAttempt.Name = "rdoPercentAttempt";
+            this.rdoPercentAttempt.Size = new System.Drawing.Size(117, 17);
+            this.rdoPercentAttempt.TabIndex = 63;
+            this.rdoPercentAttempt.TabStop = true;
+            this.rdoPercentAttempt.Text = "Percent of attempts";
+            this.rdoPercentAttempt.UseVisualStyleBackColor = true;
+            this.rdoPercentAttempt.CheckedChanged += new System.EventHandler(this.rdoPercentAttempt_CheckedChanged);
+            // 
             // PBChanceSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.rdoAbsAttempt);
+            this.Controls.Add(this.rdoPercentAttempt);
             this.Controls.Add(this.label35);
             this.Controls.Add(this.label34);
             this.Controls.Add(this.label33);
@@ -808,8 +811,6 @@
             this.Controls.Add(this.DisplayOddsCheckbox);
             this.Controls.Add(this.CreditsLabel);
             this.Controls.Add(this.AttemptCountBox);
-            this.Controls.Add(this.FixedAttempts);
-            this.Controls.Add(this.PercentOfAttempts);
             this.Controls.Add(this.RecentLabel);
             this.Name = "PBChanceSettings";
             this.Size = new System.Drawing.Size(474, 536);
@@ -831,8 +832,6 @@
 
         #endregion
         private System.Windows.Forms.Label RecentLabel;
-        private System.Windows.Forms.RadioButton PercentOfAttempts;
-        private System.Windows.Forms.RadioButton FixedAttempts;
         private System.Windows.Forms.NumericUpDown AttemptCountBox;
         private System.Windows.Forms.Label CreditsLabel;
         private System.Windows.Forms.CheckBox DisplayOddsCheckbox;
@@ -886,5 +885,7 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.RadioButton rdoAbsAttempt;
+        private System.Windows.Forms.RadioButton rdoPercentAttempt;
     }
 }
