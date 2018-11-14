@@ -44,6 +44,7 @@ namespace PBChance.UI.Components
 
         public PBChanceSettings()
         {
+            //bool bFixedAttempts;
             InitializeComponent();
 
             UsePercentOfAttempts = false;
@@ -66,8 +67,10 @@ namespace PBChance.UI.Components
             iCalcToSplit = 0;
             bExpSplitsvalue = false;
 
-        PercentOfAttempts.DataBindings.Add("Checked", this, "UsePercentOfAttempts", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
-            FixedAttempts.DataBindings.Add("Checked", this, "UseFixedAttempts", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+            rdoPercentAttempt.DataBindings.Add("Checked", this, "UsePercentOfAttempts", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+            rdoAbsAttempt.DataBindings.Add("Checked", this, "UseFixedAttempts", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+            //rdoPercentAttempt.DataBindings.Add("Checked", this, "UsePercentOfAttempts", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+            //rdoAbsAttempt.DataBindings.Add("Checked", this, "UseFixedAttempts", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             AttemptCountBox.DataBindings.Add("Value", this, "AttemptCount", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             DisplayOddsCheckbox.DataBindings.Add("Checked", this, "DisplayOdds", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             IgnoreRunCountBox.DataBindings.Add("Checked", this, "IgnoreRunCount", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
@@ -87,6 +90,9 @@ namespace PBChance.UI.Components
             SkipNewestCountBox.DataBindings.Add("Value", this, "iSkipNewest", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             CalcToSplitUpDown.DataBindings.Add("Value", this, "iCalcToSplit", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             chkExpSplitsvalue.DataBindings.Add("Checked", this, "bExpSplitsvalue", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+
+            UseFixedAttempts = !UsePercentOfAttempts;
+            UsePercentOfAttempts = !UseFixedAttempts;
         }
 
         private void OnSettingChanged(object sender, BindingCompleteEventArgs e)
@@ -137,7 +143,7 @@ namespace PBChance.UI.Components
         {
             AttemptCount         = SettingsHelper.ParseInt (settings["AttemptCount"]);
             UsePercentOfAttempts = SettingsHelper.ParseBool(settings["UsePercentOfAttempts"]);
-            UseFixedAttempts     = SettingsHelper.ParseBool(settings["UseFixedAttempts"]);
+            UseFixedAttempts = SettingsHelper.ParseBool(settings["UseFixedAttempts"]);
             DisplayOdds          = SettingsHelper.ParseBool(settings["DisplayOdds"]);
             IgnoreRunCount       = SettingsHelper.ParseBool(settings["IgnoreRunCount"]);
             MalusCount           = SettingsHelper.ParseInt (settings["MalusCount"]);
@@ -159,23 +165,21 @@ namespace PBChance.UI.Components
             bDebug = true;
             SettingChanged?.Invoke(this, e);
         }
-
-        private void PercentOfAttempts_CheckedChanged(object sender, EventArgs e)
-        {
-            //UsePercentOfAttempts = UseFixedAttempts;
-            //UseFixedAttempts = !UseFixedAttempts;
-        }
-
-        private void FixedAttempts_CheckedChanged(object sender, EventArgs e)
-        {
-            //UsePercentOfAttempts = UseFixedAttempts;
-            //UseFixedAttempts = !UseFixedAttempts;
-        }
-
+        
         private void label26_DoubleClick(object sender, EventArgs e)
         {
             if(!bExpSplitsvalue)
                 chkExpSplitsvalue.Visible = !chkExpSplitsvalue.Visible;
+        }
+
+        private void rdoAbsAttempt_CheckedChanged(object sender, EventArgs e)
+        {
+            //UsePercentOfAttempts = !UseFixedAttempts;
+        }
+
+        private void rdoPercentAttempt_CheckedChanged(object sender, EventArgs e)
+        {
+            //UseFixedAttempts = !UsePercentOfAttempts;
         }
     }
 }
