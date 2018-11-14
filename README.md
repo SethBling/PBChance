@@ -63,7 +63,7 @@ This will generate a debug file "pbchance_debug.txt", and will be saved in your 
 
 [The configuration screen.](https://ibb.co/j9x2QL)
 
-[url=https://ibb.co/j9x2QL][img]https://thumb.ibb.co/j9x2QL/PBChance-Settings2.png[/img][/url]
+<a href="https://ibb.co/j9x2QL"><img src="https://thumb.ibb.co/j9x2QL/PBChance-Settings2.png" alt="PBChance-Settings2" border="0" /></a>
 
 ## Troubleshooting
 
