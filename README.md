@@ -37,7 +37,7 @@ Newer attempts will be selected more often during a simulated run.
 Valid values: 0-100 Suggestion: 100
 6. Malus on failures # seconds.
 For each discontinued run, a failed split will be generated. It's added every time to a simulated run, if a failed split is selected.
-Valid values: 0-999 Suggestion: it depends. Can be set to 0, if "Display survival chance" is set. In that case, multiple these two numbers will result in a chance, same as an infinite malus.
+Valid values: 0-999 Suggestion: Should be set to a higher value if the reason for an interruption is essentially significant errors in a single segment (and lower in opposite case). Can be also set to 0, if "Display survival chance" is set. In that case, multiple these two numbers will result in a chance, same as an infinite malus.
 7. Only consider splits, which are faster than {bestSplit[s] x # percent}
 Very slow split times will be eliminated. Should set to a number, which are clearly too slow for a normal run. Should be checked with the debug file (clipped splits), for the correct setting and result.
 Valid values: 100-999 Suggestion: 150-200
