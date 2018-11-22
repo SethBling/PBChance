@@ -33,12 +33,11 @@ namespace PBChance.UI.Components
         public int iSplitsvalue { get; set; }
 
         public Boolean bSurvival { get; set; }
+        public Boolean bIgnoreSkipClip { get; set; }
 
         public int iSkipNewest { get; set; }
         public int iCalcToSplit { get; set; }
-
-
-        
+        public int iCalctime { get; set; }
 
         public event EventHandler SettingChanged;
 
@@ -55,6 +54,7 @@ namespace PBChance.UI.Components
             SplitclipCount = 150;
             TimediffCount = 0;
             SamplesCount = 100000;
+            iCalctime = 500;
             bSurvival = false;
             bDebug = false;
             iOptimistic = 0;
@@ -76,11 +76,13 @@ namespace PBChance.UI.Components
             IgnoreRunCountBox.DataBindings.Add("Checked", this, "IgnoreRunCount", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             MalusCountBox.DataBindings.Add("Value", this, "MalusCount", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             SplitclipCountBox.DataBindings.Add("Value", this, "SplitclipCount", true, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
-            TimediffCountBox.DataBindings.Add("Value", this, "TimediffCount", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             SamplesCountBox.DataBindings.Add("Value", this, "SamplesCount", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+            TimediffCountBox.DataBindings.Add("Value", this, "TimediffCount", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+            CalctimeCountBox.DataBindings.Add("Value", this, "iCalctime", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             chkSurvival.DataBindings.Add("Checked", this, "bSurvival", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             //chkRebalance.DataBindings.Add("Checked", this, "bRebalance", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             //RebalanceCountBox.DataBindings.Add("Value", this, "iOptimistic", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+            chkIgnoreSkipClip.DataBindings.Add("Checked", this, "bIgnoreSkipClip", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
 
             //chkValueRuns.DataBindings.Add("Checked", this, "bValueRuns", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             MinTimesCountBox.DataBindings.Add("Value", this, "iMinTimes", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
@@ -129,11 +131,12 @@ namespace PBChance.UI.Components
                 SettingsHelper.CreateSetting(document, parent, "SplitclipCount", SplitclipCount) ^
                 SettingsHelper.CreateSetting(document, parent, "TimediffCount", TimediffCount) ^
                 SettingsHelper.CreateSetting(document, parent, "SamplesCount", SamplesCount) ^
+                SettingsHelper.CreateSetting(document, parent, "iCalctime", iCalctime) ^
                 SettingsHelper.CreateSetting(document, parent, "iOptimistic", iOptimistic) ^
                 SettingsHelper.CreateSetting(document, parent, "chkRebalance", bRebalance) ^
                 SettingsHelper.CreateSetting(document, parent, "chkSurvival", bSurvival) ^
                 SettingsHelper.CreateSetting(document, parent, "bValueRuns", bValueRuns) ^
-                SettingsHelper.CreateSetting(document, parent, "bExpSplitsvalue", bValueRuns) ^
+                SettingsHelper.CreateSetting(document, parent, "IgnoreSkipClip", bIgnoreSkipClip) ^
                 SettingsHelper.CreateSetting(document, parent, "iMinTimes", iMinTimes) ^
                 SettingsHelper.CreateSetting(document, parent, "iUpdate", iUpdate) ^
                 SettingsHelper.CreateSetting(document, parent, "iSplitsvalue", iSplitsvalue);
@@ -143,16 +146,18 @@ namespace PBChance.UI.Components
         {
             AttemptCount         = SettingsHelper.ParseInt (settings["AttemptCount"]);
             UsePercentOfAttempts = SettingsHelper.ParseBool(settings["UsePercentOfAttempts"]);
-            UseFixedAttempts = SettingsHelper.ParseBool(settings["UseFixedAttempts"]);
+            UseFixedAttempts     = SettingsHelper.ParseBool(settings["UseFixedAttempts"]);
             DisplayOdds          = SettingsHelper.ParseBool(settings["DisplayOdds"]);
             IgnoreRunCount       = SettingsHelper.ParseBool(settings["IgnoreRunCount"]);
             MalusCount           = SettingsHelper.ParseInt (settings["MalusCount"]);
             SplitclipCount       = SettingsHelper.ParseInt (settings["SplitclipCount"]);
             TimediffCount        = SettingsHelper.ParseInt (settings["TimediffCount"]);
             SamplesCount         = SettingsHelper.ParseInt (settings["SamplesCount"]);
+            iCalctime            = SettingsHelper.ParseInt (settings["iCalctime"]);
             iOptimistic          = SettingsHelper.ParseInt (settings["iOptimistic"]);
             bSurvival            = SettingsHelper.ParseBool(settings["chkSurvival"]);
             bRebalance           = SettingsHelper.ParseBool(settings["chkRebalance"]);
+            bIgnoreSkipClip      = SettingsHelper.ParseBool(settings["IgnoreSkipClip"]);
             bValueRuns           = SettingsHelper.ParseBool(settings["bValueRuns"]);
             iMinTimes            = SettingsHelper.ParseInt (settings["iMinTimes"]);
             iUpdate              = SettingsHelper.ParseInt (settings["iUpdate"]);
@@ -172,14 +177,11 @@ namespace PBChance.UI.Components
                 chkExpSplitsvalue.Visible = !chkExpSplitsvalue.Visible;
         }
 
-        private void rdoAbsAttempt_CheckedChanged(object sender, EventArgs e)
+        private void label15_DoubleClick(object sender, EventArgs e)
         {
-            //UsePercentOfAttempts = !UseFixedAttempts;
-        }
-
-        private void rdoPercentAttempt_CheckedChanged(object sender, EventArgs e)
-        {
-            //UseFixedAttempts = !UsePercentOfAttempts;
+            CalctimeCountBox.Visible = !CalctimeCountBox.Visible;
+            lblCalctime1.Visible = !lblCalctime1.Visible;
+            lblCalctime2.Visible = !lblCalctime2.Visible;
         }
     }
 }
