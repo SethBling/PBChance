@@ -84,6 +84,11 @@
             this.label33 = new System.Windows.Forms.Label();
             this.rdoAbsAttempt = new System.Windows.Forms.RadioButton();
             this.rdoPercentAttempt = new System.Windows.Forms.RadioButton();
+            this.CalctimeCountBox = new System.Windows.Forms.NumericUpDown();
+            this.lblCalctime2 = new System.Windows.Forms.Label();
+            this.lblCalctime1 = new System.Windows.Forms.Label();
+            this.chkIgnoreSkipClip = new System.Windows.Forms.CheckBox();
+            this.label36 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AttemptCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MalusCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitclipCountBox)).BeginInit();
@@ -95,6 +100,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MinTimesCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitsvalueCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpdateCountBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CalctimeCountBox)).BeginInit();
             this.SuspendLayout();
             // 
             // RecentLabel
@@ -183,7 +189,7 @@
             0,
             0,
             0});
-            this.SplitclipCountBox.Location = new System.Drawing.Point(291, 356);
+            this.SplitclipCountBox.Location = new System.Drawing.Point(314, 356);
             this.SplitclipCountBox.Maximum = new decimal(new int[] {
             999,
             0,
@@ -226,14 +232,14 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(14, 363);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(271, 13);
+            this.label5.Size = new System.Drawing.Size(300, 13);
             this.label5.TabIndex = 13;
-            this.label5.Text = "Only consider splits, which are faster than {bestSplit[s]  x";
+            this.label5.Text = "Only consider segments, which are faster than {bestSegm[s]  x";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(337, 363);
+            this.label6.Location = new System.Drawing.Point(357, 363);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 13);
             this.label6.TabIndex = 14;
@@ -292,7 +298,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(222, 13);
             this.label11.TabIndex = 20;
-            this.label11.Text = "higher number -> lower chance. Default 150%";
+            this.label11.Text = "higher number -> lower chance. Default 160%";
             // 
             // label14
             // 
@@ -300,9 +306,9 @@
             this.label14.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.label14.Location = new System.Drawing.Point(14, 327);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(315, 13);
+            this.label14.Size = new System.Drawing.Size(337, 13);
             this.label14.TabIndex = 23;
-            this.label14.Text = "It\'s added every time to a simulated run, if a failed split is selected.";
+            this.label14.Text = "It\'s added every time to a simulated run, if a failed segment is selected.";
             // 
             // btnDebug
             // 
@@ -436,9 +442,9 @@
             this.label30.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.label30.Location = new System.Drawing.Point(14, 340);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(277, 13);
+            this.label30.Size = new System.Drawing.Size(299, 13);
             this.label30.TabIndex = 53;
-            this.label30.Text = "For each discontinued run, a failed split will be generated.";
+            this.label30.Text = "For each discontinued run, a failed segment will be generated.";
             // 
             // SkipNewestCountBox
             // 
@@ -475,11 +481,11 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(282, 507);
+            this.label32.Location = new System.Drawing.Point(261, 507);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(89, 13);
+            this.label32.Size = new System.Drawing.Size(111, 13);
             this.label32.TabIndex = 58;
-            this.label32.Text = "Only calc to Split:";
+            this.label32.Text = "Only calc to Segment:";
             // 
             // CalcToSplitUpDown
             // 
@@ -519,9 +525,9 @@
             this.label10.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.label10.Location = new System.Drawing.Point(14, 182);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(247, 13);
+            this.label10.Size = new System.Drawing.Size(253, 13);
             this.label10.TabIndex = 19;
-            this.label10.Text = "higher number -> smaller variance. Default 100000.";
+            this.label10.Text = "higher number -> more stable result. Default 100000 ";
             // 
             // label12
             // 
@@ -574,9 +580,10 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(203, 168);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(69, 13);
+            this.label15.Size = new System.Drawing.Size(72, 13);
             this.label15.TabIndex = 25;
-            this.label15.Text = "combinations";
+            this.label15.Text = "combinations.";
+            this.label15.DoubleClick += new System.EventHandler(this.label15_DoubleClick);
             // 
             // chkSurvival
             // 
@@ -601,7 +608,7 @@
             // chkExpSplitsvalue
             // 
             this.chkExpSplitsvalue.AutoSize = true;
-            this.chkExpSplitsvalue.Location = new System.Drawing.Point(315, 273);
+            this.chkExpSplitsvalue.Location = new System.Drawing.Point(326, 273);
             this.chkExpSplitsvalue.Name = "chkExpSplitsvalue";
             this.chkExpSplitsvalue.Size = new System.Drawing.Size(158, 17);
             this.chkExpSplitsvalue.TabIndex = 38;
@@ -645,9 +652,9 @@
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(152, 127);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(73, 13);
+            this.label25.Size = new System.Drawing.Size(95, 13);
             this.label25.TabIndex = 42;
-            this.label25.Text = "times per split.";
+            this.label25.Text = "times per segment.";
             // 
             // SplitsvalueCountBox
             // 
@@ -666,9 +673,9 @@
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(58, 274);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(251, 13);
+            this.label26.Size = new System.Drawing.Size(268, 13);
             this.label26.TabIndex = 44;
-            this.label26.Text = "Newer splits times are more important than old ones.";
+            this.label26.Text = "Newer segment times are more important than old ones.";
             this.label26.DoubleClick += new System.EventHandler(this.label26_DoubleClick);
             // 
             // UpdateCountBox
@@ -737,7 +744,6 @@
             this.rdoAbsAttempt.TabStop = true;
             this.rdoAbsAttempt.Text = "Attempts";
             this.rdoAbsAttempt.UseVisualStyleBackColor = true;
-            this.rdoAbsAttempt.CheckedChanged += new System.EventHandler(this.rdoAbsAttempt_CheckedChanged);
             // 
             // rdoPercentAttempt
             // 
@@ -750,12 +756,78 @@
             this.rdoPercentAttempt.TabStop = true;
             this.rdoPercentAttempt.Text = "Percent of attempts";
             this.rdoPercentAttempt.UseVisualStyleBackColor = true;
-            this.rdoPercentAttempt.CheckedChanged += new System.EventHandler(this.rdoPercentAttempt_CheckedChanged);
+            // 
+            // CalctimeCountBox
+            // 
+            this.CalctimeCountBox.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.CalctimeCountBox.Location = new System.Drawing.Point(329, 161);
+            this.CalctimeCountBox.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.CalctimeCountBox.Name = "CalctimeCountBox";
+            this.CalctimeCountBox.Size = new System.Drawing.Size(50, 20);
+            this.CalctimeCountBox.TabIndex = 64;
+            this.CalctimeCountBox.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.CalctimeCountBox.Visible = false;
+            // 
+            // lblCalctime2
+            // 
+            this.lblCalctime2.AutoSize = true;
+            this.lblCalctime2.Location = new System.Drawing.Point(385, 168);
+            this.lblCalctime2.Name = "lblCalctime2";
+            this.lblCalctime2.Size = new System.Drawing.Size(66, 13);
+            this.lblCalctime2.TabIndex = 65;
+            this.lblCalctime2.Text = "milliseconds.";
+            this.lblCalctime2.Visible = false;
+            // 
+            // lblCalctime1
+            // 
+            this.lblCalctime1.AutoSize = true;
+            this.lblCalctime1.Location = new System.Drawing.Point(281, 168);
+            this.lblCalctime1.Name = "lblCalctime1";
+            this.lblCalctime1.Size = new System.Drawing.Size(42, 13);
+            this.lblCalctime1.TabIndex = 66;
+            this.lblCalctime1.Text = "At least";
+            this.lblCalctime1.Visible = false;
+            // 
+            // chkIgnoreSkipClip
+            // 
+            this.chkIgnoreSkipClip.AutoSize = true;
+            this.chkIgnoreSkipClip.Location = new System.Drawing.Point(258, 233);
+            this.chkIgnoreSkipClip.Name = "chkIgnoreSkipClip";
+            this.chkIgnoreSkipClip.Size = new System.Drawing.Size(209, 17);
+            this.chkIgnoreSkipClip.TabIndex = 67;
+            this.chkIgnoreSkipClip.Text = "Do not increase chance on \"Skip Clip\"";
+            this.chkIgnoreSkipClip.UseVisualStyleBackColor = true;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label36.Location = new System.Drawing.Point(277, 248);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(0, 13);
+            this.label36.TabIndex = 68;
             // 
             // PBChanceSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label36);
+            this.Controls.Add(this.chkIgnoreSkipClip);
+            this.Controls.Add(this.lblCalctime1);
+            this.Controls.Add(this.lblCalctime2);
+            this.Controls.Add(this.CalctimeCountBox);
             this.Controls.Add(this.rdoAbsAttempt);
             this.Controls.Add(this.rdoPercentAttempt);
             this.Controls.Add(this.label35);
@@ -813,7 +885,7 @@
             this.Controls.Add(this.AttemptCountBox);
             this.Controls.Add(this.RecentLabel);
             this.Name = "PBChanceSettings";
-            this.Size = new System.Drawing.Size(474, 536);
+            this.Size = new System.Drawing.Size(480, 536);
             ((System.ComponentModel.ISupportInitialize)(this.AttemptCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MalusCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitclipCountBox)).EndInit();
@@ -825,6 +897,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MinTimesCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitsvalueCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpdateCountBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CalctimeCountBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -887,5 +960,10 @@
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.RadioButton rdoAbsAttempt;
         private System.Windows.Forms.RadioButton rdoPercentAttempt;
+        private System.Windows.Forms.NumericUpDown CalctimeCountBox;
+        private System.Windows.Forms.Label lblCalctime2;
+        private System.Windows.Forms.Label lblCalctime1;
+        private System.Windows.Forms.CheckBox chkIgnoreSkipClip;
+        private System.Windows.Forms.Label label36;
     }
 }
