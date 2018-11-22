@@ -55,7 +55,7 @@ Valid values: -86400-86400 (24h)
 To see how high the chance was before.
 Valid values: 0-99999
 3. Only calc to segment #.
-The calculation will stop at split #, if it's not set to 0.
+The calculation will stop at segment #, if it's not set to 0.
 4. Generate Debug File.
 This will generate a debug file "pbchance_debug.txt", and will be saved in your LiveSplit folder. You can open it with any text editor. See Features 3. for more information.
 
