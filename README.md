@@ -26,7 +26,7 @@ This will fill up times, if there are not enough because of the Setting "Use the
 Valid values: 1-999 Suggestion: 10-25
 2. Random sample survey # combinations.
 The number of calculations. A lower number will calculate faster, a higher number gives a more stable result.
-Valid values: 1-999,999 Suggestion: 100,000
+Valid values: 1-999,999 Suggestion: at least 100,000
 3. Update automatically every # seconds when the chance drops.
 During a run, PBChance compares the current segment time with the best segment time. If it's slower, and the chance is above zero, PBChance calculates in background the chance. If that chance becomes lower than the displayed one, the chance will be updated automatically. 0 means as fast as possible.
 Valid values: 0-999 Suggestion: 1
