@@ -64,8 +64,8 @@ This will generate a debug file "pbchance_debug.txt", and will be saved in your 
 [The component in action.](https://ibb.co/byjJzq)
 <a href="https://ibb.co/byjJzq"><img src="https://thumb.ibb.co/byjJzq/PBChance-Settings4.png" alt="PBChance-Settings4" border="0"></a>
 
-[The configuration screen.](https://ibb.co/j9x2QL)
-<a href="https://ibb.co/j9x2QL"><img src="https://thumb.ibb.co/j9x2QL/PBChance-Settings2.png" alt="PBChance-Settings2" border="0" /></a>
+[The configuration screen.](https://ibb.co/bB05uq)
+<a href="https://ibb.co/bB05uq"><img src="https://thumb.ibb.co/bB05uq/PBChance-Settings3.png" alt="PBChance-Settings3" border="0"></a>
 
 ## Troubleshooting
 
