@@ -28,7 +28,7 @@ Valid values: 1-999 Suggestion: number of attempts doing in two weeks
 The number of calculations. A lower number will calculate faster, a higher number gives a more stable result.
 Valid values: 1-999,999 Suggestion: at least 100,000
 3. Update automatically every # seconds when the chance drops.
-During a run, PBChance compares the current segment time with the best segment time. If it's slower, and the chance is above zero, PBChance calculates in background the chance. If that chance becomes lower than the displayed one, the chance will be updated automatically. 0 means as fast as possible.
+During a run, PBChance compares the current segment time with the best segment time. If it's slower, and the chance is above zero, PBChance calculates the new chance in the background as if you were splitting. If that chance becomes lower than the displayed one, the chance will be updated automatically. 0 means as fast as possible.
 Valid values: 0-999 Suggestion: 1
 4. Display survival chance
 This will display in addition a percent number. The formula is simply [finished runs]/[total remaining runs].
