@@ -67,6 +67,9 @@ This will generate a debug file "pbchance_debug.txt", and will be saved in your 
 [The configuration screen.](https://ibb.co/bB05uq)
 <a href="https://ibb.co/bB05uq"><img src="https://thumb.ibb.co/bB05uq/PBChance-Settings3.png" alt="PBChance-Settings3" border="0"></a>
 
+[Overview](https://ibb.co/DkGPRQk)
+<a href="https://ibb.co/DkGPRQk"><img src="https://i.ibb.co/DkGPRQk/PBChance-Overview.png" alt="PBChance-Overview" border="0"></a>
+                                                                                                                                      
 ## Troubleshooting
 
 **It displays W3 no times found in S# [Segment name] for a moment*
