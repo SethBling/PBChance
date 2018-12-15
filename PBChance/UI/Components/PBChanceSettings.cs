@@ -31,9 +31,11 @@ namespace PBChance.UI.Components
         public int iMinTimes { get; set; }
         public int iUpdate { get; set; }
         public int iSplitsvalue { get; set; }
+        public bool bInfoNext { get; set; }
 
         public Boolean bSurvival { get; set; }
         public Boolean bIgnoreSkipClip { get; set; }
+        public Boolean bDeviation { get; set; }
 
         public int iSkipNewest { get; set; }
         public int iCalcToSplit { get; set; }
@@ -83,6 +85,7 @@ namespace PBChance.UI.Components
             //chkRebalance.DataBindings.Add("Checked", this, "bRebalance", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             //RebalanceCountBox.DataBindings.Add("Value", this, "iOptimistic", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             chkIgnoreSkipClip.DataBindings.Add("Checked", this, "bIgnoreSkipClip", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+            chkDeviation.DataBindings.Add("Checked", this, "bDeviation", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
 
             //chkValueRuns.DataBindings.Add("Checked", this, "bValueRuns", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             MinTimesCountBox.DataBindings.Add("Value", this, "iMinTimes", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
@@ -92,7 +95,8 @@ namespace PBChance.UI.Components
             SkipNewestCountBox.DataBindings.Add("Value", this, "iSkipNewest", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             CalcToSplitUpDown.DataBindings.Add("Value", this, "iCalcToSplit", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             chkExpSplitsvalue.DataBindings.Add("Checked", this, "bExpSplitsvalue", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
-
+            chkInfoNext.DataBindings.Add("Checked", this, "bInfoNext", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+            
             UseFixedAttempts = !UsePercentOfAttempts;
             UsePercentOfAttempts = !UseFixedAttempts;
         }
@@ -113,14 +117,6 @@ namespace PBChance.UI.Components
 
         private int CreateSettingsNode(XmlDocument document, XmlElement parent)
         {
-            //UsePercentOfAttempts = false;
-            //UseFixedAttempts = true;
-            //AttemptCount = 50;
-            //MalusCount = 30;
-            //SplitclipCount = 150;
-            //TimediffCount = 0;
-            //SamplesCount = 10000;
-
             return SettingsHelper.CreateSetting(document, parent, "Version", "0.4") ^
                 SettingsHelper.CreateSetting(document, parent, "AttemptCount", AttemptCount) ^
                 SettingsHelper.CreateSetting(document, parent, "UsePercentOfAttempts", UsePercentOfAttempts) ^
@@ -135,8 +131,10 @@ namespace PBChance.UI.Components
                 SettingsHelper.CreateSetting(document, parent, "iOptimistic", iOptimistic) ^
                 SettingsHelper.CreateSetting(document, parent, "chkRebalance", bRebalance) ^
                 SettingsHelper.CreateSetting(document, parent, "chkSurvival", bSurvival) ^
+                SettingsHelper.CreateSetting(document, parent, "chkInfoNext", bInfoNext) ^
                 SettingsHelper.CreateSetting(document, parent, "bValueRuns", bValueRuns) ^
                 SettingsHelper.CreateSetting(document, parent, "IgnoreSkipClip", bIgnoreSkipClip) ^
+                SettingsHelper.CreateSetting(document, parent, "Deviation", bDeviation) ^
                 SettingsHelper.CreateSetting(document, parent, "iMinTimes", iMinTimes) ^
                 SettingsHelper.CreateSetting(document, parent, "iUpdate", iUpdate) ^
                 SettingsHelper.CreateSetting(document, parent, "iSplitsvalue", iSplitsvalue);
@@ -158,7 +156,9 @@ namespace PBChance.UI.Components
             bSurvival            = SettingsHelper.ParseBool(settings["chkSurvival"]);
             bRebalance           = SettingsHelper.ParseBool(settings["chkRebalance"]);
             bIgnoreSkipClip      = SettingsHelper.ParseBool(settings["IgnoreSkipClip"]);
+            bDeviation           = SettingsHelper.ParseBool(settings["Deviation"]);
             bValueRuns           = SettingsHelper.ParseBool(settings["bValueRuns"]);
+            bInfoNext            = SettingsHelper.ParseBool(settings["chkInfoNext"]);
             iMinTimes            = SettingsHelper.ParseInt (settings["iMinTimes"]);
             iUpdate              = SettingsHelper.ParseInt (settings["iUpdate"]);
             iSplitsvalue         = SettingsHelper.ParseInt (settings["iSplitsvalue"]);
