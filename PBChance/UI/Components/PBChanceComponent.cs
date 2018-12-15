@@ -27,6 +27,7 @@ namespace PBChance.UI.Components
         protected double fLiveChanceAvg;
         protected double fLastUpdate;
         protected bool bCheckUpdate;
+        int[] lAliveSplits;
 
         string IComponent.ComponentName => "PB Chance";
 
@@ -152,10 +153,10 @@ namespace PBChance.UI.Components
 
         protected void Recalculate()
         {
-            int iSurvivalFailure = 0, iSurvivalSuccess = 0, iMaxAtempts, iCurrentSplitIndex, iMaxSplit, i, iLastSegment, iAttempt, iSegment; //, aktSurvival, sumSurvival = 0;
-            double fSec;
+            int iSurvivalFailure = 0, iSurvivalSuccess = 0, iNextSurvSuc = 0, iNextSurvFail = 0, iMaxAtempts, iCurrentSplitIndex, iMaxSplit, i, iAttempt, iSegment; //, aktSurvival, sumSurvival = 0;
+            double fSec, fDeviation = 0, iSumMsActSplit = 0;
             string text = ""; var watch = System.Diagnostics.Stopwatch.StartNew();
-            System.String sWriteDebug1="", sWriteDebug2="";
+            System.String sWriteDebug1="", sWriteDebug2 = "", sWriteDebug3 = "";
             Time? split;
 
             if (Settings.SamplesCount == 0) // not configured, load default values
@@ -173,11 +174,11 @@ namespace PBChance.UI.Components
                 Settings.iUpdate = 1;
                 Settings.iSplitsvalue = 100;
             }
-            if (Settings.iCalctime == 0) { Settings.iCalctime = 500; Settings.SplitclipCount = 160; Settings.bIgnoreSkipClip = true; }
 
             iCurrentSplitIndex = (State.CurrentSplitIndex < 0 ? 0 : State.CurrentSplitIndex) + (bCheckUpdate ? 1 : 0);
             iMaxSplit = (Settings.iCalcToSplit == 0 || Settings.iCalcToSplit > State.Run.Count) ? State.Run.Count : Settings.iCalcToSplit;
 
+            //InternalComponent.InformationName = "PB Chance (" + iCurrentSplitIndex;
             // Array of the count of valid split times per split (without failing attemps)
             int[] lCountSplits = new int[iMaxSplit];
 
@@ -199,7 +200,7 @@ namespace PBChance.UI.Components
             // Find the range of attempts to gather times from
             int iFirstAttempt = 1, iLastAttempt = State.Run.AttemptHistory.Count - Settings.iSkipNewest;
             if (!Settings.IgnoreRunCount)
-                iFirstAttempt = iLastAttempt - (Settings.UseFixedAttempts ? Settings.AttemptCount + 1: iLastAttempt * (Settings.AttemptCount - 1 - Settings.iSkipNewest) / 100);
+                iFirstAttempt = iLastAttempt - (Settings.UseFixedAttempts ? Settings.AttemptCount - 1: iLastAttempt * (Settings.AttemptCount - 1 - Settings.iSkipNewest) / 100);
             if (iFirstAttempt < 1) iFirstAttempt = 1;
 
             if (Settings.bDebug)
@@ -211,15 +212,35 @@ namespace PBChance.UI.Components
                     + "\r\nStartTime: " + State.StartTime + " StartTimeWithOffset: " + State.StartTimeWithOffset + " TimePausedAt: " + State.TimePausedAt
                     + "\r\nAttempts: " + iFirstAttempt + " to " + iLastAttempt + " Malus: " + Settings.MalusCount + " Splitclip: " + Settings.SplitclipCount + " Timediff: " + Settings.TimediffCount + " Samples: " + Settings.SamplesCount + " Calctime: " + Settings.iCalctime + " Survival: " + Settings.bSurvival + " Rebalancing: " + Settings.iOptimistic
                     + "\r\nValueRuns: " + Settings.bValueRuns + " Min Times per Segment: " + Settings.iMinTimes + " Automatic Update every: " + Settings.iUpdate + "s More Value on newer Splits: " + Settings.iSplitsvalue + " Skip newest Splits: " + Settings.iSkipNewest
-                    + "\r\nPersonal Best Time to beat: " + pb[State.CurrentTimingMethod].ToString() + " CalcToSplit: " + Settings.iCalcToSplit + "\r\n\r\n--- Failed Runs --- " + watch.ElapsedMilliseconds + "ms\r\n"); 
+                    + "\r\nPersonal Best Time to beat: " + pb[State.CurrentTimingMethod].ToString() + " CalcToSplit: " + Settings.iCalcToSplit + "\r\n\r\n--- Failed Runs --- " + watch.ElapsedMilliseconds + "ms\r\n");
+
+
+            //if (Settings.bDebug) // alle Daten in Datei schreiben
+            //{
+            //    sWriteDebug1 = "Segment Attempt Time\r\n";
+            //    for (iAttempt = iFirstAttempt; iAttempt <= iLastAttempt; iAttempt++)
+            //        for (iSegment = 0; iSegment < iMaxSplit; iSegment++)
+            //        {
+            //            if (State.Run[iSegment].SegmentHistory.ContainsKey(iAttempt) && State.Run[iSegment].SegmentHistory[iAttempt][State.CurrentTimingMethod] > TimeSpan.Zero)
+            //                sWriteDebug1 += iSegment + " " + iAttempt + " " + State.Run[iSegment].SegmentHistory[iAttempt][State.CurrentTimingMethod].Value.TotalMilliseconds + "\r\n";
+            //        }
+            //    System.IO.File.AppendAllText(@"pbchance_Debug.txt", sWriteDebug1);
+            //    sWriteDebug1 = "";
+            //}
 
             // Gather split times
-            for (iAttempt = iFirstAttempt; iAttempt <= iLastAttempt; iAttempt++)
+            //for (iAttempt = iFirstAttempt; iAttempt <= iLastAttempt; iAttempt++)
+            //lCountSplits[-1]++;
+            int iFailState; // 0 = init, 1=Success, 2=Fail next Split, 3=Fail later Split
+            for (iAttempt = iLastAttempt; iAttempt >= 0; iAttempt--)
             {
-                iLastSegment = -1;
+                //iLastSegment = -1;
+                iFailState = 0;
 
-                for (iSegment = iCurrentSplitIndex; iSegment < iMaxSplit; iSegment++)
+                //for (iSegment = iCurrentSplitIndex; iSegment < iMaxSplit; iSegment++)
+                for (iSegment = iMaxSplit-1; iSegment >= 0; iSegment--)
                 {
+                    //if (lCountSplits[iSegment] < Settings.iMinTimes || iAttempt >= iFirstAttempt) {
                     if (State.Run[iSegment].SegmentHistory == null || State.Run[iSegment].SegmentHistory.Count == 0)
                     {
                         if (State.Run[iSegment].BestSegmentTime[State.CurrentTimingMethod].HasValue)
@@ -242,40 +263,99 @@ namespace PBChance.UI.Components
                         {
                             if ((State.Run[iSegment].SegmentHistory[iAttempt][State.CurrentTimingMethod].Value.TotalSeconds <= Settings.SplitclipCount * 0.01 * State.Run[iSegment].BestSegmentTime[State.CurrentTimingMethod].Value.TotalSeconds))  // | (State.Run[iSegment].BestSegmentTime[State.CurrentTimingMethod].Value.TotalSeconds < 60))
                             {
-                                splits[iSegment].Add(State.Run[iSegment].SegmentHistory[iAttempt]); // add a valid split time
-                                lCountSplits[iSegment]++;
-                                iLastSegment = iSegment;
+                                if (iAttempt >= iFirstAttempt || lCountSplits[iSegment] < Settings.iMinTimes)
+                                {
+                                    splits[iSegment].Add(State.Run[iSegment].SegmentHistory[iAttempt]); // add a valid split time
+                                    lCountSplits[iSegment]++;
+                                    if (Settings.bDebug && iAttempt < iFirstAttempt) sWriteDebug3 += "Segment: " + iSegment.ToString("00") + " Attempt: " + iAttempt.ToString("0000") + " Added Time: " + State.Run[iSegment].SegmentHistory[iAttempt][State.CurrentTimingMethod].Value.ToString() + " Factor: " + Math.Round(State.Run[iSegment].SegmentHistory[iAttempt][State.CurrentTimingMethod].Value.TotalSeconds / (State.Run[iSegment].BestSegmentTime[State.CurrentTimingMethod].Value.TotalSeconds + .0001), 2).ToString("0.00") + " Count of Valid/Total Times: " + lCountSplits[iSegment].ToString("0000") + "/" + splits[iSegment].Count.ToString("0000") + " Name: " + State.Run[iSegment].Name + "\r\n";
+                                }
+
+                                if (iSegment == iMaxSplit - 1)
+                                    iFailState = 1; // Run is finished
+                                else if (iFailState == 0) // Run didn't finish, add a failure for the last known split
+                                {
+                                    iFailState = (iSegment == iCurrentSplitIndex-1) ? 2 : (iSegment > iCurrentSplitIndex-1) ? 3 : 4; // Failure is set
+                                    if (iAttempt >= iFirstAttempt || lCountSplits[iSegment+1] < Settings.iMinTimes)
+                                    {
+                                        splits[iSegment + 1].Add(null);
+                                        //if (iAttempt >= iFirstAttempt) iSurvivalFailure++;
+                                        if (Settings.bDebug) sWriteDebug1 += "#" + iSurvivalFailure.ToString("00") + ":  Attempt: " + iAttempt.ToString("00") + " Segment: " + (iSegment + 1).ToString("00") + " LastSegment: " + iSegment.ToString("00") + " CountSplit: " + lCountSplits[iSegment].ToString("00") + "\r\n";
+                                    }
+                                }
                             }
                             else
-                                if (Settings.bDebug) sWriteDebug2 += "Segment: " + iSegment.ToString("00") + " Attempt: " + iAttempt.ToString("0000") + " Factor: " + Math.Round(State.Run[iSegment].SegmentHistory[iAttempt][State.CurrentTimingMethod].Value.TotalSeconds / State.Run[iSegment].BestSegmentTime[State.CurrentTimingMethod].Value.TotalSeconds, 2).ToString("0.00") + " Best: " + State.Run[iSegment].BestSegmentTime[State.CurrentTimingMethod].Value.TotalSeconds.ToString("000.000") + " Time: " + State.Run[iSegment].SegmentHistory[iAttempt][State.CurrentTimingMethod].Value.TotalSeconds.ToString("0000.000") + " Name: " + State.Run[iSegment].Name + "\r\n";
+                                if (Settings.bDebug && (iAttempt >= iFirstAttempt || lCountSplits[iSegment] < Settings.iMinTimes)) sWriteDebug2 += "Segment: " + iSegment.ToString("00") + " Attempt: " + iAttempt.ToString("0000") + " Factor: " + Math.Round(State.Run[iSegment].SegmentHistory[iAttempt][State.CurrentTimingMethod].Value.TotalSeconds / State.Run[iSegment].BestSegmentTime[State.CurrentTimingMethod].Value.TotalSeconds, 2).ToString("0.00") + " Best: " + State.Run[iSegment].BestSegmentTime[State.CurrentTimingMethod].Value.TotalSeconds.ToString("000.000") + " Time: " + State.Run[iSegment].SegmentHistory[iAttempt][State.CurrentTimingMethod].Value.TotalSeconds.ToString("0000.000") + " Name: " + State.Run[iSegment].Name + "\r\n";
                         }
                         else // no Best Time, then allways add
                         {
-                            splits[iSegment].Add(State.Run[iSegment].SegmentHistory[iAttempt]);
-                            InternalComponent.InformationValue = "W2 no best time found in S" + (1 + iSegment) + " " + State.Run[iSegment].Name;
-                            if (Settings.bDebug) sWriteDebug2 += "Segment: " + iSegment.ToString("00") + " Attempt: " + iAttempt.ToString("0000") + " Time: " + State.Run[iSegment].SegmentHistory[iAttempt][State.CurrentTimingMethod].Value.TotalSeconds.ToString("0000.000") + " Name: " + State.Run[iSegment].Name + " Warning 2: No best Time found\r\n";
-                            lCountSplits[iSegment]++;
-                            iLastSegment = iSegment;
+                            if (iAttempt >= iFirstAttempt || lCountSplits[iSegment] < Settings.iMinTimes)
+                            {
+                                splits[iSegment].Add(State.Run[iSegment].SegmentHistory[iAttempt]);
+                                InternalComponent.InformationValue = "W2 no best time found in S" + (1 + iSegment) + " " + State.Run[iSegment].Name;
+                                lCountSplits[iSegment]++;
+                                if (Settings.bDebug) sWriteDebug2 += "Segment: " + iSegment.ToString("00") + " Attempt: " + iAttempt.ToString("0000") + " Time: " + State.Run[iSegment].SegmentHistory[iAttempt][State.CurrentTimingMethod].Value.TotalSeconds.ToString("0000.000") + " Name: " + State.Run[iSegment].Name + " Warning 2: No best Time found\r\n";
+                            }
+
+                            if (iSegment == iMaxSplit - 1)
+                                iFailState = 1; // Run is finished
+                            else if (iFailState==0) // Run didn't finish, add a failure for the last known split
+                            {
+                                iFailState = (iSegment == iCurrentSplitIndex) ? 2 : 3; // Failure is set
+                                if (iAttempt >= iFirstAttempt || lCountSplits[iSegment+1] < Settings.iMinTimes)
+                                {
+                                    splits[iSegment + 1].Add(null);
+                                    if (iAttempt >= iFirstAttempt) iSurvivalFailure++;
+                                    if (Settings.bDebug) sWriteDebug1 += "#" + iSurvivalFailure.ToString("00") + ":  Attempt: " + iAttempt.ToString("00") + " Segment: " + (iSegment + 1).ToString("00") + " LastSegment: " + iSegment.ToString("00") + "\r\n";
+                                }
+                            }
                         }
                     }
                 }
-                if (iMaxSplit > 1 && ((iLastSegment < iMaxSplit - 1 && iLastSegment >= iCurrentSplitIndex) || (iLastSegment == -1 && iCurrentSplitIndex == 0)))
-                { // Run didn't finish, add a failure for the last known split
-                    //if (iLastSegment == -1) iLastSegment = 0;
-                    splits[iLastSegment + 1].Add(null);
-                    iSurvivalFailure++;
-                    if (Settings.bDebug) sWriteDebug1 += "#" + iSurvivalFailure.ToString("00") + ":  Attempt: " + iAttempt.ToString("00") + " Segment: " + (iLastSegment + 1).ToString("00") + " LastSegment: " + iLastSegment.ToString("00") + "\r\n";
+                
+                if (iAttempt >= iFirstAttempt || lCountSplits[iCurrentSplitIndex] <= Settings.iMinTimes)
+                {
+                    if (iFailState == 0 && iCurrentSplitIndex == 0) // Failure on first Split
+                    {
+                        splits[iCurrentSplitIndex].Add(null);
+                        if (Settings.bDebug) sWriteDebug1 += "#" + iSurvivalFailure.ToString("00") + ":  Attempt: " + iAttempt.ToString("00") + " Segment: 00 LastSegment: -1\r\n";
+
+                        if (iAttempt >= iFirstAttempt)
+                        {
+                            iNextSurvFail++;
+                            iSurvivalFailure++;
+                        }
+                    }
                 }
-                else
-                    if (iLastSegment >= 0) iSurvivalSuccess++;
+                if (iAttempt >= iFirstAttempt)
+                {
+                    switch (iFailState)
+                    {
+                        case 1: // Run is finished
+                            iNextSurvSuc++;
+                            iSurvivalSuccess++;
+                            break;
+                        case 2: // Failure on next Split
+                            iNextSurvFail++;
+                            iSurvivalFailure++;
+                            break;
+                        case 3: // Failure is in Future
+                            iNextSurvSuc++;
+                            iSurvivalFailure++;
+                            break;
+                        case 4: // Failure is in Past
+                        default:
+                            break;
+                    }
+                }
             }
 
             if (Settings.bDebug)
             {
                 System.IO.File.AppendAllText(@"pbchance_Debug.txt", sWriteDebug1 + "\r\n--- Clipping segments --- " + watch.ElapsedMilliseconds + "ms\r\n" + sWriteDebug2);
-                sWriteDebug1 = "\r\n--- Added times --- " + watch.ElapsedMilliseconds + "ms\r\n";
+                sWriteDebug1 = "\r\n--- Added times --- " + watch.ElapsedMilliseconds + "ms\r\n" + sWriteDebug3;
             }
 
+            /*
             // add older split times, if there are not enough (Setting: at least X split times)
             for (iSegment = iCurrentSplitIndex; iSegment < iMaxSplit; iSegment++)
             {
@@ -309,13 +389,23 @@ namespace PBChance.UI.Components
                     return;
                 }
             }
+            */
+            if (iCurrentSplitIndex == 0 ) // remark living splits
+            {
+                lAliveSplits = new int[iMaxSplit+1];
+                for (iSegment = 0; iSegment < iMaxSplit; iSegment++)
+                    lAliveSplits[iSegment] = 100-100 * lCountSplits[iSegment] / splits[iSegment].Count;
+                //lAliveSplits[iSegment+1] = lCountSplits[iSegment];
+                //lAliveSplits[0]= splits[0].Count;
+            }
+
             if (KeepAlive == false) return; // cancel calculation if new thread is requested
-            
+
             if (Settings.bDebug) // Count of Times per Segment
             {
                 double fNumberOfCombinations = 1;
-                System.IO.File.AppendAllText(@"pbchance_Debug.txt", sWriteDebug1);
-                sWriteDebug1 = "\r\n--- Count of Times per Segment --- " + watch.ElapsedMilliseconds + "ms\r\n";
+                //System.IO.File.AppendAllText(@"pbchance_Debug.txt", sWriteDebug3);
+                sWriteDebug1 += "\r\n--- Count of Times per Segment --- " + watch.ElapsedMilliseconds + "ms\r\n";
                 for (iSegment = iCurrentSplitIndex; iSegment < iMaxSplit; iSegment++)
                     sWriteDebug1+="Segment: " + iSegment.ToString("00") + " Count of Valid/Total Times: " + lCountSplits[iSegment].ToString("0000") + "/" + splits[iSegment].Count.ToString("0000") + " Name: " + State.Run[iSegment].Name + "\r\n";
                 System.IO.File.AppendAllText(@"pbchance_Debug.txt", sWriteDebug1);
@@ -330,14 +420,53 @@ namespace PBChance.UI.Components
                         sWriteDebug2 += ((100-Settings.iSplitsvalue + Settings.iSplitsvalue * (iAttempt + 1) / (splits[iSegment].Count+1.0)) / splits[iSegment].Count / (100-Settings.iSplitsvalue*.5)*100.0).ToString("00.0") + "% "; // linear
                         //sWriteDebug2 += (100 * (iAttempt + 1) / summ(splits[iSegment].Count)).ToString("00.0") + "% ";
                         if (splits[iSegment][iAttempt].HasValue)
-                            sWriteDebug2 += "Time:" + splits[iSegment][iAttempt].Value[State.CurrentTimingMethod].Value + " Factor: " + Math.Round(splits[iSegment][iAttempt].Value[State.CurrentTimingMethod].Value.TotalSeconds / (State.Run[iSegment].BestSegmentTime[State.CurrentTimingMethod].Value.TotalSeconds + .0001), 2).ToString("0.00\r\n");
+                            sWriteDebug2 += "Time:" + splits[iSegment][iAttempt].Value[State.CurrentTimingMethod].Value + "/" + splits[iSegment][iAttempt].Value[State.CurrentTimingMethod].Value.TotalMilliseconds + " Factor: " + Math.Round(splits[iSegment][iAttempt].Value[State.CurrentTimingMethod].Value.TotalSeconds / (State.Run[iSegment].BestSegmentTime[State.CurrentTimingMethod].Value.TotalSeconds + .0001), 2).ToString("0.00\r\n");
                         else
                             sWriteDebug2 += "Failed\r\n";
-                        while (iAttempt / (splits[iSegment].Count * 1.0) < rand.Next(Settings.iSplitsvalue) * .01) ;
+                        //while (iAttempt / (splits[iSegment].Count * 1.0) < rand.Next(Settings.iSplitsvalue) * .01) ;
                     }
                 }
                 sWriteDebug2 += "\r\nNumber of combinations = " + fNumberOfCombinations + " = " + fNumberOfCombinations.ToString($"F{0}");
                 sWriteDebug1 = "\r\n--- First generated Route (" + Settings.SamplesCount + " Routes in total) --- " + watch.ElapsedMilliseconds + "ms\r\n";
+            }
+
+            double fTotalTime = 0; // Calc next average Split Time
+            if (iCurrentSplitIndex < iMaxSplit)
+            {
+                i = 0;
+                for (iAttempt = 0; iAttempt < splits[iCurrentSplitIndex].Count; iAttempt++)
+                    if (splits[iCurrentSplitIndex][iAttempt].HasValue)
+                    {
+                        i++;
+                        fTotalTime += splits[iCurrentSplitIndex][iAttempt].Value[State.CurrentTimingMethod].Value.TotalMilliseconds;
+                    }
+                fTotalTime = fTotalTime / i;
+            }
+
+            if (Settings.bDeviation) { // no uses yet
+                double fMean;
+                if (Settings.bDebug) sWriteDebug2 += "\r\n\r\n--- Standard Deviation ---\r\n";
+                for (iSegment = Settings.bDebug?iMaxSplit - 1: iCurrentSplitIndex; iSegment >= iCurrentSplitIndex; iSegment--)
+                {
+                    i = 0;
+                    fDeviation = 0;
+                    iSumMsActSplit = 0;
+                    for (iAttempt = 0; iAttempt < splits[iSegment].Count; iAttempt++)
+                        if (splits[iSegment][iAttempt].HasValue)
+                        {
+                            i++;
+                            iSumMsActSplit += splits[iSegment][iAttempt].Value[State.CurrentTimingMethod].Value.TotalMilliseconds;
+                        }
+                    fMean = iSumMsActSplit / i;
+                    for (iAttempt = 0; iAttempt < splits[iSegment].Count; iAttempt++)
+                    {
+                        if (splits[iSegment][iAttempt].HasValue)
+                            fDeviation += (splits[iSegment][iAttempt].Value[State.CurrentTimingMethod].Value.TotalMilliseconds - fMean) 
+                                        * (splits[iSegment][iAttempt].Value[State.CurrentTimingMethod].Value.TotalMilliseconds - fMean);
+                    }
+                    fDeviation = Math.Pow(fDeviation / i, .5); // 0.5 Deviation / 1.0 Variation / Version 2 = fDeviation / (i-1)
+                    if (Settings.bDebug) sWriteDebug2 += "Segment: " + iSegment.ToString("00") + " Deviation: " + fDeviation.ToString("0") + "\r\n";
+                }
             }
 
             // Calculate probability of PB
@@ -375,7 +504,7 @@ namespace PBChance.UI.Components
             {
                 if (KeepAlive == false) return; // cancel calculation if new thread is requested
                 fSecMalus = 0;
-                fSec = 0;
+                fSec = 0;// *window.perfomance.now();
                 iAttempt = 0;
 
                 // Add random split times for each remaining segment
@@ -395,15 +524,15 @@ namespace PBChance.UI.Components
                         // select newer attempts more often
                         if (Settings.bExpSplitsvalue)
                             do // 0 Exp = X^0 (=0 linear = deactivated) 10 Exponential = X^0.5, 20 Exp = X^1 (=100 linear), 40 Exp = X^2, 60 Exp = X^3, 80 Exp = X^4, 100 Exp = X^5
-                                iAttempt = rand.Next(splits[iSegment].Count) + 1;
-                            while (Math.Pow(iAttempt / (splits[iSegment].Count * 1.0), Settings.iSplitsvalue * .05) < rand.Next(100) * .01); // exponential, this is slower
+                                iAttempt = rand.Next(splits[iSegment].Count);// +1;
+                            while (Math.Pow((splits[iSegment].Count - iAttempt) / (splits[iSegment].Count * 1.0), Settings.iSplitsvalue * .05) < rand.Next(100) * .01); // exponential, this is slower
                         else
                             do
-                                iAttempt = rand.Next(splits[iSegment].Count) + 1;
-                            while (100 - Settings.iSplitsvalue + (Settings.iSplitsvalue) * iAttempt / (splits[iSegment].Count * 1.0) < rand.Next(100)); // linear
+                                iAttempt = rand.Next(splits[iSegment].Count);// +1;
+                            while (100 - Settings.iSplitsvalue + (Settings.iSplitsvalue) * (splits[iSegment].Count - iAttempt) / (splits[iSegment].Count * 1.0) < rand.Next(100)); // linear
                                                                                                                                                         //while (iAttempt / (splits[iSegment].Count * 1.0) < rand.Next(Settings.iSplitsvalue) * .01) ; // linear
 
-                        iAttempt--;
+                        //iAttempt--;
                         split = splits[iSegment][iAttempt];
 
                         if (split == null) // split is a failure, add a malus
@@ -443,7 +572,7 @@ namespace PBChance.UI.Components
                     }
                 }
 
-                if (Settings.bDebug && i == 0) System.IO.File.AppendAllText(@"pbchance_Debug.txt", sWriteDebug1);
+                if (Settings.bDebug && i == 0) System.IO.File.AppendAllText(@"pbchance_debug.txt", sWriteDebug1);
                 if (Settings.bDebug && i == 0) sWriteDebug1 = "\r\n--- Results of successfully runs and 10 failures if possible --- " + watch.ElapsedMilliseconds + "ms\r\n";
 
                 // Check if the time is faster than pb
@@ -485,10 +614,19 @@ namespace PBChance.UI.Components
 
                 if (Settings.bSurvival && iCurrentSplitIndex < iMaxSplit) // Calculate survival chance
                 {
-                    text += " / " + Math.Round(iSurvivalSuccess / (iSurvivalSuccess + iSurvivalFailure + .0) * 100, 0).ToString() + "%"; // Chance to finish the run
+                    InternalComponent.InformationName = "PB Chance (" + Math.Round(iSurvivalSuccess / (iSurvivalSuccess + iSurvivalFailure + .0) * 100, 0).ToString() + "%" + ")";
+                    //InternalComponent.InformationName = "PB Chance (" + Math.Round(iNextSurvSuc / (iNextSurvSuc + iNextSurvFail + .0) * 100, 0).ToString() + "%" + ")";
+                    //InternalComponent.InformationName = iNextSurvSuc +"/"+ iNextSurvFail + "%" + ")";
+
+                    //text += " / " + Math.Round(iSurvivalSuccess / (iSurvivalSuccess + iSurvivalFailure + .0) * 100, 0).ToString() + "%"; // Chance to finish the run
+                    text += " / " + iSurvivalSuccess + "*" + iSurvivalFailure+"*"+iNextSurvSuc+"*"+iNextSurvFail; // Chance to finish the run
                         //+ (iCurrentSplitIndex+1 < iMaxSplit ? "|" + lCountSplits[iCurrentSplitIndex + 1] + "-" + splits[iCurrentSplitIndex + 1].Count + "-" + Math.Round(lCountSplits[iCurrentSplitIndex+1] / (splits[iCurrentSplitIndex+1].Count + .0) * 100, 0).ToString() :"") + ")%"; // next Split Chance
-                    if (InternalComponent.InformationName != "PB / Survival Chance") InternalComponent.InformationName = "PB / Survival Chance";
+                    //if (InternalComponent.InformationName != "PB / Survival Chance") InternalComponent.InformationName = "PB / Survival Chance";
                 } else if (InternalComponent.InformationName != "PB Chance") InternalComponent.InformationName = "PB Chance";
+                if (Settings.bDeviation && !bCheckUpdate) // Displaying Deviation
+                    InternalComponent.InformationName += " (" + Math.Round(fDeviation).ToString() + ")";
+                i = (int)(fTotalTime * .001- State.Run[iCurrentSplitIndex].BestSegmentTime[State.CurrentTimingMethod].Value.TotalMilliseconds *.001);
+                if(Settings.bInfoNext && !bCheckUpdate) InternalComponent.InformationName += " (" + i + "s " + (lAliveSplits[iCurrentSplitIndex]).ToString("0") + "%)";
 
                 if (Settings.bDebug)
                 {
@@ -547,15 +685,29 @@ namespace PBChance.UI.Components
                 else             fTimer = State.CurrentAttemptDuration.TotalMilliseconds;
 
                 // background calculation, if actual split time is slower than best split time, and the actual chance is > 0
-                if(State.Run[iCurrentSplitIndex + 1].BestSegmentTime[State.CurrentTimingMethod].HasValue)
-                    if (fTimer > State.Run[iCurrentSplitIndex + 1].BestSegmentTime[State.CurrentTimingMethod].Value.TotalMilliseconds && fLiveChanceAct > 0)
-                        if (thread == null || thread.ThreadState != ThreadState.Running) // do it if the thread isn't running
-                        {
-                            KeepAlive = true;
-                            bCheckUpdate = true; // tell Recalculate(), that's a background calculation
-                            thread = new Thread(new ThreadStart(Recalculate));
-                            thread.Start();
-                        }
+                //InternalComponent.InformationName = "a";
+                if (iCurrentSplitIndex > -1)
+                    //InternalComponent.InformationName = "b";
+                if (State.Run[iCurrentSplitIndex + 1].BestSegmentTime[State.CurrentTimingMethod].HasValue)
+                    //InternalComponent.InformationName = "c";
+                if (fTimer > State.Run[iCurrentSplitIndex + 1].BestSegmentTime[State.CurrentTimingMethod].Value.TotalMilliseconds && fLiveChanceAct > 0)
+                    //InternalComponent.InformationName = "d";
+                if (thread == null || thread.ThreadState != ThreadState.Running) // do it if the thread isn't running
+                            {
+                    //InternalComponent.InformationName = "e";
+                    KeepAlive = true;
+                                bCheckUpdate = true; // tell Recalculate(), that's a background calculation
+                                thread = new Thread(new ThreadStart(Recalculate));
+                                thread.Start();
+                            }
+                //if (iCurrentSplitIndex < -1)
+                //System.IO.File.AppendAllText(@"pbchance_Debug.txt", "memerror " + iCurrentSplitIndex + " ");
+                //for (int i = 0; i < 1000000; i++)
+                //    if (State.Run[-i].BestSegmentTime[State.CurrentTimingMethod].HasValue)
+                //        System.IO.File.AppendAllText(@"pbchance_Debug.txt", " " + i + " ");
+                //for (int i = 0; i < 1000000; i++)
+                //    if (State.Run[i].BestSegmentTime[State.CurrentTimingMethod].HasValue)
+                //        System.IO.File.AppendAllText(@"pbchance_Debug.txt", " " + i + " ");
             }
 
             InternalComponent.Update(invalidator, state, width, height, mode);

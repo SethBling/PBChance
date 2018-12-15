@@ -89,6 +89,9 @@
             this.lblCalctime1 = new System.Windows.Forms.Label();
             this.chkIgnoreSkipClip = new System.Windows.Forms.CheckBox();
             this.label36 = new System.Windows.Forms.Label();
+            this.chkDeviation = new System.Windows.Forms.CheckBox();
+            this.chkInfoNext = new System.Windows.Forms.CheckBox();
+            this.label37 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AttemptCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MalusCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitclipCountBox)).BeginInit();
@@ -819,10 +822,43 @@
             this.label36.Size = new System.Drawing.Size(0, 13);
             this.label36.TabIndex = 68;
             // 
+            // chkDeviation
+            // 
+            this.chkDeviation.AutoSize = true;
+            this.chkDeviation.Location = new System.Drawing.Point(258, 250);
+            this.chkDeviation.Name = "chkDeviation";
+            this.chkDeviation.Size = new System.Drawing.Size(150, 17);
+            this.chkDeviation.TabIndex = 69;
+            this.chkDeviation.Text = "Display standard deviation";
+            this.chkDeviation.UseVisualStyleBackColor = true;
+            // 
+            // chkInfoNext
+            // 
+            this.chkInfoNext.AutoSize = true;
+            this.chkInfoNext.Location = new System.Drawing.Point(272, 123);
+            this.chkInfoNext.Name = "chkInfoNext";
+            this.chkInfoNext.Size = new System.Drawing.Size(127, 17);
+            this.chkInfoNext.TabIndex = 70;
+            this.chkInfoNext.Text = "Display Info next Split";
+            this.chkInfoNext.UseVisualStyleBackColor = true;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label37.Location = new System.Drawing.Point(288, 141);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(152, 13);
+            this.label37.TabIndex = 71;
+            this.label37.Text = "Avg-Best Time / Chance to fail";
+            // 
             // PBChanceSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label37);
+            this.Controls.Add(this.chkInfoNext);
+            this.Controls.Add(this.chkDeviation);
             this.Controls.Add(this.label36);
             this.Controls.Add(this.chkIgnoreSkipClip);
             this.Controls.Add(this.lblCalctime1);
@@ -965,5 +1001,8 @@
         private System.Windows.Forms.Label lblCalctime1;
         private System.Windows.Forms.CheckBox chkIgnoreSkipClip;
         private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.CheckBox chkDeviation;
+        private System.Windows.Forms.CheckBox chkInfoNext;
+        private System.Windows.Forms.Label label37;
     }
 }
