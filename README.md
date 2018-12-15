@@ -30,17 +30,19 @@ Valid values: 1-999,999 Suggestion: at least 100,000
 3. Update automatically every # seconds when the chance drops.
 During a run, PBChance compares the current segment time with the best segment time. If it's slower, and the chance is above zero, PBChance calculates the new chance in the background as if you were splitting. If that chance becomes lower than the displayed one, the chance will be updated automatically. 0 means as fast as possible.
 Valid values: 0-999 Suggestion: 1
-4. Display survival chance
-This will display in addition a percent number. The formula is simply [finished runs]/[total remaining runs].
-5. Do not increase chance on "Skip Split"
+4. Display additional Split info. First number is the difference of average split time and the best split time. Second number is the chance, to fail on actual split.
+5. Display survival chance
+This will display in addition a percent number. The formula is simply [finished runs]/[total remaining runs]. Additional informations are: finished runs / unfinished runs / success on next split / failure on next split
+6. Do not increase chance on "Skip Split"
 Otherwise the chance will be recalculated similar as the command "Split".
-6. Newer segment times are more important than old ones.
+7. Display standard deviation.
+8. Newer segment times are more important than old ones.
 Newer attempts will be selected more often during a simulated run.
 Valid values: 0-100 Suggestion: 100
-7. Malus on failures # seconds.
+9. Malus on failures # seconds.
 For each discontinued run, a failed segment will be generated. It's added every time to a simulated run, if a failed segment is selected.
 Valid values: 0-999 Suggestion: Should be set to a higher value if the reason for an interruption is essentially significant errors in a single segment (and lower in opposite case). Can be also set to 0, if "Display survival chance" is set. In that case, multiple these two numbers will result in a chance, same as an infinite malus.
-8. Only consider segments, which are faster than {bestSegment[s] x # percent}
+10. Only consider segments, which are faster than {bestSegment[s] x # percent}
 Very slow segment times will be eliminated. Should set to a number, which are clearly too slow for a normal run. Should be checked with the debug file (clipped segments), for the correct setting and result.
 Valid values: 100-999 Suggestion: 150-200
 
