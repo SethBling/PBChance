@@ -24,7 +24,7 @@ PBChance is a LiveSplit component that displays the chance of obtaining a PB on 
 1. Consider at least # times per segment.
 This will fill up times, if there are not enough because of the Setting "Use the most recent [x] attempts."
 Valid values: 1-999 Suggestion: number of attempts doing in two weeks
-1.1 Also include failed segments
+1.1. Also include failed segments
 It will consider all intervening failes. Otherwise, only the additional times are considered. The chance is lower when it's activated.
 2. Random sample survey # combinations.
 The number of calculations. A lower number will calculate faster, a higher number gives a more stable result.
