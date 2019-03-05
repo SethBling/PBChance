@@ -69,9 +69,7 @@ This will generate a debug file "pbchance_debug.txt", and will be saved in your 
 <a href="https://ibb.co/byjJzq"><img src="https://thumb.ibb.co/byjJzq/PBChance-Settings4.png" alt="PBChance-Settings4" border="0"></a>
 [The component in action](https://ibb.co/byjJzq)
 
-<a href="https://ibb.co/hMT3z1D"><img src="https://i.ibb.co/hMT3z1D/PBChance-Settings6.png" alt="PBChance-Settings6" border="0" /></a>
-
-<a href="https://ibb.co/hMT3z1D"><img src="https://i.ibb.co/tK8HhJC/PBChance-Settings7.png" alt="PBChance-Settings7" border="0"></a>[The configuration screen](https://ibb.co/yPWNRQs)
+<a href="https://ibb.co/yPWNRQs"><img src="https://i.ibb.co/yPWNRQs/PBChance-Settings7.png" alt="PBChance-Settings7" border="0" /></a>[The configuration screen](https://ibb.co/yPWNRQs)
 
 <a href="https://ibb.co/bBt2mF2"><img src="https://i.ibb.co/bBt2mF2/PBChance-Overview2.png" alt="PBChance-Overview2" border="0"></a>[Overview](https://ibb.co/bBt2mF2)
                                                                                                                                       
