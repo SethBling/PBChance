@@ -77,10 +77,10 @@ This will generate a debug file "pbchance_debug.txt", and will be saved in your 
 
 PBChance can't find historical times, gives a warning and uses best split time instead. This can in certain circumstances happen, if the setting "Only consider segments, which are faster than best segment x # percent" is set too low.
 
-**What's the difference between 0.00% and 0%?*
+**What's the difference between 0.00% and 0%?**
 
 If it displays 0%, then there are zero success runs found. If it displays 0.00%, then there are a few success runs found, but the chance is rounded to 0.00%. However, it will display # in #, if you split it. These are the odds, and the chance is <0.01%. For example, 5 in 125000 means, 5 runs are faster than pb, 125000 runs are tested (it's equal to a 0.004% chance).
 
-***I'm starting to speedrun, and it displays 100%. Why that?
+***I'm starting to speedrun, and it displays 100%. Why that?***
 
 This chance isn't really calculated. It's assumed that the run will be completed. Even if the run is restarted. As a result, a best time will be set. Only then does PB Chance work with a real probability calculation. 
