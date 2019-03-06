@@ -14,6 +14,7 @@ namespace PBChance.UI.Components
 {
     public partial class PBChanceSettings : UserControl
     {
+        public string sVersion { get; set; }
         public Boolean UsePercentOfAttempts { get; set; }
         public Boolean UseFixedAttempts { get; set; }
         public int AttemptCount { get; set; }
@@ -32,6 +33,7 @@ namespace PBChance.UI.Components
         public int iUpdate { get; set; }
         public int iSplitsvalue { get; set; }
         public bool bInfoNext { get; set; }
+        public bool bConsiderFails { get; set; }
 
         public Boolean bSurvival { get; set; }
         public Boolean bIgnoreSkipClip { get; set; }
@@ -40,6 +42,8 @@ namespace PBChance.UI.Components
         public int iSkipNewest { get; set; }
         public int iCalcToSplit { get; set; }
         public int iCalctime { get; set; }
+        public int iRndInfoEvery { get; set; }
+        public int iRndInfoFor { get; set; }
 
         public event EventHandler SettingChanged;
 
@@ -68,6 +72,9 @@ namespace PBChance.UI.Components
             iSkipNewest = 0;
             iCalcToSplit = 0;
             bExpSplitsvalue = false;
+            bConsiderFails = false;
+            iRndInfoEvery = 600;
+            iRndInfoFor = 6;
 
             rdoPercentAttempt.DataBindings.Add("Checked", this, "UsePercentOfAttempts", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             rdoAbsAttempt.DataBindings.Add("Checked", this, "UseFixedAttempts", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
@@ -96,7 +103,11 @@ namespace PBChance.UI.Components
             CalcToSplitUpDown.DataBindings.Add("Value", this, "iCalcToSplit", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             chkExpSplitsvalue.DataBindings.Add("Checked", this, "bExpSplitsvalue", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             chkInfoNext.DataBindings.Add("Checked", this, "bInfoNext", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
-            
+
+            RndInfoEveryCountBox.DataBindings.Add("Value", this, "iRndInfoEvery", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+            RndInfoForCountBox.DataBindings.Add("Value", this, "iRndInfoFor", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+            chkConsiderFails.DataBindings.Add("Checked", this, "bConsiderFails", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+
             UseFixedAttempts = !UsePercentOfAttempts;
             UsePercentOfAttempts = !UseFixedAttempts;
         }
@@ -117,7 +128,7 @@ namespace PBChance.UI.Components
 
         private int CreateSettingsNode(XmlDocument document, XmlElement parent)
         {
-            return SettingsHelper.CreateSetting(document, parent, "Version", "0.4") ^
+            return SettingsHelper.CreateSetting(document, parent, "Version", "1.3.6") ^
                 SettingsHelper.CreateSetting(document, parent, "AttemptCount", AttemptCount) ^
                 SettingsHelper.CreateSetting(document, parent, "UsePercentOfAttempts", UsePercentOfAttempts) ^
                 SettingsHelper.CreateSetting(document, parent, "UseFixedAttempts", UseFixedAttempts) ^
@@ -137,12 +148,16 @@ namespace PBChance.UI.Components
                 SettingsHelper.CreateSetting(document, parent, "Deviation", bDeviation) ^
                 SettingsHelper.CreateSetting(document, parent, "iMinTimes", iMinTimes) ^
                 SettingsHelper.CreateSetting(document, parent, "iUpdate", iUpdate) ^
+                SettingsHelper.CreateSetting(document, parent, "RndInfoEveryCountBox", iRndInfoEvery) ^
+                SettingsHelper.CreateSetting(document, parent, "RndInfoForCountBox", iRndInfoFor) ^
+                SettingsHelper.CreateSetting(document, parent, "chkConsiderFails", bConsiderFails) ^
                 SettingsHelper.CreateSetting(document, parent, "iSplitsvalue", iSplitsvalue);
         }
 
         internal void SetSettings(XmlNode settings)
         {
-            AttemptCount         = SettingsHelper.ParseInt (settings["AttemptCount"]);
+            sVersion             = SettingsHelper.ParseString(settings["Version"]);
+            AttemptCount         = SettingsHelper.ParseInt(settings["AttemptCount"]);
             UsePercentOfAttempts = SettingsHelper.ParseBool(settings["UsePercentOfAttempts"]);
             UseFixedAttempts     = SettingsHelper.ParseBool(settings["UseFixedAttempts"]);
             DisplayOdds          = SettingsHelper.ParseBool(settings["DisplayOdds"]);
@@ -163,6 +178,9 @@ namespace PBChance.UI.Components
             iUpdate              = SettingsHelper.ParseInt (settings["iUpdate"]);
             iSplitsvalue         = SettingsHelper.ParseInt (settings["iSplitsvalue"]);
             bExpSplitsvalue      = SettingsHelper.ParseBool(settings["bExpSplitsvalue"]);
+            iRndInfoEvery        = SettingsHelper.ParseInt (settings["RndInfoEveryCountBox"]);
+            iRndInfoFor          = SettingsHelper.ParseInt (settings["RndInfoForCountBox"]);
+            bConsiderFails       = SettingsHelper.ParseBool(settings["chkConsiderFails"]);
         }
 
         private void btnDebug_Click(object sender, EventArgs e)
