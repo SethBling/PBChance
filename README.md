@@ -84,7 +84,7 @@ If it displays 0%, then there are zero success runs found. If it displays 0.00%,
 
 *I'm starting to speedrun, and it displays 100%. Why that?*
 
-This chance isn't really calculated. It's assumed that the run will be finished, even if the run is restarted. As a result, a best time will be set, thereforce a PB. Only then does PB Chance work with a real probability calculation. 
+This chance isn't really calculated. It's assumed that the run will be finished, even if the run is restarted. As a result, a best personal time will be set, thereforce a PB. Only then does PB Chance work with a real probability calculation. 
 
 *I've found a hidden setting. Does it work?*
 
