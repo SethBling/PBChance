@@ -73,7 +73,7 @@ This will generate a debug file "pbchance_debug.txt", and will be saved in your 
                                                                                                                                       
 ## Troubleshooting
 
-**It displays W3 no times found in S# [Segment name] for a moment*
+*It displays W3 no times found in S# [Segment name] for a moment*
 
 PBChance can't find historical times, gives a warning and uses best split time instead. This can in certain circumstances happen, if the setting "Only consider segments, which are faster than best segment x # percent" is set too low.
 
