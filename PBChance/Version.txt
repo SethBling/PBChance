@@ -1,1 +1,4 @@
-1.3.6
+1.3.6 New Features
+1. Faster
+2. Better
+3. Smaller
