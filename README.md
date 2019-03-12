@@ -44,7 +44,10 @@ Valid values: 0-999 Suggestion: Should be set to a higher value if the reason fo
 11. Only consider segments, which are faster than {bestSegment[s] x # percent}
 Very slow segment times will be eliminated. Should set to a number, which are clearly too slow for a normal run. Should be checked with the debug file (clipped segments), for the correct setting and result.
 Valid values: 100-999 Suggestion: 150-200
-12. Check New Version:
+12. Add the best time for each segment:
+Valid values: 0-100. Suggestion: 1
+If the value is above 0, the best time will be added once for each segment, regardless of other settings. The larger the set value, the more often the best time is selected. Point 9. is relevant for this. Then there is always a chance, if the remaining best time is faster than the Pb time, even a few runs are selected.
+13. Check New Version:
 When you are online, you can check for the newest version. If a newer version is available, you will be notified and PBChance automatically download PBChance.dll into your LiveSplit directory. To install the latest version, close LiveSplit and move PBChance.dll from the LiveSplit directory into the Components subdirectory. Your current PBChance.dll will be overwritten.
 
 Hint: The displaying chance on the start should be realistic. But rather too small than too high, for more motivation during a run. Try with these settings to optimize the chance estimation. Generate and open the text file pbchance_debug.txt (recommended a fixed font like currier) for understanding the calculation of PBChance. It is also recommended to read the overview picture below.
@@ -84,6 +87,10 @@ If it displays 0%, then there are zero success runs found. If it displays 0.00%,
 *I'm starting to speedrun, and it displays 100%. Why that?*
 
 This chance isn't really calculated. It's assumed that the run will be finished, even if the run is restarted. As a result, a best personal time will be set, thereforce a PB. Only then does PB Chance work with a real probability calculation. 
+
+*It tells me there is a 0% chance, although it would theoretically be possible, so it can't be correct*
+
+While there are still some segments, mathematically, this is still possible, but it is simply too unlikely that a randomly chosen run will be successful. Keep in mind that the number of possible combinations is incredibly large. In another example, it is theoretically possible to roll a 6 10 times in a row, but you will never manage to do it in your whole life because it is simply too unrealistic.
 
 *I've found a hidden setting. Does it work?*
 
