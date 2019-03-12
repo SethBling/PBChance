@@ -15,6 +15,7 @@ PBChance Component for LiveSplit. It displays the chance of obtaining a PB on yo
 2. Autoupdate. The chance will be automatically updated if the chance drops during the run.
 3. Additional informations can be displayed continuously or periodically.
 4. Debug file. To retrace the calculation. This includes: Headerdata, Failed Runs, clipped segment, added times, count of times per segment, first generated route, results of successfully runs and 10 failures if possible, the results, the detailed segment times/chance of selection, the execution time and the number of possible combinations.
+5. Check for the latest version and download it. Directly in the settings window.
 
 ## Advanced Settings
 
@@ -43,6 +44,8 @@ Valid values: 0-999 Suggestion: Should be set to a higher value if the reason fo
 11. Only consider segments, which are faster than {bestSegment[s] x # percent}
 Very slow segment times will be eliminated. Should set to a number, which are clearly too slow for a normal run. Should be checked with the debug file (clipped segments), for the correct setting and result.
 Valid values: 100-999 Suggestion: 150-200
+12. Check New Version
+When you are online, you can check for the newest version. If a newer version is available, you will be notified and PBChance automatically download PBChance.dll to your LiveSplit directory. To install the latest version, close LiveSplit and move PBChance.dll from the LiveSplit directory to the Components subdirectory. Your current PBChance.dll will be overwritten.
 
 Hint: The displaying chance on the start should be realistic. But rather too small than too high, for more motivation during a run. Try with these settings to optimize the chance estimation. Generate and open the text file pbchance_debug.txt (recommended a fixed font like currier) for understanding the calculation of PBChance. It is also recommended to read the overview picture below.
 
