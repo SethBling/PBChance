@@ -90,7 +90,7 @@ This chance isn't really calculated. It's assumed that the run will be finished,
 
 *It tells me there is a 0% chance, although it would theoretically be possible, so it can't be correct*
 
-While there are still some segments, mathematically, this is still possible, but it is simply too unlikely that a randomly chosen run will be successful. Keep in mind that the number of possible combinations is incredibly large. In another example, it is theoretically possible to roll a 6 10 times in a row, but you will never manage to do it in your whole life because it is simply too unrealistic.
+As long as a number of segments are pending, mathematically, this is still possible, but it is simply too unlikely that a randomly chosen run will be successful. Keep in mind that the number of possible combinations is incredibly large. In another example, it is theoretically possible to roll a 6 10 times in a row, but you will never manage to do it in your whole life because it is simply too unrealistic.
 
 *I've found a hidden setting. Does it work?*
 
