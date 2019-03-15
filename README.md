@@ -5,7 +5,7 @@ PBChance Component for LiveSplit. It displays the chance of obtaining a PB on yo
 
 1. Download PBChance.dll, and place it into the Components directory of your LiveSplit installation.
 2. Open LiveSplit. Right click -> Edit Layout -> [Giant "+" Button] -> Information -> PB Chance
-3. You can configure how many of your most recent attempts will be used to calculate the PB chance. Go to Layout Settings and click on the PB Chance tab. You can either have it use a percentage of your most recent attempts, or just a fixed number of your most recent attempts. Suggestion: number of attempts doing in a month.
+3. You can configure how many of your most recent attempts will be used to calculate the PB chance. Go to Layout Settings and click on the PB Chance tab. You can either have it use a percentage of your most recent attempts, or just a fixed number of your most recent attempts. Suggestion: 50 on runs > 2h, 100 on runs < 1h.
 4. Read below for advanced settings.
 5. Speedrun!
 
@@ -14,14 +14,14 @@ PBChance Component for LiveSplit. It displays the chance of obtaining a PB on yo
 1. The calculation will perform in the background in an own thread. Even if the number of calculations is set to a high number, LiveSplit will not be stopped during the calculation.
 2. Autoupdate. The chance will be automatically updated if the chance drops during the run.
 3. Additional informations can be displayed continuously or periodically.
-4. Debug file. To retrace the calculation. This includes: Header data, Failed Runs, clipped segment, added times, count of times per segment, first generated route, results of successfully runs and 10 failures if possible, the results, the detailed segment times/chance of selection, the execution time and the number of possible combinations.
+4. Debug file. To retrace the calculation. This includes: Header data, Failed Runs, clipped segment, added times, count of times per segment, first generated route, results of first 10 successfully runs and 10 failures if possible, the results, the detailed segment times/chance of selection, the execution time and the number of possible combinations.
 5. Check for the latest version and download it. Directly in the settings window.
 
 ## Advanced Settings
 
 1. Consider at least # times per segment.
 This will fill up times, if there are not enough because of the Setting "Use the most recent [x] attempts."
-Valid values: 1-999 Suggestion: number of attempts doing in two weeks. Checkbox: Also include failed segments. It will consider all intervening failes. Otherwise, only the additional times are considered. The chance is lower when it's activated.
+Valid values: 1-999 Suggestion: about 1/3 of the number of attempts. Checkbox: Also include failed segments. It will consider all intervening failes. Otherwise, only the additional times are considered. The chance is lower when it's activated.
 2. Random sample survey # combinations.
 The number of calculations. A lower number will calculate faster, a higher number gives a more stable result.
 Valid values: 1-999,999 Suggestion: at least 100,000
@@ -40,7 +40,7 @@ Newer attempts will be selected more often during a simulated run.
 Valid values: 0-100 Suggestion: 100
 10. Malus on failures # seconds.
 For each discontinued run, a failed segment will be generated. It's added every time to a simulated run, if a failed segment is selected.
-Valid values: 0-999 Suggestion: Should be set to a higher value if the reason for an interruption is essentially significant errors in a single segment (and lower in the opposite case). Can be also set to 0, if "Display survival chance" is set. In that case, multiply these two numbers will result in a chance, same as an infinite malus.
+Valid values: 0-999 Suggestion: Start with 30. Should be set to a higher value if the reason for an interruption is essentially significant errors in a single segment (and lower in the opposite case). Can be also set to 0, if "Display survival chance" is set. In that case, multiply these two numbers will result in a chance, same as an infinite malus.
 11. Only consider segments, which are faster than {bestSegment[s] x # percent}
 Very slow segment times will be eliminated. Should set to a number, which is clearly too slow for a normal run. Should be checked with the debug file (clipped segments), for the correct setting and result.
 Valid values: 100-999 Suggestion: 150-200
@@ -50,7 +50,7 @@ If the value is above 0, the best time will be added once for each segment, rega
 13. Check New Version:
 When you are online, you can check for the newest version. If a newer version is available, you will be notified and PBChance automatically downloads PBChance.dll into your LiveSplit directory. To install the latest version, close LiveSplit and move PBChance.dll from the LiveSplit directory into the Components subdirectory. Your current PBChance.dll will be overwritten.
 
-Hint: The displaying chance on the start should be realistic. But rather too small than too high, for more motivation during a run. Try with these settings to optimize the chance estimation. Generate and open the text file pbchance_debug.txt (recommended a fixed font like currier) for understanding the calculation of PBChance. It is also recommended to read the overview picture below.
+Hint: The displaying chance on the start should be realistic. You can try with these settings to optimize the chance estimation. Keep in mind the chance will automatically grow up if you play better. Generate and open the text file pbchance_debug.txt (recommended a fixed font like currier) for understanding the calculation of PBChance. It is also recommended to read the overview picture below.
 
 ## Debugging settings (should be 0 during regular runs)
 
