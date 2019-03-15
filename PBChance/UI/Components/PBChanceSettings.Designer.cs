@@ -92,6 +92,10 @@
             this.label21 = new System.Windows.Forms.Label();
             this.RndInfoForCountBox = new System.Windows.Forms.NumericUpDown();
             this.label22 = new System.Windows.Forms.Label();
+            this.btnNewVersion = new System.Windows.Forms.Button();
+            this.label23 = new System.Windows.Forms.Label();
+            this.AddBestCountBox = new System.Windows.Forms.NumericUpDown();
+            this.label38 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AttemptCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MalusCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitclipCountBox)).BeginInit();
@@ -105,12 +109,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.CalctimeCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RndInfoEveryCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RndInfoForCountBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AddBestCountBox)).BeginInit();
             this.SuspendLayout();
             // 
             // RecentLabel
             // 
             this.RecentLabel.AutoSize = true;
-            this.RecentLabel.Location = new System.Drawing.Point(14, 55);
+            this.RecentLabel.Location = new System.Drawing.Point(14, 49);
             this.RecentLabel.Name = "RecentLabel";
             this.RecentLabel.Size = new System.Drawing.Size(87, 13);
             this.RecentLabel.TabIndex = 1;
@@ -118,7 +123,7 @@
             // 
             // AttemptCountBox
             // 
-            this.AttemptCountBox.Location = new System.Drawing.Point(102, 48);
+            this.AttemptCountBox.Location = new System.Drawing.Point(102, 42);
             this.AttemptCountBox.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -152,7 +157,7 @@
             // DisplayOddsCheckbox
             // 
             this.DisplayOddsCheckbox.AutoSize = true;
-            this.DisplayOddsCheckbox.Location = new System.Drawing.Point(272, 42);
+            this.DisplayOddsCheckbox.Location = new System.Drawing.Point(272, 38);
             this.DisplayOddsCheckbox.Name = "DisplayOddsCheckbox";
             this.DisplayOddsCheckbox.Size = new System.Drawing.Size(123, 17);
             this.DisplayOddsCheckbox.TabIndex = 5;
@@ -162,7 +167,7 @@
             // IgnoreRunCountBox
             // 
             this.IgnoreRunCountBox.AutoSize = true;
-            this.IgnoreRunCountBox.Location = new System.Drawing.Point(272, 60);
+            this.IgnoreRunCountBox.Location = new System.Drawing.Point(272, 56);
             this.IgnoreRunCountBox.Name = "IgnoreRunCountBox";
             this.IgnoreRunCountBox.Size = new System.Drawing.Size(81, 17);
             this.IgnoreRunCountBox.TabIndex = 6;
@@ -171,7 +176,7 @@
             // 
             // MalusCountBox
             // 
-            this.MalusCountBox.Location = new System.Drawing.Point(102, 341);
+            this.MalusCountBox.Location = new System.Drawing.Point(102, 263);
             this.MalusCountBox.Maximum = new decimal(new int[] {
             999,
             0,
@@ -193,7 +198,7 @@
             0,
             0,
             0});
-            this.SplitclipCountBox.Location = new System.Drawing.Point(314, 390);
+            this.SplitclipCountBox.Location = new System.Drawing.Point(314, 421);
             this.SplitclipCountBox.Maximum = new decimal(new int[] {
             999,
             0,
@@ -216,7 +221,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 348);
+            this.label3.Location = new System.Drawing.Point(14, 270);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 11;
@@ -225,7 +230,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(148, 348);
+            this.label4.Location = new System.Drawing.Point(148, 270);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 12;
@@ -234,7 +239,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 397);
+            this.label5.Location = new System.Drawing.Point(14, 428);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(300, 13);
             this.label5.TabIndex = 13;
@@ -243,7 +248,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(357, 397);
+            this.label6.Location = new System.Drawing.Point(357, 428);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 13);
             this.label6.TabIndex = 14;
@@ -252,7 +257,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 460);
+            this.label7.Location = new System.Drawing.Point(14, 564);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 13);
             this.label7.TabIndex = 15;
@@ -260,7 +265,7 @@
             // 
             // TimediffCountBox
             // 
-            this.TimediffCountBox.Location = new System.Drawing.Point(91, 453);
+            this.TimediffCountBox.Location = new System.Drawing.Point(92, 557);
             this.TimediffCountBox.Maximum = new decimal(new int[] {
             86400,
             0,
@@ -278,7 +283,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(157, 460);
+            this.label8.Location = new System.Drawing.Point(158, 564);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(47, 13);
             this.label8.TabIndex = 17;
@@ -288,7 +293,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label9.Location = new System.Drawing.Point(207, 450);
+            this.label9.Location = new System.Drawing.Point(208, 554);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(244, 13);
             this.label9.TabIndex = 18;
@@ -298,17 +303,17 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label11.Location = new System.Drawing.Point(14, 410);
+            this.label11.Location = new System.Drawing.Point(14, 441);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(222, 13);
+            this.label11.Size = new System.Drawing.Size(156, 13);
             this.label11.TabIndex = 20;
-            this.label11.Text = "higher number -> lower chance. Default 160%";
+            this.label11.Text = "higher number -> lower chance.";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label14.Location = new System.Drawing.Point(14, 361);
+            this.label14.Location = new System.Drawing.Point(14, 283);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(337, 13);
             this.label14.TabIndex = 23;
@@ -316,7 +321,7 @@
             // 
             // btnDebug
             // 
-            this.btnDebug.Location = new System.Drawing.Point(14, 482);
+            this.btnDebug.Location = new System.Drawing.Point(15, 586);
             this.btnDebug.Name = "btnDebug";
             this.btnDebug.Size = new System.Drawing.Size(66, 45);
             this.btnDebug.TabIndex = 29;
@@ -327,7 +332,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(86, 486);
+            this.label17.Location = new System.Drawing.Point(87, 590);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(131, 13);
             this.label17.TabIndex = 30;
@@ -336,7 +341,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(86, 499);
+            this.label18.Location = new System.Drawing.Point(87, 603);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(127, 13);
             this.label18.TabIndex = 31;
@@ -346,7 +351,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label19.Location = new System.Drawing.Point(206, 463);
+            this.label19.Location = new System.Drawing.Point(207, 567);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(242, 13);
             this.label19.TabIndex = 39;
@@ -357,7 +362,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label1.Location = new System.Drawing.Point(288, 75);
+            this.label1.Location = new System.Drawing.Point(288, 71);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(121, 13);
             this.label1.TabIndex = 49;
@@ -367,7 +372,7 @@
             // 
             this.label30.AutoSize = true;
             this.label30.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label30.Location = new System.Drawing.Point(14, 374);
+            this.label30.Location = new System.Drawing.Point(14, 296);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(299, 13);
             this.label30.TabIndex = 53;
@@ -375,7 +380,7 @@
             // 
             // SkipNewestCountBox
             // 
-            this.SkipNewestCountBox.Location = new System.Drawing.Point(378, 482);
+            this.SkipNewestCountBox.Location = new System.Drawing.Point(379, 586);
             this.SkipNewestCountBox.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -388,7 +393,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(242, 489);
+            this.label2.Location = new System.Drawing.Point(243, 593);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(129, 13);
             this.label2.TabIndex = 55;
@@ -399,16 +404,16 @@
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label31.Location = new System.Drawing.Point(10, 433);
+            this.label31.Location = new System.Drawing.Point(11, 537);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(296, 13);
+            this.label31.Size = new System.Drawing.Size(303, 13);
             this.label31.TabIndex = 56;
-            this.label31.Text = "For debuging only, should be 0 during regular runs.";
+            this.label31.Text = "For debugging only, should be 0 during regular runs.";
             // 
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(261, 510);
+            this.label32.Location = new System.Drawing.Point(262, 614);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(111, 13);
             this.label32.TabIndex = 58;
@@ -416,7 +421,7 @@
             // 
             // CalcToSplitUpDown
             // 
-            this.CalcToSplitUpDown.Location = new System.Drawing.Point(378, 508);
+            this.CalcToSplitUpDown.Location = new System.Drawing.Point(379, 612);
             this.CalcToSplitUpDown.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -429,7 +434,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(86, 512);
+            this.label34.Location = new System.Drawing.Point(87, 616);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(113, 13);
             this.label34.TabIndex = 60;
@@ -440,7 +445,7 @@
             this.label35.AutoSize = true;
             this.label35.BackColor = System.Drawing.SystemColors.Control;
             this.label35.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label35.Location = new System.Drawing.Point(424, 511);
+            this.label35.Location = new System.Drawing.Point(425, 612);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(35, 13);
             this.label35.TabIndex = 61;
@@ -452,9 +457,9 @@
             this.label10.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.label10.Location = new System.Drawing.Point(14, 177);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(253, 13);
+            this.label10.Size = new System.Drawing.Size(174, 13);
             this.label10.TabIndex = 19;
-            this.label10.Text = "higher number -> more stable result. Default 100000 ";
+            this.label10.Text = "higher number -> more stable result.";
             // 
             // label12
             // 
@@ -515,7 +520,7 @@
             // chkSurvival
             // 
             this.chkSurvival.AutoSize = true;
-            this.chkSurvival.Location = new System.Drawing.Point(17, 221);
+            this.chkSurvival.Location = new System.Drawing.Point(17, 355);
             this.chkSurvival.Name = "chkSurvival";
             this.chkSurvival.Size = new System.Drawing.Size(138, 17);
             this.chkSurvival.TabIndex = 27;
@@ -525,7 +530,7 @@
             // chkExpSplitsvalue
             // 
             this.chkExpSplitsvalue.AutoSize = true;
-            this.chkExpSplitsvalue.Location = new System.Drawing.Point(326, 310);
+            this.chkExpSplitsvalue.Location = new System.Drawing.Point(290, 257);
             this.chkExpSplitsvalue.Name = "chkExpSplitsvalue";
             this.chkExpSplitsvalue.Size = new System.Drawing.Size(158, 17);
             this.chkExpSplitsvalue.TabIndex = 38;
@@ -575,7 +580,7 @@
             // 
             // SplitsvalueCountBox
             // 
-            this.SplitsvalueCountBox.Location = new System.Drawing.Point(17, 311);
+            this.SplitsvalueCountBox.Location = new System.Drawing.Point(17, 233);
             this.SplitsvalueCountBox.Name = "SplitsvalueCountBox";
             this.SplitsvalueCountBox.Size = new System.Drawing.Size(40, 20);
             this.SplitsvalueCountBox.TabIndex = 43;
@@ -588,7 +593,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(57, 311);
+            this.label26.Location = new System.Drawing.Point(57, 233);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(268, 13);
             this.label26.TabIndex = 44;
@@ -597,7 +602,7 @@
             // 
             // UpdateCountBox
             // 
-            this.UpdateCountBox.Location = new System.Drawing.Point(151, 279);
+            this.UpdateCountBox.Location = new System.Drawing.Point(151, 198);
             this.UpdateCountBox.Maximum = new decimal(new int[] {
             999,
             0,
@@ -615,7 +620,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(14, 286);
+            this.label27.Location = new System.Drawing.Point(14, 205);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(135, 13);
             this.label27.TabIndex = 47;
@@ -624,7 +629,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(197, 286);
+            this.label28.Location = new System.Drawing.Point(197, 205);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(165, 13);
             this.label28.TabIndex = 48;
@@ -634,11 +639,11 @@
             // 
             this.label29.AutoSize = true;
             this.label29.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label29.Location = new System.Drawing.Point(58, 324);
+            this.label29.Location = new System.Drawing.Point(58, 246);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(376, 13);
+            this.label29.Size = new System.Drawing.Size(318, 13);
             this.label29.TabIndex = 52;
-            this.label29.Text = "Newer attempts will be selected more often during a simulated run. Default 100";
+            this.label29.Text = "Newer attempts will be selected more often during a simulated run.";
             // 
             // label33
             // 
@@ -646,15 +651,15 @@
             this.label33.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.label33.Location = new System.Drawing.Point(14, 138);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(254, 13);
+            this.label33.Size = new System.Drawing.Size(202, 13);
             this.label33.TabIndex = 59;
-            this.label33.Text = "Missing times will be filled with older ones. Default 20";
+            this.label33.Text = "Missing times will be filled with older ones.";
             // 
             // rdoAbsAttempt
             // 
             this.rdoAbsAttempt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rdoAbsAttempt.AutoSize = true;
-            this.rdoAbsAttempt.Location = new System.Drawing.Point(151, 41);
+            this.rdoAbsAttempt.Location = new System.Drawing.Point(151, 37);
             this.rdoAbsAttempt.Name = "rdoAbsAttempt";
             this.rdoAbsAttempt.Size = new System.Drawing.Size(66, 17);
             this.rdoAbsAttempt.TabIndex = 62;
@@ -666,7 +671,7 @@
             // 
             this.rdoPercentAttempt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rdoPercentAttempt.AutoSize = true;
-            this.rdoPercentAttempt.Location = new System.Drawing.Point(151, 59);
+            this.rdoPercentAttempt.Location = new System.Drawing.Point(151, 55);
             this.rdoPercentAttempt.Name = "rdoPercentAttempt";
             this.rdoPercentAttempt.Size = new System.Drawing.Size(117, 17);
             this.rdoPercentAttempt.TabIndex = 63;
@@ -720,7 +725,7 @@
             // chkIgnoreSkipClip
             // 
             this.chkIgnoreSkipClip.AutoSize = true;
-            this.chkIgnoreSkipClip.Location = new System.Drawing.Point(17, 239);
+            this.chkIgnoreSkipClip.Location = new System.Drawing.Point(17, 319);
             this.chkIgnoreSkipClip.Name = "chkIgnoreSkipClip";
             this.chkIgnoreSkipClip.Size = new System.Drawing.Size(212, 17);
             this.chkIgnoreSkipClip.TabIndex = 67;
@@ -731,7 +736,7 @@
             // 
             this.label36.AutoSize = true;
             this.label36.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label36.Location = new System.Drawing.Point(51, 251);
+            this.label36.Location = new System.Drawing.Point(51, 385);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(0, 13);
             this.label36.TabIndex = 68;
@@ -739,7 +744,7 @@
             // chkDeviation
             // 
             this.chkDeviation.AutoSize = true;
-            this.chkDeviation.Location = new System.Drawing.Point(235, 239);
+            this.chkDeviation.Location = new System.Drawing.Point(17, 373);
             this.chkDeviation.Name = "chkDeviation";
             this.chkDeviation.Size = new System.Drawing.Size(150, 17);
             this.chkDeviation.TabIndex = 69;
@@ -749,7 +754,7 @@
             // chkInfoNext
             // 
             this.chkInfoNext.AutoSize = true;
-            this.chkInfoNext.Location = new System.Drawing.Point(17, 203);
+            this.chkInfoNext.Location = new System.Drawing.Point(17, 337);
             this.chkInfoNext.Name = "chkInfoNext";
             this.chkInfoNext.Size = new System.Drawing.Size(128, 17);
             this.chkInfoNext.TabIndex = 70;
@@ -760,7 +765,7 @@
             // 
             this.label37.AutoSize = true;
             this.label37.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label37.Location = new System.Drawing.Point(148, 204);
+            this.label37.Location = new System.Drawing.Point(148, 338);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(152, 13);
             this.label37.TabIndex = 71;
@@ -770,7 +775,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label16.Location = new System.Drawing.Point(157, 222);
+            this.label16.Location = new System.Drawing.Point(157, 356);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(201, 13);
             this.label16.TabIndex = 72;
@@ -779,7 +784,7 @@
             // chkConsiderFails
             // 
             this.chkConsiderFails.AutoSize = true;
-            this.chkConsiderFails.Location = new System.Drawing.Point(252, 120);
+            this.chkConsiderFails.Location = new System.Drawing.Point(251, 123);
             this.chkConsiderFails.Name = "chkConsiderFails";
             this.chkConsiderFails.Size = new System.Drawing.Size(158, 17);
             this.chkConsiderFails.TabIndex = 73;
@@ -789,7 +794,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(14, 259);
+            this.label20.Location = new System.Drawing.Point(14, 394);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(70, 13);
             this.label20.TabIndex = 74;
@@ -797,7 +802,7 @@
             // 
             // RndInfoEveryCountBox
             // 
-            this.RndInfoEveryCountBox.Location = new System.Drawing.Point(89, 257);
+            this.RndInfoEveryCountBox.Location = new System.Drawing.Point(89, 392);
             this.RndInfoEveryCountBox.Maximum = new decimal(new int[] {
             999,
             0,
@@ -815,7 +820,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(135, 259);
+            this.label21.Location = new System.Drawing.Point(135, 394);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(163, 13);
             this.label21.TabIndex = 76;
@@ -823,7 +828,7 @@
             // 
             // RndInfoForCountBox
             // 
-            this.RndInfoForCountBox.Location = new System.Drawing.Point(304, 257);
+            this.RndInfoForCountBox.Location = new System.Drawing.Point(304, 392);
             this.RndInfoForCountBox.Maximum = new decimal(new int[] {
             999,
             0,
@@ -841,16 +846,62 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(350, 259);
+            this.label22.Location = new System.Drawing.Point(350, 394);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(50, 13);
             this.label22.TabIndex = 78;
             this.label22.Text = "seconds.";
             // 
+            // btnNewVersion
+            // 
+            this.btnNewVersion.Location = new System.Drawing.Point(14, 500);
+            this.btnNewVersion.Name = "btnNewVersion";
+            this.btnNewVersion.Size = new System.Drawing.Size(115, 24);
+            this.btnNewVersion.TabIndex = 79;
+            this.btnNewVersion.Text = "Check New Version";
+            this.btnNewVersion.UseVisualStyleBackColor = true;
+            this.btnNewVersion.Click += new System.EventHandler(this.btnNewVersion_Click);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(63, 465);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(177, 13);
+            this.label23.TabIndex = 81;
+            this.label23.Text = "Add the best time for each segment.";
+            // 
+            // AddBestCountBox
+            // 
+            this.AddBestCountBox.Location = new System.Drawing.Point(17, 465);
+            this.AddBestCountBox.Name = "AddBestCountBox";
+            this.AddBestCountBox.Size = new System.Drawing.Size(40, 20);
+            this.AddBestCountBox.TabIndex = 80;
+            this.AddBestCountBox.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label38.Location = new System.Drawing.Point(63, 478);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(241, 13);
+            this.label38.TabIndex = 82;
+            this.label38.Text = "Higher Number -> Higher Chance. 0 to deactivate";
+            // 
             // PBChanceSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label38);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.AddBestCountBox);
+            this.Controls.Add(this.chkExpSplitsvalue);
+            this.Controls.Add(this.btnNewVersion);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.RndInfoForCountBox);
             this.Controls.Add(this.label21);
@@ -888,7 +939,6 @@
             this.Controls.Add(this.label24);
             this.Controls.Add(this.MinTimesCountBox);
             this.Controls.Add(this.label19);
-            this.Controls.Add(this.chkExpSplitsvalue);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.btnDebug);
@@ -916,7 +966,7 @@
             this.Controls.Add(this.AttemptCountBox);
             this.Controls.Add(this.RecentLabel);
             this.Name = "PBChanceSettings";
-            this.Size = new System.Drawing.Size(480, 534);
+            this.Size = new System.Drawing.Size(458, 636);
             ((System.ComponentModel.ISupportInitialize)(this.AttemptCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MalusCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitclipCountBox)).EndInit();
@@ -930,6 +980,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.CalctimeCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RndInfoEveryCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RndInfoForCountBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AddBestCountBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1000,5 +1051,9 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.NumericUpDown RndInfoForCountBox;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Button btnNewVersion;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.NumericUpDown AddBestCountBox;
+        private System.Windows.Forms.Label label38;
     }
 }

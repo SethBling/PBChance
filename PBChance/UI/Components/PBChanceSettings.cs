@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using LiveSplit.UI;
+using System.Net; //because WebClient
 
 namespace PBChance.UI.Components
 {
@@ -45,6 +46,8 @@ namespace PBChance.UI.Components
         public int iRndInfoEvery { get; set; }
         public int iRndInfoFor { get; set; }
 
+        public int iAddBest { get; set; }
+
         public event EventHandler SettingChanged;
 
         public PBChanceSettings()
@@ -68,13 +71,14 @@ namespace PBChance.UI.Components
             bValueRuns = false;
             iMinTimes = 20;
             iUpdate = 1;
-            iSplitsvalue = 20;
+            iSplitsvalue = 100;
             iSkipNewest = 0;
             iCalcToSplit = 0;
             bExpSplitsvalue = false;
-            bConsiderFails = false;
+            bConsiderFails = true;
             iRndInfoEvery = 600;
-            iRndInfoFor = 6;
+            iRndInfoFor = 10;
+            iAddBest = 1;
 
             rdoPercentAttempt.DataBindings.Add("Checked", this, "UsePercentOfAttempts", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             rdoAbsAttempt.DataBindings.Add("Checked", this, "UseFixedAttempts", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
@@ -108,6 +112,8 @@ namespace PBChance.UI.Components
             RndInfoForCountBox.DataBindings.Add("Value", this, "iRndInfoFor", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             chkConsiderFails.DataBindings.Add("Checked", this, "bConsiderFails", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
 
+            AddBestCountBox.DataBindings.Add("Value", this, "iAddBest", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+            
             UseFixedAttempts = !UsePercentOfAttempts;
             UsePercentOfAttempts = !UseFixedAttempts;
         }
@@ -128,7 +134,7 @@ namespace PBChance.UI.Components
 
         private int CreateSettingsNode(XmlDocument document, XmlElement parent)
         {
-            return SettingsHelper.CreateSetting(document, parent, "Version", "1.3.6") ^
+            return SettingsHelper.CreateSetting(document, parent, "Version", "1.3.7") ^
                 SettingsHelper.CreateSetting(document, parent, "AttemptCount", AttemptCount) ^
                 SettingsHelper.CreateSetting(document, parent, "UsePercentOfAttempts", UsePercentOfAttempts) ^
                 SettingsHelper.CreateSetting(document, parent, "UseFixedAttempts", UseFixedAttempts) ^
@@ -148,6 +154,7 @@ namespace PBChance.UI.Components
                 SettingsHelper.CreateSetting(document, parent, "Deviation", bDeviation) ^
                 SettingsHelper.CreateSetting(document, parent, "iMinTimes", iMinTimes) ^
                 SettingsHelper.CreateSetting(document, parent, "iUpdate", iUpdate) ^
+                SettingsHelper.CreateSetting(document, parent, "iAddBest", iAddBest) ^
                 SettingsHelper.CreateSetting(document, parent, "RndInfoEveryCountBox", iRndInfoEvery) ^
                 SettingsHelper.CreateSetting(document, parent, "RndInfoForCountBox", iRndInfoFor) ^
                 SettingsHelper.CreateSetting(document, parent, "chkConsiderFails", bConsiderFails) ^
@@ -176,6 +183,7 @@ namespace PBChance.UI.Components
             bInfoNext            = SettingsHelper.ParseBool(settings["chkInfoNext"]);
             iMinTimes            = SettingsHelper.ParseInt (settings["iMinTimes"]);
             iUpdate              = SettingsHelper.ParseInt (settings["iUpdate"]);
+            iAddBest             = SettingsHelper.ParseInt (settings["iAddBest"]);
             iSplitsvalue         = SettingsHelper.ParseInt (settings["iSplitsvalue"]);
             bExpSplitsvalue      = SettingsHelper.ParseBool(settings["bExpSplitsvalue"]);
             iRndInfoEvery        = SettingsHelper.ParseInt (settings["RndInfoEveryCountBox"]);
@@ -200,6 +208,31 @@ namespace PBChance.UI.Components
             CalctimeCountBox.Visible = !CalctimeCountBox.Visible;
             lblCalctime1.Visible = !lblCalctime1.Visible;
             lblCalctime2.Visible = !lblCalctime2.Visible;
+        }
+
+        private void btnNewVersion_Click(object sender, EventArgs e)
+        {
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            WebClient wc = new WebClient();
+            try
+            {
+                string sVersion = wc.DownloadString("https://github.com/kasi777/PBChance/raw/master/PBChance/Version.txt");
+
+                if (sVersion.Remove(5, sVersion.Length - 5) != "1.3.7")
+                {
+                    wc.DownloadFile("https://github.com/kasi777/PBChance/blob/master/PBChance.dll", "pbchance.dll");
+                    MessageBox.Show("New Version available! Installed: 1.3.7, Available: " + sVersion.Remove(5, sVersion.Length - 5) + 
+                        "\n\r\n\rPBChance.dll is already downloaded into LiveSplit directory. Move it into the Components directory to install it.\n\r\n\r" +
+                        sVersion.Remove(0,5) + "\n\r\n\rhttps://github.com/kasi777/PBChance");
+                }
+                else
+                    MessageBox.Show("PBChance is allready up to date. \n\r\n\rhttps://github.com/kasi777/PBChance");
+            }
+            catch
+            {
+                MessageBox.Show("Can't connect to https://github.com/kasi777/PBChance");
+            }
         }
     }
 }
