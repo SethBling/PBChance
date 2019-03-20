@@ -4,6 +4,6 @@ Update Notes V1.3.8 (2019-03-20)
 
 1. Displaying 1 in x is now better to read (less decimal if not required).
 
-2. The chance of survival now also takes into account the setting "Consider at least X times". Thus, the survival chance to the end is definitely greater than 0%. For example, when this setting is 20, it takes into account the last 20 successfully runs (or as much as possible if 20 successfully runs are not available).
+2. The chance of survival also takes into account the setting "Consider at least X times" now. Thus, the survival chance to the end is definitely greater than 0%. For example, when this setting is 20, it takes into account the last 20 successfully runs (or as many as possible if there are less than 20 successfully runs available).
 
 3. The setting "display survival chance" now displays a) the chance to survive in the current segment and b) the chance to survive to the end.
