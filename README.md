@@ -30,7 +30,7 @@ During a run, PBChance compares the current segment time with the best segment t
 Valid values: 0-999 Suggestion: 1
 4. Display additional Split info. The first number is the difference of average split time and the best split time. The second number is the chance, to fail on the actual split.
 5. Display survival chance
-This will display in addition two percent numbers. The first number is the chance to survive on actual segment, the second number is the chance to survive to the end. It considers the settings "Use most recent" and "Consider at least".
+This will display in addition two percent numbers. The first number is the chance to survive on actual segment, the second number is the chance to survive to the end. It considers the settings "Use most recent..." and "Consider at least...".
 7. Display every # seconds a random information for # seconds. It will display a random chosen information (Remaining Combinations/Sample Size/Survive in this Segment/Survive to the End/Standard Deviation/Average Difference to Best/Times in this Segment) at periodic intervals. For example, you can set to display every 60s the information for 10s. Then, it will start to display at 0:00:30 until 0:00:40, next will be 0:01:30 - 0:01:40 etc. It will stop to display, if the chance is decreasing.
 8. Do not increase chance on "Skip Split"
 Otherwise the chance will be recalculated similar to the command "Split".
