@@ -1,4 +1,7 @@
-1.3.7 New Features
-1. Faster
-2. Better
-3. Smaller
+1.3.8
+
+Updates V1.3.8 (2019-03-20)
+
+1. Displaying 1 in x is now better to read (less decimal if not required).
+
+2. The chance of survival now also takes into account the setting "Consider at least X times". Thus, the survival chance to the end is definitely greater than 0%.
