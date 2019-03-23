@@ -1,0 +1,16 @@
+1.3.8
+*************************************************************
+*** Please download PBChance.dll manually from github.com ***
+*************************************************************
+
+Update Notes V1.3.8 (2019-03-20)
+
+1. Displaying 1 in x is now better to read (less decimal if not required).
+
+2. The chance of survival also takes into account the setting "Consider at least X times" now. Thus, the survival chance to the end is definitely greater than 0%. For example, when this setting is 20, it takes into account the last 20 successfully runs (or as many as possible if there aren't 20 successfully runs available).
+
+3. The setting "display survival chance" now displays a) the chance to survive in the current segment and b) the chance to survive to the end.
+
+4. Check New Version will download the correct file now.
+
+5. No more periodicaly displays between splits, with a distance of 10 seconds (before best time and after a split).
