@@ -3,3 +3,5 @@ Update Notes V1.3.9 (2019-03-23)
 
 1. If the Setting "Display every x seconds a random information... is set to 0, PBChance will display a information once per segment (in the middle).
 E.G. Display every 0 seconds ... for 10 seconds, and the best segment time is 2:00, then it will display between 0:55 and 1:05 in this segment.
+
+2. If a chance isn't possible, PBChance will not try to find a success run, and returns a 0% chance instantly. However, if it's possible, and PBChance can't find a success run within the sample size, PBChance will try to find a success run ten times longer than usual.
