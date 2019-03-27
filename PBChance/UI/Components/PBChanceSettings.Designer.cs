@@ -96,6 +96,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.AddBestCountBox = new System.Windows.Forms.NumericUpDown();
             this.label38 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AttemptCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MalusCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitclipCountBox)).BeginInit();
@@ -198,7 +199,7 @@
             0,
             0,
             0});
-            this.SplitclipCountBox.Location = new System.Drawing.Point(314, 421);
+            this.SplitclipCountBox.Location = new System.Drawing.Point(314, 426);
             this.SplitclipCountBox.Maximum = new decimal(new int[] {
             999,
             0,
@@ -239,7 +240,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 428);
+            this.label5.Location = new System.Drawing.Point(14, 433);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(300, 13);
             this.label5.TabIndex = 13;
@@ -248,7 +249,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(357, 428);
+            this.label6.Location = new System.Drawing.Point(357, 433);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 13);
             this.label6.TabIndex = 14;
@@ -303,7 +304,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label11.Location = new System.Drawing.Point(14, 441);
+            this.label11.Location = new System.Drawing.Point(14, 446);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(156, 13);
             this.label11.TabIndex = 20;
@@ -469,7 +470,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(218, 13);
             this.label12.TabIndex = 21;
-            this.label12.Text = "Advanced settings by kasi777 V1.3.6";
+            this.label12.Text = "Advanced settings by kasi777 V1.3.9";
             // 
             // label13
             // 
@@ -736,7 +737,7 @@
             // 
             this.label36.AutoSize = true;
             this.label36.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label36.Location = new System.Drawing.Point(51, 385);
+            this.label36.Location = new System.Drawing.Point(51, 388);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(0, 13);
             this.label36.TabIndex = 68;
@@ -794,7 +795,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(14, 394);
+            this.label20.Location = new System.Drawing.Point(14, 401);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(70, 13);
             this.label20.TabIndex = 74;
@@ -802,7 +803,7 @@
             // 
             // RndInfoEveryCountBox
             // 
-            this.RndInfoEveryCountBox.Location = new System.Drawing.Point(89, 392);
+            this.RndInfoEveryCountBox.Location = new System.Drawing.Point(83, 394);
             this.RndInfoEveryCountBox.Maximum = new decimal(new int[] {
             999,
             0,
@@ -820,7 +821,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(135, 394);
+            this.label21.Location = new System.Drawing.Point(129, 401);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(163, 13);
             this.label21.TabIndex = 76;
@@ -828,7 +829,7 @@
             // 
             // RndInfoForCountBox
             // 
-            this.RndInfoForCountBox.Location = new System.Drawing.Point(304, 392);
+            this.RndInfoForCountBox.Location = new System.Drawing.Point(298, 394);
             this.RndInfoForCountBox.Maximum = new decimal(new int[] {
             999,
             0,
@@ -846,7 +847,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(350, 394);
+            this.label22.Location = new System.Drawing.Point(344, 401);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(50, 13);
             this.label22.TabIndex = 78;
@@ -865,7 +866,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(63, 465);
+            this.label23.Location = new System.Drawing.Point(63, 470);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(177, 13);
             this.label23.TabIndex = 81;
@@ -873,7 +874,7 @@
             // 
             // AddBestCountBox
             // 
-            this.AddBestCountBox.Location = new System.Drawing.Point(17, 465);
+            this.AddBestCountBox.Location = new System.Drawing.Point(17, 470);
             this.AddBestCountBox.Name = "AddBestCountBox";
             this.AddBestCountBox.Size = new System.Drawing.Size(40, 20);
             this.AddBestCountBox.TabIndex = 80;
@@ -887,16 +888,27 @@
             // 
             this.label38.AutoSize = true;
             this.label38.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label38.Location = new System.Drawing.Point(63, 478);
+            this.label38.Location = new System.Drawing.Point(63, 483);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(241, 13);
             this.label38.TabIndex = 82;
             this.label38.Text = "Higher Number -> Higher Chance. 0 to deactivate";
             // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label40.Location = new System.Drawing.Point(14, 414);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(285, 13);
+            this.label40.TabIndex = 85;
+            this.label40.Text = "If it\'s set to 0, it will display once per segment (in the middle)";
+            // 
             // PBChanceSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label40);
             this.Controls.Add(this.label38);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.AddBestCountBox);
@@ -1055,5 +1067,6 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.NumericUpDown AddBestCountBox;
         private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label40;
     }
 }

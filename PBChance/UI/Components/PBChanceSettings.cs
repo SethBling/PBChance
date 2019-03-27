@@ -76,7 +76,8 @@ namespace PBChance.UI.Components
             iCalcToSplit = 0;
             bExpSplitsvalue = false;
             bConsiderFails = true;
-            iRndInfoEvery = 600;
+            bIgnoreSkipClip = true;
+            iRndInfoEvery = 0; // once per segment, in the middle (e.g. Best Segment Time=2:00, for 10 seconds, it will display between 0:55-1:05)
             iRndInfoFor = 10;
             iAddBest = 1;
 
@@ -134,7 +135,7 @@ namespace PBChance.UI.Components
 
         private int CreateSettingsNode(XmlDocument document, XmlElement parent)
         {
-            return SettingsHelper.CreateSetting(document, parent, "Version", "1.3.7") ^
+            return SettingsHelper.CreateSetting(document, parent, "Version", "1.3.9") ^
                 SettingsHelper.CreateSetting(document, parent, "AttemptCount", AttemptCount) ^
                 SettingsHelper.CreateSetting(document, parent, "UsePercentOfAttempts", UsePercentOfAttempts) ^
                 SettingsHelper.CreateSetting(document, parent, "UseFixedAttempts", UseFixedAttempts) ^
@@ -219,20 +220,25 @@ namespace PBChance.UI.Components
             {
                 string sVersion = wc.DownloadString("https://github.com/kasi777/PBChance/raw/master/PBChance/Version.txt");
 
-                if (sVersion.Remove(5, sVersion.Length - 5) != "1.3.7")
+                if (sVersion.Remove(5, sVersion.Length - 5) != "1.3.9")
                 {
-                    wc.DownloadFile("https://github.com/kasi777/PBChance/blob/master/PBChance.dll", "pbchance.dll");
-                    MessageBox.Show("New Version available! Installed: 1.3.7, Available: " + sVersion.Remove(5, sVersion.Length - 5) + 
-                        "\n\r\n\rPBChance.dll is already downloaded into LiveSplit directory. Move it into the Components directory to install it.\n\r\n\r" +
+                    wc.DownloadFile("https://github.com/kasi777/PBChance/raw/master/PBChance.dll", "PBChance.dll");
+                    MessageBox.Show("New Version available: Installed: 1.3.9, Available: " + sVersion.Remove(5, sVersion.Length - 5) + 
+                        "\n\r\n\rPBChance.dll is already downloaded into your LiveSplit directory. Move it into the Components directory to install it.\n\r\n\r" +
                         sVersion.Remove(0,5) + "\n\r\n\rhttps://github.com/kasi777/PBChance");
                 }
                 else
-                    MessageBox.Show("PBChance is allready up to date. \n\r\n\rhttps://github.com/kasi777/PBChance");
+                    MessageBox.Show("PBChance is already up to date. \n\r\n\rhttps://github.com/kasi777/PBChance");
             }
             catch
             {
                 MessageBox.Show("Can't connect to https://github.com/kasi777/PBChance");
             }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
