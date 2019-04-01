@@ -15,3 +15,5 @@ E.G. Display every 0 seconds ... for 10 seconds, and the best segment time is 2:
 Update Notes V1.3.9b (2019-03-31)
 
 1. Remaining Combinations now displays the result as an advertised number. For example, "1.2 E+057" is now called "1.2 Octodecillion E57". Up to 308 digits are supported.
+
+2. If "Display odds (1 in N) is checked, and you have a chance bellow 0.01% (live or split doesn't matter), the display will be in the following format "1 in n    0%", other than as described in point 3. So the decimal places are deleted in this case. If there aren't any successfully runs found, the display is simply "0%".
