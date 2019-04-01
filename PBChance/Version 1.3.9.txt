@@ -8,7 +8,7 @@ E.G. Display every 0 seconds ... for 10 seconds, and the best segment time is 2:
 
 3. When you split at a chance below 0.01%, the display will be in following format: x in n. "x" is the count of successfully runs, "n" is the count of the sample size. The usual display "x.xx% (1 in n)" will be overridden for this.
 
-4. The information "Times in this Segment" is changed to "Until here have Survived". It displays the relevant runs to the last Segment, and how many attempts were necessary for it.
+4. The information "Times in this Segment" is changed to "Until here have Survived". It displays the survived runs at least to the last Segment, and how many attempts were necessary for it.
 
 5. New information "Combinations per Second". It tells how many combinations the computer can check for a PB within a second. The formula is the sample size divided by the elapsed time (the whole function) multiplied by one second.
 
