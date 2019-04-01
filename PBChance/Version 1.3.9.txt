@@ -14,4 +14,4 @@ E.G. Display every 0 seconds ... for 10 seconds, and the best segment time is 2:
 
 Update Notes V1.3.9b (2019-03-31)
 
-1. Remaining Combinations now displays the result as an advertised number. For example, "1.2 E+057" is now called "1.2 Octodecillion E57".
+1. Remaining Combinations now displays the result as an advertised number. For example, "1.2 E+057" is now called "1.2 Octodecillion E57". Up to 308 digits are supported.
