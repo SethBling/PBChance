@@ -1,1 +1,9 @@
-asdsad
+V1.3.10 (2019-04-08)
+
+1. About two times faster calculation, if the setting "Newer segment times are more important than old ones" is set to 100.
+
+2. Live views "Survival in this Segment", "Survival to the End", "Until here have Survived" displaying now in following format: "Success / Total = Chance"
+
+3. Additional display "Considered Runs (here/end)". It shows the number of runs taken into account up to the current segment and to the last segment. In addition, the total number is displayed.
+
+4. No live calculations in segment two have been fixed. 
