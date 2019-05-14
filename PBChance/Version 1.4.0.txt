@@ -3,6 +3,6 @@ Update Notes V1.4.0 (2019-05-14)
 
 1. About two times faster calculation, if the setting "Newer segment times are more important than old ones" is set to 100.
 
-2. Skipped Segments will no longer decrease the PB-chance. For example, if one segment contains 8 correct split times, 2 skips and 3 failures, the chance to select a failure is 3/10 instead of 3/8.
+2. Skipped Segments will no longer decrease the PB-chance. For example, if one segment contains 8 correct split times, 2 skips and 3 failures, the chance to select a failure is 3/13 instead of 3/11.
 
 3. No live calculations in segment two have been fixed.
