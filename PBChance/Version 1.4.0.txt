@@ -4,3 +4,5 @@ Update Notes V1.4.0 (2019-05-14)
 1. Skipped Segments will no longer decrease the PB-chance. For example, if one segment contains 8 correct split times, 2 skips and 3 failures, the chance to select a failure is 3/10 instead of 3/8.
 
 2. Speed optimation if "new segment times are more important than old ones" is set to 100. About 2x more combinations per second. 
+
+3. No live calculations in segment two have been fixed.
