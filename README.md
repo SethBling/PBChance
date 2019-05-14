@@ -44,8 +44,8 @@ Valid values: 0-999 Suggestion: Start with 30. Should be set to a higher value i
 Very slow segment times will be eliminated. Should set to a number, which is clearly too slow for a normal run. Should be checked with the debug file (clipped segments), for the correct setting and result.
 Valid values: 100-999 Suggestion: 150-200
 12. Add the best time for each segment:
-Valid values: 0-100. Suggestion: 1
-If the value is above 0, the best time will be added once for each segment, regardless of other settings. The larger the set value, the more often the best time will be selected. Point 8. is relevant for this. Then there is always a chance, if the remaining best time is faster than the Pb time, even a few runs are selected.
+Valid values: 0-100. Suggestion: about 25
+If the value is above 0, the best time will be added once for each segment, regardless of other settings. The larger the set value, the more often the best time will be selected. Point 8. is relevant for this. Then there is always a chance, if the remaining best time is faster than the Pb time, even a few runs are selected. Can be adjusted to optimize the chance estimation.
 13. Check New Version:
 When you are online, you can check for the newest version. If a newer version is available, you will be notified and PBChance automatically downloads PBChance.dll into your LiveSplit directory. To install the latest version, close LiveSplit and move PBChance.dll from the LiveSplit directory into the Components subdirectory. Your current PBChance.dll will be overwritten.
 
