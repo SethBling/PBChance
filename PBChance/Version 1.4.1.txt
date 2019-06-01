@@ -11,4 +11,4 @@ Update Notes V1.4.1 (2019-05-28)
   It will display the "Goal Time" (see 1.) in total and separately by the segments. In addition, it displays the best possible time, you can compare to this.
   So, if you want to beat a certain pb-time, you can also adjust the setting "Time difference" for this, to shift the Goal PB Time what you want.
 
-4. New random information "Good pace to PB", "Worth to continue" and "Run is currently".
+4. New random information "Good pace to PB" and "Worth to continue".
