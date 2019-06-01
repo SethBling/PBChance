@@ -14,7 +14,7 @@ Use it, if you want to know the slowest time you have to beat to continue. Use t
 
 5. A new row in the data list: Faster/Extra Goal/Total. Faster means the number of successful runs, Extra Goal means the same, but considering the setting in (1.), Total is the sample size. This information can be used to know the information in the table is complete. If not, the sample size to low, click on "Refresh List". Every time, you change a setting, the list will be automatically quick-updated, for a fast response, but not the whole sample size. After the calculation is complete - it takes about one second after a change in the settings - the results will no longer be changed when clicking on "refresh list" twice or more.
 
-6. The number of selecting a failure in a simulated run can be limited. If it is set to 1 (default), only the first time the penalty time will be added.
+6. The number of selecting a failure in a simulated run can be limited now. If it is set to 1 (default), only the first time the penalty time will be added.
 If a failed segment will be selected two times, the simulated run will be count as a failure, no matter how good it would be.
 In addition, if it's set to a low number, the number of combinations per second will increase significantly by two to three times.
 
