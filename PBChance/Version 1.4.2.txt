@@ -1,0 +1,20 @@
+1.4.2
+Update Notes V1.4.2 (2019-06-01)
+
+1. An extra goal can be specified for the PB pace. Use it, if you wan't to PB a better time,
+e.g. your PB is currently 1:30:20 and you want 1:30:00, then you can set the difference time to 20000 milliseconds.
+The regular PB Chance remains untouched for this setting, but you can see the chance in the data-list under "PB Regular/Extra Goal". 
+
+2. If a successful run is found, it remembers the worst time per segment. It can display the worst segment, but it was successful in a simulated run.
+Use it, if you wan't to know the slowest time you have to beat to continue. Use the average segment time, if you wan't to know an average segment time for a run to PB.
+
+3. A new random information based on (2.).
+
+4. The number of digits for a pace can be specified between 0-3 (1 second up to 1 millisecond resolution).
+
+5. New row in the data list: Faster/Extra Goal/Total. Faster means the number of successful runs, Extra Goal means the same, but considered the setting in (1.), Total is the sample size.
+
+6. The number of selecting an failure in a simulated run can be limited. If it is set to 1 (default), the first time the penality time will be added.
+If a failed segment will be selected two times, the simulated run will be count as an failure, no matter how good it would be.
+
+7. The settings have been rearranged and sorted into groups.
