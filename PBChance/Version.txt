@@ -1,3 +1,40 @@
+1.4.2
+Update Notes V1.4.2 (2019-06-01)
+
+1. An extra goal can be specified for the PB pace. Use it, if you want to PB a better time,
+e.g. your PB is currently 1:30:20 and you want 1:30:00, then you can set the difference time to 20000 milliseconds.
+The regular PB Chance remains untouched for this setting, but you can see the chance in the data-list under "PB Regular/Extra Goal". 
+
+2. If a successful run is found, it remembers the worst time per segment. It can display the worst segment, but it was successful in a simulated run.
+Use it, if you want to know the slowest time you have to beat to continue. Use the average segment time, if you want to know an average segment time for a run to PB.
+
+3. A new random information based on (2.).
+
+4. The number of digits for a pace can be specified between 0-3 (1 second up to 1-millisecond resolution).
+
+5. A new row in the data list: Faster/Extra Goal/Total. Faster means the number of successful runs, Extra Goal means the same, but considering the setting in (1.), Total is the sample size. This information can be used to know the information in the table is complete. If not, the sample size to low, click on "Refresh List". Every time, you change a setting, the list will be automatically quick-updated, for a fast response, but not the whole sample size. After the calculation is complete - it takes about one second after a change in the settings - the results will no longer be changed when clicking on "refresh list" twice or more.
+
+6. The number of selecting a failure in a simulated run can be limited now. If it is set to 1 (default), only the first time the penalty time will be added.
+If a failed segment will be selected two times, the simulated run will be count as a failure, no matter how good it would be.
+In addition, if it's set to a low number, the number of combinations per second will increase significantly by two to three times.
+
+7. The settings have been rearranged and sorted into groups and tabs "General", "PB Pace" and "Display Options".
+
+1.4.1
+Update Notes V1.4.1 (2019-05-28)
+
+1. The calculation for a good pace. It calculates the average segment time, for all successfully simulated runs.
+
+2. "Display Good Pace to PB" will display a good segment time, due to (1.).
+  It's not a static information, so if a pb isn't possible, it can't display, and if it's only barely possible, the times will be going harder to beat.
+  If you want to display the total time, check "Total time instead of Segment Time".
+
+3. You can make a data-table of a complete run based on (1.). Go into the settings and scroll down. The table will be updated automatically, however you can click on "Refresh List" for a more accurate result.
+  It will display the "Goal Time" (see 1.) in total and separately by the segments. In addition, it displays the best possible time, you can compare to this.
+  So, if you want to beat a certain pb-time, you can also adjust the setting "Time difference" for this, to shift the Goal PB Time what you want.
+
+4. New random information "Good pace to PB", "Worth to continue" and "Run is currently".
+
 1.4.0                
 Update Notes V1.4.0 (2019-05-14)
 
@@ -6,37 +43,3 @@ Update Notes V1.4.0 (2019-05-14)
 2. Skipped splits will no longer decrease and influence the PB-chance. For example, if one segment contains 8 correct split times, 2 skips and 3 failures, the chance to select a failure is 3/13 instead of 3/11.
 
 3. No live calculations in segment two have been fixed.
-
-
-Update Notes V1.3.9b (2019-03-31)
-
-1. Remaining Combinations now displays the result as an advertised number. For example, "1.2 E+057" is now called "1.2 Octodecillion E57". Up to 308 digits are supported.
-
-2. If "Display odds (1 in N)" is checked, and you have a chance below 0.001% (live or split doesn't matter), the display will be in the following format "1 in n    0%", other than as described in point 3. So the decimal places are deleted in this case. If there aren't any successfully runs found, the display is simply "0%".
-
-
-Update Notes V1.3.9 (2019-03-23)
-
-1. If the Setting "Display every x seconds a random information... is set to 0, PBChance will display a information once per segment (in the middle).
-E.G. Display every 0 seconds ... for 10 seconds, and the best segment time is 2:00, then it will display between 0:55 and 1:05 in this segment.
-
-2. If a chance isn't possible, PBChance will not try to find a success run, and returns a 0% chance instantly. However, if it's possible, and PBChance can't find a success run within the sample size, PBChance will try to find a success run up to ten times longer than usual.
-
-3. When you split at a chance below 0.01%, the display will be in following format: x in n. "x" is the count of successfully runs, "n" is the count of the sample size. The usual display "x.xx% (1 in n)" will be overridden for this.
-
-4. The information "Times in this Segment" is changed to "Until here have Survived". It displays the survived runs at least to the last Segment, and how many attempts were necessary for it.
-
-5. New information "Combinations per Second". It tells how many combinations the computer can check for a PB within a second. The formula is the sample size divided by the elapsed time (the whole function) multiplied by one second.
-
-
-Update Notes V1.3.8 (2019-03-20)
-
-1. Displaying 1 in x is now better to read (less decimal if not required).
-
-2. The chance of survival also takes into account the setting "Consider at least X times" now. Thus, the survival chance to the end is definitely greater than 0%. For example, when this setting is 20, it takes into account the last 20 successfully runs (or as many as possible if there aren't 20 successfully runs available).
-
-3. The setting "display survival chance" now displays a) the chance to survive in the current segment and b) the chance to survive to the end.
-
-4. Check New Version will download the correct file now.
-
-5. No more periodicaly displays between splits, with a distance of 10 seconds (before best time and after a split).
