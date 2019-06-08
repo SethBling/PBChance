@@ -49,7 +49,7 @@ Valid values: 0-100. Suggestion: about 25
 If the value is above 0, the best time will be added once for each segment, regardless of other settings. The larger the set value, the more often the best time will be selected. Point 8. is relevant for this. Then there is always a chance, if the remaining best time is faster than the Pb time, even a few runs are selected. Can be adjusted to optimize the chance estimation.
 
 ## PB Pace Settings (Tab 2)
-![Method1](/PBChance/images/PBChance%20Settings%201.4.2%20P2b.png)
+![Method1](/PBChance/images/PBChance%20Settings%201.4.2%20P2c.png)
 
 1. Display Pace to PB
 "Pace to PB" is defined as the average segment time, for all successfully simulated runs. So it displays a good, typical segment/split time, if it is on PB pace. It's not a static information, so if a pb isn't possible, it can't display, and if it's only barely possible, the times will be going harder to beat.
