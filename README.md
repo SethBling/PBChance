@@ -71,18 +71,18 @@ Faster/Extra Goal/Total. Faster means the number of successful runs, Extra Goal 
 ![Method1](/PBChance/images/PBChance%20Settings%201.4.2%20P3.png)
 
 1. Display Options
-   1.1 Update automatically every # seconds when the chance drops
+   1. Update automatically every # seconds when the chance drops
 During a run, PBChance compares the current segment time with the best segment time. If it's slower, and the chance is above zero, PBChance calculates the new chance in the background as if you were splitting. If that chance becomes lower than the displayed one, the chance will be updated automatically. 0 means as fast as possible.
 Valid values: 0-999 Suggestion: 1
-   1.2 Do not increase chance on "Skip Split"
+   2. Do not increase chance on "Skip Split"
 Otherwise the chance will be recalculated similar to the command "Split".
-   1.3 Display additional Split info
+   3. Display additional Split info
 The first number is the difference of average split time and the best split time. The second number is the chance, to fail on the actual split.
-   1.4 Display survival chance
+   4. Display survival chance
 This will display in addition two percent numbers. The first number is the chance to survive on actual segment, the second number is the chance to survive to the end. It considers the settings "Use most recent...attempts" and "Consider at least...attempts".
-   1.5 Display standard deviation
+   5. Display standard deviation
 Formula: Root of the sum of the square difference of actual segment time to average segment time.
-   1.6 Display every # seconds a random information for # seconds.
+   6. Display every # seconds a random information for # seconds.
 It will display a randomly chosen information (Remaining Combinations/Sample Size/Survive in this Segment/Survive to the End/Standard Deviation/Average Difference to Best/Until here have Survived/Combinations per Second) at periodic intervals. For example, you can set to display every 60s the information for 10s. Then, it will start to display at 0:00:30 until 0:00:40, next will be 0:01:30 - 0:01:40 etc. Alternatively, you can set it to every 0s, then it will display a information once per segment (in the middle). For example, display every 0 seconds ... for 10 seconds, and the best segment time is 2:00, then it will display between 0:55 and 1:05 in this segment. In any case it will stop to display, if the chance is decreasing, and between splits with a gap of 10 seconds.
 
 Hint: The displaying chance on the start should be realistic. You can try with these settings to optimize the chance estimation. Keep in mind the chance will automatically grow up if you play better. Generate and open the text file pbchance_debug.txt (recommended a fixed font like currier) for understanding the calculation of PBChance. It is also recommended to read the overview picture below.
