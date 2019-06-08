@@ -65,6 +65,7 @@ The number of digits for a pace can be specified between 0-3 (1 second up to 1-m
 Check in the table for "total" - this is the sample size. This information can be used to know the information in the table is complete. If not, the sample size to low, click on "Refresh List". Every time, you change a setting, the list will be automatically quick-updated, for a fast response, but not the whole sample size. After the calculation is complete - it takes about one second after a change in the settings - the results will no longer be changed when clicking on "refresh list" twice or more.
 7. Data table
 You can make a data-table of a complete run based on (1.). Go into the settings and scroll down. The table will be updated automatically, however you can click on "Refresh List" for a more accurate result. It will display the "Goal Time" (see 1.) in total and separately by the segments. In addition, it displays the best possible time, you can compare to this. So, if you want to beat a certain pb-time, you can also adjust the setting "Time difference" for this, to shift the Goal PB Time what you want.
+Faster/Extra Goal/Total. Faster means the number of successful runs, Extra Goal means the same, but considering the setting in (4.), Total is the sample size.
 
 ## Display Settings (Tab 3)
 ![Method1](/PBChance/images/PBChance%20Settings%201.4.2%20P3.png)
