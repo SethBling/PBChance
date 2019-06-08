@@ -20,34 +20,34 @@ PBChance Component for LiveSplit. It displays the chance of obtaining a PB on yo
 ![Method1](/PBChance/images/PBChance%20Settings%201.4.2%20P1.png)
 
 1. Number of attempts used
-2. You can configure how many of your most recent attempts will be used to calculate the PB chance. Go to Layout Settings and click on the PB Chance tab. You can either have it use a percentage of your most recent attempts, or just a fixed number of your most recent attempts. Suggestion: 50 attempts on runs > 2h, 100 attempts on runs < 1h.
-3. Consider at least # times per segment
+   1. You can configure how many of your most recent attempts will be used to calculate the PB chance. Go to Layout Settings and click on the PB Chance tab. You can either have it use a percentage of your most recent attempts, or just a fixed number of your most recent attempts. Suggestion: 50 attempts on runs > 2h, 100 attempts on runs < 1h.
+   2. Consider at least # times per segment
 This will fill up times, if there are not enough because of the Setting "Use the most recent [x] attempts."
 Valid values: 1-999 Suggestion: about 1/3 of the number of attempts. Checkbox: Also include failed segments. It will consider all intervening failes. Otherwise, only the additional times are considered. The chance is lower when it's activated.
 
-4. Sample Size
-5. Random sample survey # combinations
+2. Sample Size
+   1. Random sample survey # combinations
 The number of calculations. A lower number will calculate faster, a higher number gives a more stable result.
 Valid values: 1-999,999 Suggestion: at least 100,000
 
-6.Settings affect the PB Chance
-7. Penalty on failures # seconds
+3. Settings affect the PB Chance
+   1. Penalty on failures # seconds
 For each discontinued run, a failed segment will be generated. It's added every time to a simulated run, if a failed segment is selected. Valid values: 0-999 Suggestion: Start with 30. Should be set to a higher value if the reason for an interruption is essentially significant errors in a single segment (and lower in the opposite case). Can be also set to 0, if "Display survival chance" is set. In that case, multiply these two numbers will result in a chance, same as an infinite malus.
-8. Max fails #, then the penality is infinite
+   2. Max fails #, then the penality is infinite
 If a simulated run contains more then # fails, the whole run is considered as a fail.
 The number of selecting a failure in a simulated run can be limited now. If it is set to 1, only the first time the penalty time will be added. If a failed segment will be selected two times, the simulated run will be count as a failure, no matter how good it would be. In addition, if it's set to a low number, the number of combinations per second will increase significantly by two to three times. Suggestion: 1
-9. Only consider segments, which are faster than {bestSegment[s] x # percent}
+   3. Only consider segments, which are faster than {bestSegment[s] x # percent}
 Very slow segment times will be eliminated. Should set to a number, which is clearly too slow for a normal run. Should be checked with the debug file (clipped segments), for the correct setting and result.
 Valid values: 100-999 Suggestion: 150-200
-10. Newer segment times are more important than old ones
+   4. Newer segment times are more important than old ones
 Newer attempts will be selected more often during a simulated run.
 Valid values: 0-100 Suggestion: 100
-11. Add the best time for each segment
+   5. Add the best time for each segment
 Valid values: 0-100. Suggestion: about 25
 If the value is above 0, the best time will be added once for each segment, regardless of other settings. The larger the set value, the more often the best time will be selected. Point 8. is relevant for this. Then there is always a chance, if the remaining best time is faster than the Pb time, even a few runs are selected. Can be adjusted to optimize the chance estimation.
 
 ## PB Pace Settings (Tab 2)
-![Method1](/PBChance/images/PBChance Settings 1.4.2 P2b.png)
+![Method1](/PBChance/images/PBChance%20Settings%201.4.2%20P2b.png)
 
 1. Display Pace to PB
 "Pace to PB" is defined as the average segment time, for all successfully simulated runs. So it displays a good, typical segment/split time, if it is on PB pace. It's not a static information, so if a pb isn't possible, it can't display, and if it's only barely possible, the times will be going harder to beat.
@@ -65,7 +65,7 @@ Check in the table for "total" - this is the sample size. This information can b
 You can make a data-table of a complete run based on (1.). Go into the settings and scroll down. The table will be updated automatically, however you can click on "Refresh List" for a more accurate result. It will display the "Goal Time" (see 1.) in total and separately by the segments. In addition, it displays the best possible time, you can compare to this. So, if you want to beat a certain pb-time, you can also adjust the setting "Time difference" for this, to shift the Goal PB Time what you want.
 
 ## Display Settings (Tab 3)
-![Method1](/PBChance/images/PBChance Settings 1.4.2 P3.png)
+![Method1](/PBChance/images/PBChance%20Settings%201.4.2%20P3.png)
 
 1. Display Options
 1.1 Update automatically every # seconds when the chance drops
@@ -104,8 +104,6 @@ When you are online, you can check for the newest version. If a newer version is
 
 <a href="https://ibb.co/byjJzq"><img src="https://thumb.ibb.co/byjJzq/PBChance-Settings4.png" alt="PBChance-Settings4" border="0"></a>
 [The component in action](https://ibb.co/byjJzq)
-
-<a href="https://ibb.co/XSp77tP"><img src="https://i.ibb.co/XSp77tP/PBChance-Settings8.png" alt="PBChance-Settings8" border="0" /></a>[The configuration screen](https://ibb.co/XSp77tP)
 
 <a href="https://ibb.co/bBt2mF2"><img src="https://i.ibb.co/bBt2mF2/PBChance-Overview2.png" alt="PBChance-Overview2" border="0"></a>[Overview](https://ibb.co/bBt2mF2)
                                                                                                                                       
