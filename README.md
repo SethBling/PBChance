@@ -2,11 +2,10 @@
 PBChance Component for LiveSplit. It displays the chance of obtaining a PB on your current run. Whenever you reset, split or the run becomes slow, it runs a variable number (1,000,000 recommended) of simulations by randomly drawing the remaining splits from your splits in previous attempts and computes how many of those would result in a PB.
 
 ![Title](/PBChance/images/PBChance%20Title.png)
-![PBChance.dll](/PBChance.dll)
 
 ## Installation
 
-1. Download PBChance.dll, and place it into the Components directory of your LiveSplit installation.
+1. Download ![PBChance.dll](/PBChance.dll) and place it into the Components directory of your LiveSplit installation.
 2. Open LiveSplit. Right click -> Edit Layout -> [Giant "+" Button] -> Information -> PB Chance
 3. Read below for general, PB pace and display settings.
 4. Speedrun!
