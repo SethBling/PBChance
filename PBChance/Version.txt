@@ -1,4 +1,4 @@
-1.4.2            -
+1.4.2             
 Update Notes V1.4.2 (2019-06-01)
 
 1. An extra goal can be specified for the PB pace. Use it, if you want to PB a better time,
