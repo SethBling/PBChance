@@ -19,7 +19,7 @@ PBChance Component for LiveSplit. It displays the chance of obtaining a PB on yo
 5. Check for the latest version and download it. Directly in the settings window.
 
 ## General Settings (Tab 1)
-![Method1](/PBChance/images/PBChance%20Settings%201.4.2%20P1.png)
+![Settings1](/PBChance/images/PBChance%20Settings%201.4.2%20P1.png)
 
 1. Number of attempts used
    1. You can configure how many of your most recent attempts will be used to calculate the PB chance. Go to Layout Settings and click on the PB Chance tab. You can either have it use a percentage of your most recent attempts, or just a fixed number of your most recent attempts. Valid values: 1-99,999 Suggestion: 50 attempts on runs > 2h, 100 attempts on runs < 1h.
@@ -50,7 +50,7 @@ If the value is above 0, the best time will be added once for each segment, rega
 Hint: The displaying chance on the start should be realistic. You can try with these settings to optimize the chance estimation. Keep in mind the chance will automatically grow up if you play better. Generate and open the text file pbchance_debug.txt (recommended a fixed font like currier) for understanding the calculation of PBChance. It is also recommended to read the overview picture below.
 
 ## PB Pace Settings (Tab 2)
-![Method1](/PBChance/images/PBChance%20Settings%201.4.2%20P2c.png)
+![Settings2](/PBChance/images/PBChance%20Settings%201.4.2%20P2c.png)
 
 1. Display Pace to PB
 "Pace to PB" is defined as the average segment time, for all successfully simulated runs. So it displays a good, typical segment/split time, if it is on PB pace. It's not a static information, so if a pb isn't possible, it can't display, and if it's only barely possible, the times will be going harder to beat.
@@ -69,7 +69,7 @@ You can make a data-table of a complete run based on (1.). Go into the settings 
 Faster/Extra Goal/Total. Faster means the number of successful runs, Extra Goal means the same, but considering the setting in (4.), Total is the sample size.
 
 ## Display Settings (Tab 3)
-![Method1](/PBChance/images/PBChance%20Settings%201.4.2%20P3.png)
+![Settings3](/PBChance/images/PBChance%20Settings%201.4.2%20P3.png)
 
 1. Display Options
    1. Update automatically every # seconds when the chance drops
