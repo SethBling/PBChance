@@ -65,9 +65,10 @@ The number of digits for a pace can be specified between 0-3 (1 second up to 1-m
 6. Refresh list
 Check in the table for "total" - this is the sample size. This information can be used to know the information in the table is complete. If not, the sample size to low, click on "Refresh List". Every time, you change a setting, the list will be automatically quick-updated, for a fast response, but not the whole sample size. After the calculation is complete - it takes about one second after a change in the settings - the results will no longer be changed when clicking on "refresh list" twice or more.
 7. Data table
-You can make a data-table of a complete run based on (1.). It will display the "Goal Time" (see 4.) in total and separately by the segments. In addition, it displays the best possible time, you can compare to this. So, if you want to beat a certain pb-time, you can also adjust the setting "Time difference" for this, to shift the Goal PB Time what you want.
-8. Faster/Extra Goal/Total.
-Faster means the number of successful runs, Extra Goal means the same, but considering the setting in (4.), Total is the sample size.
+You can make a data-table of a complete run based on a PB pace. It displays the average PB pace (Avg Pace), worst PB pace (Worst Pace), and the best pace (Best). It displays the total Time in third row, following by all segment details. You can compare between the columns. If you want to beat a certain pb-time, you can adjust the setting "goal time", to shift it (time difference in the debugging settings will also work and can be shift in both directions). The first two rows are specials and have nothing to do with the column names. The first row is descriped as "Faster/Extra Goal/Total". Faster means the number of successful runs, Extra Goal means the same, but considering the setting in (4.), Total is the sample size. The seconds row is descriped as "PB regular/Extra Goal". It displays the regular PB chance, and the PB chance including the extra goal, descriped in (4.).
+
+In addition, it displays the best possible time, you can compare to this. So, if you want to beat a certain pb-time, you can also adjust the setting "Time difference" for this, to shift the Goal PB Time what you want. 
+
 
 ## Display Settings (Tab 3)
 ![Settings3](/PBChance/images/PBChance%20Settings%201.4.2%20P3.png)
