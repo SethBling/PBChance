@@ -25,7 +25,7 @@ PBChance Component for LiveSplit. It displays the chance of obtaining a PB on yo
    1. You can configure how many of your most recent attempts will be used to calculate the PB chance. Go to Layout Settings and click on the PB Chance tab. You can either have it use a percentage of your most recent attempts, or just a fixed number of your most recent attempts. Valid values: 1-99,999 Suggestion: 50 attempts on runs > 2h, 100 attempts on runs < 1h.
    2. Consider at least # times per segment
 This will fill up times, if there are not enough because of the Setting "Use the most recent [x] attempts."
-Valid values: 1-99,999 Suggestion: about 1/3 of the number of attempts. Checkbox: Also include failed segments. It will consider all intervening failes. Otherwise, only the additional times are considered. The chance is lower when it's activated.
+Valid values: 1-99,999 Suggestion: about 1/3 of the number of attempts. Checkbox: Also include failed segments. It will consider all intervening failes. Otherwise, only the additional times are considered. The chance is lower when it's activated. Suggestion: activated
 
 2. Sample Size
    1. Random sample survey # combinations
