@@ -22,22 +22,21 @@ PBChance Component for LiveSplit. It displays the chance of obtaining a PB on yo
 ![Method1](/PBChance/images/PBChance%20Settings%201.4.2%20P1.png)
 
 1. Number of attempts used
-   1. You can configure how many of your most recent attempts will be used to calculate the PB chance. Go to Layout Settings and click on the PB Chance tab. You can either have it use a percentage of your most recent attempts, or just a fixed number of your most recent attempts. Suggestion: 50 attempts on runs > 2h, 100 attempts on runs < 1h.
+   1. You can configure how many of your most recent attempts will be used to calculate the PB chance. Go to Layout Settings and click on the PB Chance tab. You can either have it use a percentage of your most recent attempts, or just a fixed number of your most recent attempts. Valid values: 1-99,999 Suggestion: 50 attempts on runs > 2h, 100 attempts on runs < 1h.
    2. Consider at least # times per segment
 This will fill up times, if there are not enough because of the Setting "Use the most recent [x] attempts."
-Valid values: 1-999 Suggestion: about 1/3 of the number of attempts. Checkbox: Also include failed segments. It will consider all intervening failes. Otherwise, only the additional times are considered. The chance is lower when it's activated.
+Valid values: 1-99,999 Suggestion: about 1/3 of the number of attempts. Checkbox: Also include failed segments. It will consider all intervening failes. Otherwise, only the additional times are considered. The chance is lower when it's activated.
 
 2. Sample Size
    1. Random sample survey # combinations
-The number of calculations. A lower number will calculate faster, a higher number gives a more stable result.
-Valid values: 1-999,999 Suggestion: at least 100,000
+The minimum number of simulated runs. A lower number will calculate faster, a higher number gives a more stable result. However, it will calculate at least 900ms by default, so on most cases the sample size is already more than a million (check "Actual Sample size"). Valid values: 1-9,999,999 Suggestion: around 1,000,000
 
 3. Settings affect the PB Chance
    1. Penalty on failures # seconds
 For each discontinued run, a failed segment will be generated. It's added every time to a simulated run, if a failed segment is selected. Valid values: 0-999 Suggestion: Start with 30. Should be set to a higher value if the reason for an interruption is essentially significant errors in a single segment (and lower in the opposite case). Can be also set to 0, if "Display survival chance" is set. In that case, multiply these two numbers will result in a chance, same as an infinite malus.
    2. Max fails #, then the penality is infinite
 If a simulated run contains more then # fails, the whole run is considered as a fail.
-The number of selecting a failure in a simulated run can be limited now. If it is set to 1, only the first time the penalty time will be added. If a failed segment will be selected two times, the simulated run will be count as a failure, no matter how good it would be. In addition, if it's set to a low number, the number of combinations per second will increase significantly by two to three times. Suggestion: 1
+The number of selecting a failure in a simulated run can be limited now. If it is set to 1, only the first time the penalty time will be added. If a failed segment will be selected two times, the simulated run will be count as a failure, no matter how good it would be. In addition, if it's set to a low number, the number of combinations per second will increase significantly by two to three times. Valid values: 0-999 Suggestion: 1
    3. Only consider segments, which are faster than {bestSegment[s] x # percent}
 Very slow segment times will be eliminated. Should set to a number, which is clearly too slow for a normal run. Should be checked with the debug file (clipped segments), for the correct setting and result.
 Valid values: 100-999 Suggestion: 150-200
