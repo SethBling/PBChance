@@ -48,6 +48,8 @@ Valid values: 0-100 Suggestion: 100
 Valid values: 0-100. Suggestion: about 25
 If the value is above 0, the best time will be added once for each segment, regardless of other settings. The larger the set value, the more often the best time will be selected. Point 8. is relevant for this. Then there is always a chance, if the remaining best time is faster than the Pb time, even a few runs are selected. Can be adjusted to optimize the chance estimation.
 
+Hint: The displaying chance on the start should be realistic. You can try with these settings to optimize the chance estimation. Keep in mind the chance will automatically grow up if you play better. Generate and open the text file pbchance_debug.txt (recommended a fixed font like currier) for understanding the calculation of PBChance. It is also recommended to read the overview picture below.
+
 ## PB Pace Settings (Tab 2)
 ![Method1](/PBChance/images/PBChance%20Settings%201.4.2%20P2c.png)
 
@@ -83,9 +85,21 @@ This will display in addition two percent numbers. The first number is the chanc
    5. Display standard deviation
 Formula: Root of the sum of the square difference of actual segment time to average segment time.
    6. Display every # seconds a random information for # seconds.
-It will display a randomly chosen information (Remaining Combinations/Sample Size/Survive in this Segment/Survive to the End/Standard Deviation/Average Difference to Best/Until here have Survived/Combinations per Second) at periodic intervals. For example, you can set to display every 60s the information for 10s. Then, it will start to display at 0:00:30 until 0:00:40, next will be 0:01:30 - 0:01:40 etc. Alternatively, you can set it to every 0s, then it will display a information once per segment (in the middle). For example, display every 0 seconds ... for 10 seconds, and the best segment time is 2:00, then it will display between 0:55 and 1:05 in this segment. In any case it will stop to display, if the chance is decreasing, and between splits with a gap of 10 seconds.
-
-Hint: The displaying chance on the start should be realistic. You can try with these settings to optimize the chance estimation. Keep in mind the chance will automatically grow up if you play better. Generate and open the text file pbchance_debug.txt (recommended a fixed font like currier) for understanding the calculation of PBChance. It is also recommended to read the overview picture below.
+It will display a randomly chosen information (Remaining Combinations/Sample Size/Survive in this Segment/Survive to the End/Standard Deviation/Average Difference to Best/Until here have Survived/Combinations per Second) at periodic intervals. For example, you can set to display every 60s the information for 10s. Then, it will start to display at 0:00:30 until 0:00:40, next will be 0:01:30 - 0:01:40 etc. Alternatively, you can set it to every 0s, then it will display a information once per segment (in the middle). For example, display every 0 seconds ... for 10 seconds, and the best segment time is 2:00, then it will display between 0:55 and 1:05 in this segment. In any case it will stop to display, if the chance is decreasing, and between splits with a gap of 10 seconds. It displays one of following informations:
+      1. Remaining Combinations
+      2. Sample Size
+      3. Survival in this Segment
+      4. Survival to the End
+      5. Standard Deviation
+      6. Average Difference to Best
+      7. Until here have Survived
+      8. Combinations per Second
+      9. Worth to continue
+      10. Run is currently
+      11. Pace to PB
+      12. Avg Dif to Best (All/Suc)
+      13. Worst Pace to PB
+      14. Avg/Worst Pace to PB
 
 2. Debugging settings (should be 0 during regular runs)
    1. Time difference # seconds
