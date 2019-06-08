@@ -85,15 +85,15 @@ It will display a randomly chosen information (Remaining Combinations/Sample Siz
 Hint: The displaying chance on the start should be realistic. You can try with these settings to optimize the chance estimation. Keep in mind the chance will automatically grow up if you play better. Generate and open the text file pbchance_debug.txt (recommended a fixed font like currier) for understanding the calculation of PBChance. It is also recommended to read the overview picture below.
 
 2. Debugging settings (should be 0 during regular runs)
-   2.1 Time difference # seconds
+   1. Time difference # seconds
 This will simply add to the pb-time.
 Valid values: -86400-86400 (24h)
-   2.2 Skip the newest attempts #
+   2. Skip the newest attempts #
 To see how high the chance was before.
 Valid values: 0-99999
-   2.3 Only calc to segment #
+   3. Only calc to segment #
 The calculation will stop at segment #, if it's not set to 0.
-   2.4 Generate Debug File
+   4. Generate Debug File
 This will generate a debug file "pbchance_debug.txt", and will be saved in your LiveSplit folder. You can open it with any text editor. See Features 4. for more information.
 
 ## Check New Version
