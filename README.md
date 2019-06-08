@@ -29,7 +29,7 @@ Valid values: 1-99,999 Suggestion: about 1/3 of the number of attempts. Checkbox
 
 2. Sample Size
    1. Random sample survey # combinations
-The minimum number of simulated runs. A lower number will calculate faster, a higher number gives a more stable result. However, it will calculate at least 900ms by default, so on most cases the sample size is already more than a million (check "Actual Sample size"). Valid values: 1-9,999,999 Suggestion: around 1,000,000
+The minimum number of simulated runs. A lower number will calculates the result faster, a higher number gives a more stable result. However, it will calculate at least 900ms by default, so on most cases the sample size is already more than a million (check "Actual Sample size"). Valid values: 1-9,999,999 Suggestion: around 1,000,000
 
 3. Settings affect the PB Chance
    1. Penalty on failures # seconds
