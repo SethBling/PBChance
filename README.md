@@ -46,7 +46,7 @@ Valid values: 100-999 Suggestion: 150-200
 Valid values: 0-100 Suggestion: 100
    5. Add the best time for each segment
    Valid values: 0-100. Suggestion: about 25
-If the value is above 0, the best time will be added once for each segment, regardless of other settings. The larger the set value, the more often the best time will be selected. Point 4. is relevant for this. Then there is always a chance, if the remaining best time is faster than the PB time, in particular a few runs are selected. Can be adjusted to optimize the chance estimation.
+If the value is above 0, the best time will be added once for each segment, regardless of other settings. The larger the set value, the more often the best time will be selected. Point IV is relevant for this. Then there is always a chance, if the remaining best time is faster than the PB time, in particular a few runs are selected. Can be adjusted to optimize the chance estimation.
 
 Hint: The displaying chance on the start should be realistic. You can try with these settings to optimize the chance estimation. Keep in mind the chance will automatically grow up if you play better. Generate and open the text file pbchance_debug.txt (recommended a fixed font like currier) for understanding the calculation of PBChance. It is also recommended to read the overview picture below.
 
