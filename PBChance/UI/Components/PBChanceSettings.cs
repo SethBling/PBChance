@@ -36,6 +36,15 @@ namespace PBChance.UI.Components
         public bool bInfoNext { get; set; }
         public bool bConsiderFails { get; set; }
 
+        public bool bDispGoodPace { get; set; }
+        public bool bGoodPaceTotal { get; set; }
+        public bool bPaceWorst { get; set; }
+        public int iMalusMax { get; set; }
+        public int iPaceExtraGoalMS { get; set; }
+        public int iPaceDigits { get; set; }
+        
+        public System.Data.DataTable DataGridViewV { get; set; }
+
         public Boolean bSurvival { get; set; }
         public Boolean bIgnoreSkipClip { get; set; }
         public Boolean bDeviation { get; set; }
@@ -62,8 +71,8 @@ namespace PBChance.UI.Components
             MalusCount = 30;
             SplitclipCount = 150;
             TimediffCount = 0;
-            SamplesCount = 100000;
-            iCalctime = 500;
+            SamplesCount = 250000;
+            iCalctime = 900;
             bSurvival = false;
             bDebug = false;
             iOptimistic = 0;
@@ -78,9 +87,15 @@ namespace PBChance.UI.Components
             bConsiderFails = true;
             bIgnoreSkipClip = true;
             iRndInfoEvery = 0; // once per segment, in the middle (e.g. Best Segment Time=2:00, for 10 seconds, it will display between 0:55-1:05)
-            iRndInfoFor = 10;
+            iRndInfoFor = 12;
             iAddBest = 1;
-
+            bDispGoodPace = true;
+            bGoodPaceTotal = false;
+            iMalusMax = 1;
+            iPaceExtraGoalMS = 0;
+            bPaceWorst = false;
+            iPaceDigits = 1;
+            
             rdoPercentAttempt.DataBindings.Add("Checked", this, "UsePercentOfAttempts", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             rdoAbsAttempt.DataBindings.Add("Checked", this, "UseFixedAttempts", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             //rdoPercentAttempt.DataBindings.Add("Checked", this, "UsePercentOfAttempts", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
@@ -114,7 +129,14 @@ namespace PBChance.UI.Components
             chkConsiderFails.DataBindings.Add("Checked", this, "bConsiderFails", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
 
             AddBestCountBox.DataBindings.Add("Value", this, "iAddBest", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
-            
+            chkDispGoodPace.DataBindings.Add("Checked", this, "bDispGoodPace", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+            chkGoodPaceTotal.DataBindings.Add("Checked", this, "bGoodPaceTotal", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+
+            chkPaceWorst.DataBindings.Add("Checked", this, "bPaceWorst", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+            PaceExtraGoalMSCountBox.DataBindings.Add("Value", this, "iPaceExtraGoalMS", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+            PaceDigitsCountBox.DataBindings.Add("Value", this, "iPaceDigits", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+            MalusMaxCountBox.DataBindings.Add("Value", this, "iMalusMax", false, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+
             UseFixedAttempts = !UsePercentOfAttempts;
             UsePercentOfAttempts = !UseFixedAttempts;
         }
@@ -122,6 +144,7 @@ namespace PBChance.UI.Components
         private void OnSettingChanged(object sender, BindingCompleteEventArgs e)
         {
             SettingChanged?.Invoke(this, e);
+            updateDataTable(true);
         }
 
         public LayoutMode Mode { get; internal set; }
@@ -159,6 +182,12 @@ namespace PBChance.UI.Components
                 SettingsHelper.CreateSetting(document, parent, "RndInfoEveryCountBox", iRndInfoEvery) ^
                 SettingsHelper.CreateSetting(document, parent, "RndInfoForCountBox", iRndInfoFor) ^
                 SettingsHelper.CreateSetting(document, parent, "chkConsiderFails", bConsiderFails) ^
+                SettingsHelper.CreateSetting(document, parent, "bDispGoodPace", bDispGoodPace) ^
+                SettingsHelper.CreateSetting(document, parent, "bGoodPaceTotal", bGoodPaceTotal) ^
+                SettingsHelper.CreateSetting(document, parent, "chkPaceWorst", bPaceWorst) ^
+                SettingsHelper.CreateSetting(document, parent, "PaceExtraGoalMSCountBox", iPaceExtraGoalMS) ^
+                SettingsHelper.CreateSetting(document, parent, "MalusMaxCountBox", iMalusMax) ^
+                SettingsHelper.CreateSetting(document, parent, "PaceDigitsCountBox", iPaceDigits) ^
                 SettingsHelper.CreateSetting(document, parent, "iSplitsvalue", iSplitsvalue);
         }
 
@@ -190,6 +219,12 @@ namespace PBChance.UI.Components
             iRndInfoEvery        = SettingsHelper.ParseInt (settings["RndInfoEveryCountBox"]);
             iRndInfoFor          = SettingsHelper.ParseInt (settings["RndInfoForCountBox"]);
             bConsiderFails       = SettingsHelper.ParseBool(settings["chkConsiderFails"]);
+            iPaceExtraGoalMS     = SettingsHelper.ParseInt (settings["PaceExtraGoalMSCountBox"]);
+            iMalusMax            = SettingsHelper.ParseInt (settings["MalusMaxCountBox"]);
+            iPaceDigits          = SettingsHelper.ParseInt (settings["PaceDigitsCountBox"]);
+            bPaceWorst           = SettingsHelper.ParseBool(settings["chkPaceWorst"]);
+            bDispGoodPace        = SettingsHelper.ParseBool(settings["bDispGoodPace"]);
+            bGoodPaceTotal       = SettingsHelper.ParseBool(settings["bGoodPaceTotal"]);
         }
 
         private void btnDebug_Click(object sender, EventArgs e)
@@ -220,12 +255,12 @@ namespace PBChance.UI.Components
             {
                 string sVersion = wc.DownloadString("https://github.com/kasi777/PBChance/raw/master/PBChance/Version.txt");
 
-                if (sVersion.Remove(5, sVersion.Length - 5) != "1.3.9")
+                if (sVersion.Remove(10, sVersion.Length - 10) != "1.4.2     ")
                 {
                     wc.DownloadFile("https://github.com/kasi777/PBChance/raw/master/PBChance.dll", "PBChance.dll");
-                    MessageBox.Show("New Version available: Installed: 1.3.9, Available: " + sVersion.Remove(5, sVersion.Length - 5) + 
+                    MessageBox.Show("New Version available: Installed: 1.4.2, Available: " + sVersion.Remove(10, sVersion.Length - 10) + 
                         "\n\r\n\rPBChance.dll is already downloaded into your LiveSplit directory. Move it into the Components directory to install it.\n\r\n\r" +
-                        sVersion.Remove(0,5) + "\n\r\n\rhttps://github.com/kasi777/PBChance");
+                        sVersion.Remove(0,10) + "\n\r\n\rhttps://github.com/kasi777/PBChance");
                 }
                 else
                     MessageBox.Show("PBChance is already up to date. \n\r\n\rhttps://github.com/kasi777/PBChance");
@@ -236,9 +271,69 @@ namespace PBChance.UI.Components
             }
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void btnUpdList_Click(object sender, EventArgs e)
         {
+            updateDataTable(false);
+        }
 
+        private void updateDataTable(bool bStar)
+        {
+            dataGridView1.DataSource = DataGridViewV;
+            dataGridView1.Columns[0].Width = 143;
+            dataGridView1.Columns[1].Width = 80; // 77 min
+            dataGridView1.Columns[2].Width = 87; // 87 min
+            dataGridView1.Columns[3].Width = 80; // 73 min
+            if (DataGridViewV.Rows.Count > 2)
+            {
+                if (bStar) //(DataGridViewV.Rows[0][3].ToString() != this.lblSampleSize.Text.Remove(0, 13))
+                {
+                    this.lblSampleSize.Text = "Sample size: " + DataGridViewV.Rows[0][3] + " * ";
+                    this.lblFaster.Text = "Faster: " + DataGridViewV.Rows[0][1] + " * ";
+                    this.lblChance.Text = "Chance: " + (Convert.ToDouble(DataGridViewV.Rows[0][1]) / Convert.ToDouble(DataGridViewV.Rows[0][3])).ToString("0.000%") + "*";
+                }
+            }
+            else if (DataGridViewV.Rows.Count <= 2)
+            {
+                if (bStar)
+                {
+                    this.lblSampleSize.Text = "Sample size:" + DataGridViewV.Rows[0][1] + " * ";
+                    this.lblFaster.Text = "Faster: " + "0*";
+                    this.lblChance.Text = "Chance: " + "0%*";
+                }
+            }
+        }
+
+        public void viewUpdateDisplay()
+        {
+            if (DataGridViewV.Rows.Count > 2)
+            {
+                this.lblSampleSize.Text = "Sample size: " + DataGridViewV.Rows[0][3];
+                this.lblFaster.Text = "Faster: " + DataGridViewV.Rows[0][1];
+                this.lblChance.Text = "Chance: " + (Convert.ToDouble(DataGridViewV.Rows[0][1]) / Convert.ToDouble(DataGridViewV.Rows[0][3])).ToString("0.000%");
+            }
+            else
+            {
+                this.lblSampleSize.Text = "Sample size:" + DataGridViewV.Rows[0][1];
+                this.lblFaster.Text = "Faster: " + "0";
+                this.lblChance.Text = "Chance: " + "0%";
+            }
+        }
+
+        //private void TabPages_Selected(Object sender, TabControlEventArgs e)
+        //{
+
+        //    System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+        //    messageBoxCS.AppendFormat("{0} = {1}", "TabPage", e.TabPage);
+        //    messageBoxCS.AppendLine();
+        //    messageBoxCS.AppendFormat("{0} = {1}", "TabPageIndex", e.TabPageIndex);
+        //    messageBoxCS.AppendLine();
+        //    messageBoxCS.AppendFormat("{0} = {1}", "Action", e.Action);
+        //    messageBoxCS.AppendLine();
+        //    MessageBox.Show(messageBoxCS.ToString(), "Selected Event");
+        //}
+        private void tabHistory_Enter(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = DataGridViewV;
         }
     }
 }
