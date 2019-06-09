@@ -1007,7 +1007,7 @@ InterruptedRunBecauseToMuchFailures:
             {
                 iRandom = random.Next(1, 14);
                 if (random.Next(1, 20) == 7)
-                    iRandom = 10; // 5% chance
+                    iRandom = 20; // 5% chance
             }
                 //iRandom = 7;
 
