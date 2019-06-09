@@ -82,7 +82,7 @@ The first number is the difference of average split time and the best split time
    4. Display survival chance
 This will display in addition two percent numbers. The first number is the chance to survive on actual segment, the second number is the chance to survive to the end. It considers the settings "Use most recent...attempts" and "Consider at least...attempts".
    5. Display standard deviation
-Formula: Root of the sum of the square difference of actual segment time to average segment time.
+Formula: Root of the average sum of the square difference of actual segment time to average segment time.
    6. Display every # seconds a random information for # seconds.
 It will display a randomly chosen information at periodic intervals. For example, you can set to display every 60s the information for 10s. Then, it will start to display at 0:00:30 until 0:00:40, next will be 0:01:30 - 0:01:40 etc. Alternatively, you can set it to every 0s, then it will display a information once per segment (in the middle). For example, display every 0 seconds ... for 10 seconds, and the best segment time is 2:00, then it will display between 0:55 and 1:05 in this segment. In any case it will stop to display, if the chance is decreasing, and between splits with a gap of 10 seconds. It displays one of the following informations:
       1. Remaining Combinations
