@@ -39,7 +39,7 @@ For each discontinued run, a failed segment will be generated. It's added every 
 If a simulated run contains more then # fails, the whole run is considered as a fail.
 The number of selecting a failure in a simulated run can be limited now. If it is set to 1, only the first time the penalty time will be added. If a failed segment will be selected two times, the simulated run will be count as a failure, no matter how good it would be. In addition, if it's set to a low number, the number of combinations per second will increase significantly by two to three times. Valid values: 0-999 Suggestion: 1
    3. Only consider segments, which are faster than {bestSegment[s] x # percent}
-Very slow segment times will be eliminated. Should set to a number, which is clearly too slow for a normal run. Should be checked with the debug file (clipped segments), for the correct setting and result.
+Very slow segment times will be eliminated. Should set to a number, which is clearly too slow for a normal run. Should be checked with the debug file (clipped segments), for the correct setting and result. Keep in mind, the failed runs will be kept.
 Valid values: 100-999 Suggestion: 150-200
    4. Newer segment times are more important than old ones
 Newer attempts will be selected more often during a simulated run.
