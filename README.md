@@ -30,23 +30,23 @@ Valid values: 1-99,999 Suggestion: about 1/3 of the number of attempts. Checkbox
 
 2. Sample Size
    1. Random sample survey # combinations
-The minimum number of simulated runs. A lower number will calculates the result faster, a higher number gives a more stable result. However, it will calculate at least 900ms by default, so on most cases the sample size is already more than a million (check "Actual Sample size"). Valid values: 1-9,999,999 Suggestion: around 1,000,000
+   The minimum number of simulated runs. A lower number will calculate the result faster, a higher number gives a more stable result. However, it will calculate at least 900ms by default, so in most cases, the sample size is already more than a million (check "Actual Sample size"). Valid values: 1-9,999,999 Suggestion: around 1,000,000
 
 3. Settings affect the PB Chance
    1. Penalty on failures # seconds
-For each discontinued run, a failed segment will be generated. It's added every time to a simulated run, if a failed segment is selected. Valid values: 0-999 Suggestion: Start with 30. Should be set to a higher value if the reason for an interruption is essentially significant errors in a single segment (and lower in the opposite case). Can be also set to 0, if "Display survival chance" is set. In that case, multiply these two numbers will result in a chance, same as an infinite malus.
-   2. Max fails #, then the penality is infinite
-If a simulated run contains more then # fails, the whole run is considered as a fail.
+   For each discontinued run, a failed segment will be generated. It's added every time to a simulated run, if a failed segment is selected. Valid values: 0-999 Suggestion: Start with 30. Should be set to a higher value if the reason for an interruption is essentially significant errors in a single segment (and lower in the opposite case). Can be also set to 0, if "Display survival chance" is set. In that case, multiply these two numbers will result in a chance, the same as an infinite penalty.
+   2. Max fails #, then the penalty is infinite
+   If a simulated run contains more then # fails, the whole run is considered as a fail.
 The number of selecting a failure in a simulated run can be limited now. If it is set to 1, only the first time the penalty time will be added. If a failed segment will be selected two times, the simulated run will be count as a failure, no matter how good it would be. In addition, if it's set to a low number, the number of combinations per second will increase significantly by two to three times. Valid values: 0-999 Suggestion: 1
    3. Only consider segments, which are faster than {bestSegment[s] x # percent}
-Very slow segment times will be eliminated. Should set to a number, which is clearly too slow for a normal run. Should be checked with the debug file (clipped segments), for the correct setting and result. Keep in mind, the failed runs will be kept.
+   Very slow segment times will be eliminated. Should set to a number, which is clearly too slow for a normal run. Should be checked with the debug file (clipped segments), for the correct setting and result. Keep in mind, the failed runs will be kept.
 Valid values: 100-999 Suggestion: 150-200
    4. Newer segment times are more important than old ones
-Newer attempts will be selected more often during a simulated run. This calculation is much faster when set to exactly 100.
+   Newer attempts will be selected more often during a simulated run. This calculation is much faster when setting to exactly 100.
 Valid values: 0-100 Suggestion: 100
    5. Add the best time for each segment
-Valid values: 0-100. Suggestion: about 25
-If the value is above 0, the best time will be added once for each segment, regardless of other settings. The larger the set value, the more often the best time will be selected. Point 8. is relevant for this. Then there is always a chance, if the remaining best time is faster than the Pb time, even a few runs are selected. Can be adjusted to optimize the chance estimation.
+   Valid values: 0-100. Suggestion: about 25
+If the value is above 0, the best time will be added once for each segment, regardless of other settings. The larger the set value, the more often the best time will be selected. Point 4. is relevant for this. Then there is always a chance, if the remaining best time is faster than the PB time, in particular a few runs are selected. Can be adjusted to optimize the chance estimation.
 
 Hint: The displaying chance on the start should be realistic. You can try with these settings to optimize the chance estimation. Keep in mind the chance will automatically grow up if you play better. Generate and open the text file pbchance_debug.txt (recommended a fixed font like currier) for understanding the calculation of PBChance. It is also recommended to read the overview picture below.
 
@@ -66,7 +66,7 @@ The number of digits for a pace can be specified between 0-3 (1 second up to 1-m
 6. Refresh list
 Check in the table for "total" - this is the sample size. This information can be used to know the information in the table is complete. If not, the sample size to low, click on "Refresh List". Every time, you change a setting, the list will be automatically quick-updated, for a fast response, but not the whole sample size. After the calculation is complete - it takes about one second after a change in the settings - the results will no longer be changed when clicking on "refresh list" twice or more.
 7. Data table
-You can make a data-table of a complete run based on a PB pace. It displays the average PB pace (Avg Pace), worst PB pace (Worst Pace), and the best pace (Best). It displays the total Time in third row, following by all segment details. You can compare between the columns. If you want to beat a certain pb-time, you can adjust the setting "goal time", to shift it (time difference in the debugging settings will also work and can be shift in both directions). The first two rows are specials and have nothing to do with the column names. The first row is descriped as "Faster/Extra Goal/Total". Faster means the number of successful runs, Extra Goal means the same, but considering the setting in (4.), Total is the sample size. The seconds row is descriped as "PB regular/Extra Goal". It displays the regular PB chance, and the PB chance including the extra goal, descriped in (4.).
+You can make a data-table of a complete run based on a PB pace. It displays the average PB pace (Avg Pace), worst PB pace (Worst Pace), and the best pace (Best). It displays the total Time in third row, following by all segment details. You can compare between the columns. If you want to beat a certain pb-time, you can adjust the setting "goal time", to shift it (time difference in the debugging settings will also work and can be shift in both directions). The first two rows are specials and have nothing to do with the column names. The first row is described as "Faster/Extra Goal/Total". Faster means the number of successful runs, Extra Goal means the same, but considering the setting in (4.), Total is the sample size. The second row is described as "PB regular/Extra Goal". It displays the regular PB chance, and the PB chance including the extra goal, described in (4.).
 
 In addition, it displays the best possible time, you can compare to this. So, if you want to beat a certain pb-time, you can also adjust the setting "Time difference" for this, to shift the Goal PB Time what you want. 
 
@@ -87,7 +87,7 @@ This will display in addition two percent numbers. The first number is the chanc
    5. Display standard deviation
 Formula: Root of the sum of the square difference of actual segment time to average segment time.
    6. Display every # seconds a random information for # seconds.
-It will display a randomly chosen information at periodic intervals. For example, you can set to display every 60s the information for 10s. Then, it will start to display at 0:00:30 until 0:00:40, next will be 0:01:30 - 0:01:40 etc. Alternatively, you can set it to every 0s, then it will display a information once per segment (in the middle). For example, display every 0 seconds ... for 10 seconds, and the best segment time is 2:00, then it will display between 0:55 and 1:05 in this segment. In any case it will stop to display, if the chance is decreasing, and between splits with a gap of 10 seconds. It displays one of following informations:
+It will display a randomly chosen information at periodic intervals. For example, you can set to display every 60s the information for 10s. Then, it will start to display at 0:00:30 until 0:00:40, next will be 0:01:30 - 0:01:40 etc. Alternatively, you can set it to every 0s, then it will display a information once per segment (in the middle). For example, display every 0 seconds ... for 10 seconds, and the best segment time is 2:00, then it will display between 0:55 and 1:05 in this segment. In any case it will stop to display, if the chance is decreasing, and between splits with a gap of 10 seconds. It displays one of the following informations:
       1. Remaining Combinations
       2. Sample Size
       3. Survival in this Segment
