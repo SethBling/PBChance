@@ -42,7 +42,7 @@ The number of selecting a failure in a simulated run can be limited now. If it i
 Very slow segment times will be eliminated. Should set to a number, which is clearly too slow for a normal run. Should be checked with the debug file (clipped segments), for the correct setting and result. Keep in mind, the failed runs will be kept.
 Valid values: 100-999 Suggestion: 150-200
    4. Newer segment times are more important than old ones
-Newer attempts will be selected more often during a simulated run.
+Newer attempts will be selected more often during a simulated run. This calculation is much faster when set to exactly 100.
 Valid values: 0-100 Suggestion: 100
    5. Add the best time for each segment
 Valid values: 0-100. Suggestion: about 25
