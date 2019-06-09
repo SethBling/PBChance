@@ -14,9 +14,10 @@ PBChance Component for LiveSplit. It displays the chance of obtaining a PB on yo
 
 1. The calculation will perform in the background in an own thread. Even if the number of calculations is set to a high number, LiveSplit will not be interrupted during the calculation.
 2. Autoupdate. The chance will be automatically updated if the chance drops during the run.
-3. Additional informations can be displayed continuously or periodically.
-4. Debug file. To retrace the calculation. This includes: Header data, Failed Runs, clipped segment, added times, count of times per segment, first generated route, results of first 10 successfully runs and 10 failures if possible, the results, the detailed segment times/chance of selection, the execution time and the number of possible combinations.
-5. Check for the latest version and download it. Directly in the settings window.
+3. The calculation of a typical PB pace.
+4. Additional informations can be displayed continuously or periodically.
+5. Debug file. To retrace the calculation. This includes: Header data, Failed Runs, clipped segment, added times, count of times per segment, first generated route, results of first 10 successfully runs and 10 failures if possible, the results, the detailed segment times/chance of selection, the execution time and the number of possible combinations.
+6. Check for the latest version and download it. Directly in the settings window.
 
 ## General Settings (Tab 1)
 ![Settings1](/PBChance/images/PBChance%20Settings%201.4.2%20P1.png)
