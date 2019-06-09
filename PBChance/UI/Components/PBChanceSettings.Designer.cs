@@ -30,7 +30,6 @@
         {
             this.RecentLabel = new System.Windows.Forms.Label();
             this.AttemptCountBox = new System.Windows.Forms.NumericUpDown();
-            this.CreditsLabel = new System.Windows.Forms.Label();
             this.DisplayOddsCheckbox = new System.Windows.Forms.CheckBox();
             this.IgnoreRunCountBox = new System.Windows.Forms.CheckBox();
             this.MalusCountBox = new System.Windows.Forms.NumericUpDown();
@@ -49,17 +48,14 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.SkipNewestCountBox = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.CalcToSplitUpDown = new System.Windows.Forms.NumericUpDown();
             this.label34 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.SamplesCountBox = new System.Windows.Forms.NumericUpDown();
             this.label15 = new System.Windows.Forms.Label();
@@ -81,7 +77,6 @@
             this.lblCalctime2 = new System.Windows.Forms.Label();
             this.lblCalctime1 = new System.Windows.Forms.Label();
             this.chkIgnoreSkipClip = new System.Windows.Forms.CheckBox();
-            this.label36 = new System.Windows.Forms.Label();
             this.chkDeviation = new System.Windows.Forms.CheckBox();
             this.chkInfoNext = new System.Windows.Forms.CheckBox();
             this.label37 = new System.Windows.Forms.Label();
@@ -97,6 +92,37 @@
             this.AddBestCountBox = new System.Windows.Forms.NumericUpDown();
             this.label38 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
+            this.btnUpdList = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.chkDispGoodPace = new System.Windows.Forms.CheckBox();
+            this.chkGoodPaceTotal = new System.Windows.Forms.CheckBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.chkPaceWorst = new System.Windows.Forms.CheckBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.PaceExtraGoalMSCountBox = new System.Windows.Forms.NumericUpDown();
+            this.label43 = new System.Windows.Forms.Label();
+            this.MalusMaxCountBox = new System.Windows.Forms.NumericUpDown();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.PaceDigitsCountBox = new System.Windows.Forms.NumericUpDown();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.tabPages = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblFaster = new System.Windows.Forms.Label();
+            this.lblSampleSize = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.lblChance = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AttemptCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MalusCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitclipCountBox)).BeginInit();
@@ -111,12 +137,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.RndInfoEveryCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RndInfoForCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddBestCountBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PaceExtraGoalMSCountBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MalusMaxCountBox)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PaceDigitsCountBox)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.tabPages.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // RecentLabel
             // 
             this.RecentLabel.AutoSize = true;
-            this.RecentLabel.Location = new System.Drawing.Point(14, 49);
+            this.RecentLabel.Location = new System.Drawing.Point(6, 35);
             this.RecentLabel.Name = "RecentLabel";
             this.RecentLabel.Size = new System.Drawing.Size(87, 13);
             this.RecentLabel.TabIndex = 1;
@@ -124,9 +164,9 @@
             // 
             // AttemptCountBox
             // 
-            this.AttemptCountBox.Location = new System.Drawing.Point(102, 42);
+            this.AttemptCountBox.Location = new System.Drawing.Point(94, 28);
             this.AttemptCountBox.Maximum = new decimal(new int[] {
-            9999,
+            99999,
             0,
             0,
             0});
@@ -136,7 +176,7 @@
             0,
             0});
             this.AttemptCountBox.Name = "AttemptCountBox";
-            this.AttemptCountBox.Size = new System.Drawing.Size(40, 20);
+            this.AttemptCountBox.Size = new System.Drawing.Size(52, 20);
             this.AttemptCountBox.TabIndex = 1;
             this.AttemptCountBox.Value = new decimal(new int[] {
             50,
@@ -144,21 +184,10 @@
             0,
             0});
             // 
-            // CreditsLabel
-            // 
-            this.CreditsLabel.AutoSize = true;
-            this.CreditsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreditsLabel.Location = new System.Drawing.Point(11, 18);
-            this.CreditsLabel.Name = "CreditsLabel";
-            this.CreditsLabel.Size = new System.Drawing.Size(146, 13);
-            this.CreditsLabel.TabIndex = 4;
-            this.CreditsLabel.Tag = "";
-            this.CreditsLabel.Text = "PBChance by SethBling*";
-            // 
             // DisplayOddsCheckbox
             // 
             this.DisplayOddsCheckbox.AutoSize = true;
-            this.DisplayOddsCheckbox.Location = new System.Drawing.Point(272, 38);
+            this.DisplayOddsCheckbox.Location = new System.Drawing.Point(277, 24);
             this.DisplayOddsCheckbox.Name = "DisplayOddsCheckbox";
             this.DisplayOddsCheckbox.Size = new System.Drawing.Size(123, 17);
             this.DisplayOddsCheckbox.TabIndex = 5;
@@ -168,7 +197,7 @@
             // IgnoreRunCountBox
             // 
             this.IgnoreRunCountBox.AutoSize = true;
-            this.IgnoreRunCountBox.Location = new System.Drawing.Point(272, 56);
+            this.IgnoreRunCountBox.Location = new System.Drawing.Point(277, 42);
             this.IgnoreRunCountBox.Name = "IgnoreRunCountBox";
             this.IgnoreRunCountBox.Size = new System.Drawing.Size(81, 17);
             this.IgnoreRunCountBox.TabIndex = 6;
@@ -177,7 +206,7 @@
             // 
             // MalusCountBox
             // 
-            this.MalusCountBox.Location = new System.Drawing.Point(102, 263);
+            this.MalusCountBox.Location = new System.Drawing.Point(105, 27);
             this.MalusCountBox.Maximum = new decimal(new int[] {
             999,
             0,
@@ -199,7 +228,7 @@
             0,
             0,
             0});
-            this.SplitclipCountBox.Location = new System.Drawing.Point(314, 426);
+            this.SplitclipCountBox.Location = new System.Drawing.Point(306, 75);
             this.SplitclipCountBox.Maximum = new decimal(new int[] {
             999,
             0,
@@ -222,16 +251,16 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 270);
+            this.label3.Location = new System.Drawing.Point(6, 34);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 13);
+            this.label3.Size = new System.Drawing.Size(93, 13);
             this.label3.TabIndex = 11;
-            this.label3.Text = "Malus on failures";
+            this.label3.Text = "Penalty on failures";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(148, 270);
+            this.label4.Location = new System.Drawing.Point(151, 34);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 12;
@@ -240,7 +269,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 433);
+            this.label5.Location = new System.Drawing.Point(6, 82);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(300, 13);
             this.label5.TabIndex = 13;
@@ -249,7 +278,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(357, 433);
+            this.label6.Location = new System.Drawing.Point(352, 82);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 13);
             this.label6.TabIndex = 14;
@@ -258,15 +287,15 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 564);
+            this.label7.Location = new System.Drawing.Point(10, 28);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 13);
+            this.label7.Size = new System.Drawing.Size(80, 13);
             this.label7.TabIndex = 15;
-            this.label7.Text = "Timedifference";
+            this.label7.Text = "Time difference";
             // 
             // TimediffCountBox
             // 
-            this.TimediffCountBox.Location = new System.Drawing.Point(92, 557);
+            this.TimediffCountBox.Location = new System.Drawing.Point(91, 21);
             this.TimediffCountBox.Maximum = new decimal(new int[] {
             86400,
             0,
@@ -284,7 +313,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(158, 564);
+            this.label8.Location = new System.Drawing.Point(154, 28);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(47, 13);
             this.label8.TabIndex = 17;
@@ -294,7 +323,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label9.Location = new System.Drawing.Point(208, 554);
+            this.label9.Location = new System.Drawing.Point(202, 18);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(244, 13);
             this.label9.TabIndex = 18;
@@ -304,7 +333,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label11.Location = new System.Drawing.Point(14, 446);
+            this.label11.Location = new System.Drawing.Point(6, 95);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(156, 13);
             this.label11.TabIndex = 20;
@@ -314,7 +343,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label14.Location = new System.Drawing.Point(14, 283);
+            this.label14.Location = new System.Drawing.Point(6, 61);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(337, 13);
             this.label14.TabIndex = 23;
@@ -322,7 +351,7 @@
             // 
             // btnDebug
             // 
-            this.btnDebug.Location = new System.Drawing.Point(15, 586);
+            this.btnDebug.Location = new System.Drawing.Point(11, 50);
             this.btnDebug.Name = "btnDebug";
             this.btnDebug.Size = new System.Drawing.Size(66, 45);
             this.btnDebug.TabIndex = 29;
@@ -333,7 +362,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(87, 590);
+            this.label17.Location = new System.Drawing.Point(78, 53);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(131, 13);
             this.label17.TabIndex = 30;
@@ -342,7 +371,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(87, 603);
+            this.label18.Location = new System.Drawing.Point(78, 66);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(127, 13);
             this.label18.TabIndex = 31;
@@ -352,36 +381,25 @@
             // 
             this.label19.AutoSize = true;
             this.label19.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label19.Location = new System.Drawing.Point(207, 567);
+            this.label19.Location = new System.Drawing.Point(200, 31);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(242, 13);
             this.label19.TabIndex = 39;
             this.label19.Text = "Use it for building scenarios or to shift the PB-time.";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.Control;
-            this.label1.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label1.Location = new System.Drawing.Point(288, 71);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 13);
-            this.label1.TabIndex = 49;
-            this.label1.Text = "ignores attempt counter.";
-            // 
             // label30
             // 
             this.label30.AutoSize = true;
             this.label30.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label30.Location = new System.Drawing.Point(14, 296);
+            this.label30.Location = new System.Drawing.Point(6, 48);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(299, 13);
+            this.label30.Size = new System.Drawing.Size(311, 13);
             this.label30.TabIndex = 53;
-            this.label30.Text = "For each discontinued run, a failed segment will be generated.";
+            this.label30.Text = "For each discontinued run, one failed segment will be generated.";
             // 
             // SkipNewestCountBox
             // 
-            this.SkipNewestCountBox.Location = new System.Drawing.Point(379, 586);
+            this.SkipNewestCountBox.Location = new System.Drawing.Point(355, 50);
             this.SkipNewestCountBox.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -394,27 +412,16 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(243, 593);
+            this.label2.Location = new System.Drawing.Point(219, 57);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(129, 13);
             this.label2.TabIndex = 55;
             this.label2.Text = "Skip the newest attempts:";
             // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label31.Location = new System.Drawing.Point(11, 537);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(303, 13);
-            this.label31.TabIndex = 56;
-            this.label31.Text = "For debugging only, should be 0 during regular runs.";
-            // 
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(262, 614);
+            this.label32.Location = new System.Drawing.Point(238, 78);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(111, 13);
             this.label32.TabIndex = 58;
@@ -422,7 +429,7 @@
             // 
             // CalcToSplitUpDown
             // 
-            this.CalcToSplitUpDown.Location = new System.Drawing.Point(379, 612);
+            this.CalcToSplitUpDown.Location = new System.Drawing.Point(355, 76);
             this.CalcToSplitUpDown.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -435,7 +442,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(87, 616);
+            this.label34.Location = new System.Drawing.Point(83, 80);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(113, 13);
             this.label34.TabIndex = 60;
@@ -444,9 +451,9 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.BackColor = System.Drawing.SystemColors.Control;
+            this.label35.BackColor = System.Drawing.Color.Transparent;
             this.label35.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label35.Location = new System.Drawing.Point(425, 612);
+            this.label35.Location = new System.Drawing.Point(399, 76);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(35, 13);
             this.label35.TabIndex = 61;
@@ -456,26 +463,16 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label10.Location = new System.Drawing.Point(14, 177);
+            this.label10.Location = new System.Drawing.Point(6, 41);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(174, 13);
             this.label10.TabIndex = 19;
             this.label10.Text = "higher number -> more stable result.";
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(11, 93);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(218, 13);
-            this.label12.TabIndex = 21;
-            this.label12.Text = "Advanced settings by kasi777 V1.3.9";
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(14, 163);
+            this.label13.Location = new System.Drawing.Point(6, 27);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(117, 13);
             this.label13.TabIndex = 22;
@@ -488,9 +485,9 @@
             0,
             0,
             0});
-            this.SamplesCountBox.Location = new System.Drawing.Point(137, 156);
+            this.SamplesCountBox.Location = new System.Drawing.Point(129, 20);
             this.SamplesCountBox.Maximum = new decimal(new int[] {
-            999999,
+            9999999,
             0,
             0,
             0});
@@ -500,10 +497,10 @@
             0,
             0});
             this.SamplesCountBox.Name = "SamplesCountBox";
-            this.SamplesCountBox.Size = new System.Drawing.Size(60, 20);
+            this.SamplesCountBox.Size = new System.Drawing.Size(63, 20);
             this.SamplesCountBox.TabIndex = 10;
             this.SamplesCountBox.Value = new decimal(new int[] {
-            100000,
+            250000,
             0,
             0,
             0});
@@ -511,7 +508,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(203, 163);
+            this.label15.Location = new System.Drawing.Point(195, 27);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(72, 13);
             this.label15.TabIndex = 25;
@@ -521,7 +518,7 @@
             // chkSurvival
             // 
             this.chkSurvival.AutoSize = true;
-            this.chkSurvival.Location = new System.Drawing.Point(17, 355);
+            this.chkSurvival.Location = new System.Drawing.Point(9, 78);
             this.chkSurvival.Name = "chkSurvival";
             this.chkSurvival.Size = new System.Drawing.Size(138, 17);
             this.chkSurvival.TabIndex = 27;
@@ -531,7 +528,7 @@
             // chkExpSplitsvalue
             // 
             this.chkExpSplitsvalue.AutoSize = true;
-            this.chkExpSplitsvalue.Location = new System.Drawing.Point(290, 257);
+            this.chkExpSplitsvalue.Location = new System.Drawing.Point(285, 129);
             this.chkExpSplitsvalue.Name = "chkExpSplitsvalue";
             this.chkExpSplitsvalue.Size = new System.Drawing.Size(158, 17);
             this.chkExpSplitsvalue.TabIndex = 38;
@@ -541,9 +538,9 @@
             // 
             // MinTimesCountBox
             // 
-            this.MinTimesCountBox.Location = new System.Drawing.Point(105, 117);
+            this.MinTimesCountBox.Location = new System.Drawing.Point(94, 70);
             this.MinTimesCountBox.Maximum = new decimal(new int[] {
-            999,
+            99999,
             0,
             0,
             0});
@@ -553,7 +550,7 @@
             0,
             0});
             this.MinTimesCountBox.Name = "MinTimesCountBox";
-            this.MinTimesCountBox.Size = new System.Drawing.Size(40, 20);
+            this.MinTimesCountBox.Size = new System.Drawing.Size(52, 20);
             this.MinTimesCountBox.TabIndex = 40;
             this.MinTimesCountBox.Value = new decimal(new int[] {
             10,
@@ -564,7 +561,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(14, 124);
+            this.label24.Location = new System.Drawing.Point(7, 77);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(85, 13);
             this.label24.TabIndex = 41;
@@ -573,7 +570,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(151, 124);
+            this.label25.Location = new System.Drawing.Point(149, 77);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(95, 13);
             this.label25.TabIndex = 42;
@@ -581,7 +578,7 @@
             // 
             // SplitsvalueCountBox
             // 
-            this.SplitsvalueCountBox.Location = new System.Drawing.Point(17, 233);
+            this.SplitsvalueCountBox.Location = new System.Drawing.Point(8, 117);
             this.SplitsvalueCountBox.Name = "SplitsvalueCountBox";
             this.SplitsvalueCountBox.Size = new System.Drawing.Size(40, 20);
             this.SplitsvalueCountBox.TabIndex = 43;
@@ -594,7 +591,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(57, 233);
+            this.label26.Location = new System.Drawing.Point(54, 117);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(268, 13);
             this.label26.TabIndex = 44;
@@ -603,7 +600,7 @@
             // 
             // UpdateCountBox
             // 
-            this.UpdateCountBox.Location = new System.Drawing.Point(151, 198);
+            this.UpdateCountBox.Location = new System.Drawing.Point(143, 15);
             this.UpdateCountBox.Maximum = new decimal(new int[] {
             999,
             0,
@@ -621,7 +618,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(14, 205);
+            this.label27.Location = new System.Drawing.Point(6, 22);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(135, 13);
             this.label27.TabIndex = 47;
@@ -630,7 +627,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(197, 205);
+            this.label28.Location = new System.Drawing.Point(189, 22);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(165, 13);
             this.label28.TabIndex = 48;
@@ -640,7 +637,7 @@
             // 
             this.label29.AutoSize = true;
             this.label29.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label29.Location = new System.Drawing.Point(58, 246);
+            this.label29.Location = new System.Drawing.Point(54, 130);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(318, 13);
             this.label29.TabIndex = 52;
@@ -650,7 +647,7 @@
             // 
             this.label33.AutoSize = true;
             this.label33.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label33.Location = new System.Drawing.Point(14, 138);
+            this.label33.Location = new System.Drawing.Point(7, 91);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(202, 13);
             this.label33.TabIndex = 59;
@@ -660,7 +657,7 @@
             // 
             this.rdoAbsAttempt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rdoAbsAttempt.AutoSize = true;
-            this.rdoAbsAttempt.Location = new System.Drawing.Point(151, 37);
+            this.rdoAbsAttempt.Location = new System.Drawing.Point(152, 23);
             this.rdoAbsAttempt.Name = "rdoAbsAttempt";
             this.rdoAbsAttempt.Size = new System.Drawing.Size(66, 17);
             this.rdoAbsAttempt.TabIndex = 62;
@@ -672,7 +669,7 @@
             // 
             this.rdoPercentAttempt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rdoPercentAttempt.AutoSize = true;
-            this.rdoPercentAttempt.Location = new System.Drawing.Point(151, 55);
+            this.rdoPercentAttempt.Location = new System.Drawing.Point(152, 41);
             this.rdoPercentAttempt.Name = "rdoPercentAttempt";
             this.rdoPercentAttempt.Size = new System.Drawing.Size(117, 17);
             this.rdoPercentAttempt.TabIndex = 63;
@@ -687,7 +684,7 @@
             0,
             0,
             0});
-            this.CalctimeCountBox.Location = new System.Drawing.Point(329, 156);
+            this.CalctimeCountBox.Location = new System.Drawing.Point(321, 20);
             this.CalctimeCountBox.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -706,7 +703,7 @@
             // lblCalctime2
             // 
             this.lblCalctime2.AutoSize = true;
-            this.lblCalctime2.Location = new System.Drawing.Point(385, 163);
+            this.lblCalctime2.Location = new System.Drawing.Point(377, 27);
             this.lblCalctime2.Name = "lblCalctime2";
             this.lblCalctime2.Size = new System.Drawing.Size(66, 13);
             this.lblCalctime2.TabIndex = 65;
@@ -716,7 +713,7 @@
             // lblCalctime1
             // 
             this.lblCalctime1.AutoSize = true;
-            this.lblCalctime1.Location = new System.Drawing.Point(281, 163);
+            this.lblCalctime1.Location = new System.Drawing.Point(273, 27);
             this.lblCalctime1.Name = "lblCalctime1";
             this.lblCalctime1.Size = new System.Drawing.Size(42, 13);
             this.lblCalctime1.TabIndex = 66;
@@ -726,26 +723,17 @@
             // chkIgnoreSkipClip
             // 
             this.chkIgnoreSkipClip.AutoSize = true;
-            this.chkIgnoreSkipClip.Location = new System.Drawing.Point(17, 319);
+            this.chkIgnoreSkipClip.Location = new System.Drawing.Point(9, 42);
             this.chkIgnoreSkipClip.Name = "chkIgnoreSkipClip";
             this.chkIgnoreSkipClip.Size = new System.Drawing.Size(212, 17);
             this.chkIgnoreSkipClip.TabIndex = 67;
             this.chkIgnoreSkipClip.Text = "Do not increase chance on \"Skip Split\"";
             this.chkIgnoreSkipClip.UseVisualStyleBackColor = true;
             // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label36.Location = new System.Drawing.Point(51, 388);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(0, 13);
-            this.label36.TabIndex = 68;
-            // 
             // chkDeviation
             // 
             this.chkDeviation.AutoSize = true;
-            this.chkDeviation.Location = new System.Drawing.Point(17, 373);
+            this.chkDeviation.Location = new System.Drawing.Point(9, 96);
             this.chkDeviation.Name = "chkDeviation";
             this.chkDeviation.Size = new System.Drawing.Size(150, 17);
             this.chkDeviation.TabIndex = 69;
@@ -755,7 +743,7 @@
             // chkInfoNext
             // 
             this.chkInfoNext.AutoSize = true;
-            this.chkInfoNext.Location = new System.Drawing.Point(17, 337);
+            this.chkInfoNext.Location = new System.Drawing.Point(9, 60);
             this.chkInfoNext.Name = "chkInfoNext";
             this.chkInfoNext.Size = new System.Drawing.Size(128, 17);
             this.chkInfoNext.TabIndex = 70;
@@ -766,7 +754,7 @@
             // 
             this.label37.AutoSize = true;
             this.label37.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label37.Location = new System.Drawing.Point(148, 338);
+            this.label37.Location = new System.Drawing.Point(140, 61);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(152, 13);
             this.label37.TabIndex = 71;
@@ -776,7 +764,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label16.Location = new System.Drawing.Point(157, 356);
+            this.label16.Location = new System.Drawing.Point(149, 79);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(201, 13);
             this.label16.TabIndex = 72;
@@ -785,7 +773,7 @@
             // chkConsiderFails
             // 
             this.chkConsiderFails.AutoSize = true;
-            this.chkConsiderFails.Location = new System.Drawing.Point(251, 123);
+            this.chkConsiderFails.Location = new System.Drawing.Point(277, 76);
             this.chkConsiderFails.Name = "chkConsiderFails";
             this.chkConsiderFails.Size = new System.Drawing.Size(158, 17);
             this.chkConsiderFails.TabIndex = 73;
@@ -795,7 +783,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(14, 401);
+            this.label20.Location = new System.Drawing.Point(6, 123);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(70, 13);
             this.label20.TabIndex = 74;
@@ -803,7 +791,7 @@
             // 
             // RndInfoEveryCountBox
             // 
-            this.RndInfoEveryCountBox.Location = new System.Drawing.Point(83, 394);
+            this.RndInfoEveryCountBox.Location = new System.Drawing.Point(82, 118);
             this.RndInfoEveryCountBox.Maximum = new decimal(new int[] {
             999,
             0,
@@ -821,7 +809,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(129, 401);
+            this.label21.Location = new System.Drawing.Point(128, 123);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(163, 13);
             this.label21.TabIndex = 76;
@@ -829,7 +817,7 @@
             // 
             // RndInfoForCountBox
             // 
-            this.RndInfoForCountBox.Location = new System.Drawing.Point(298, 394);
+            this.RndInfoForCountBox.Location = new System.Drawing.Point(297, 118);
             this.RndInfoForCountBox.Maximum = new decimal(new int[] {
             999,
             0,
@@ -847,7 +835,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(344, 401);
+            this.label22.Location = new System.Drawing.Point(343, 123);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(50, 13);
             this.label22.TabIndex = 78;
@@ -855,7 +843,7 @@
             // 
             // btnNewVersion
             // 
-            this.btnNewVersion.Location = new System.Drawing.Point(14, 500);
+            this.btnNewVersion.Location = new System.Drawing.Point(359, 16);
             this.btnNewVersion.Name = "btnNewVersion";
             this.btnNewVersion.Size = new System.Drawing.Size(115, 24);
             this.btnNewVersion.TabIndex = 79;
@@ -866,15 +854,15 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(63, 470);
+            this.label23.Location = new System.Drawing.Point(54, 147);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(177, 13);
+            this.label23.Size = new System.Drawing.Size(204, 13);
             this.label23.TabIndex = 81;
-            this.label23.Text = "Add the best time for each segment.";
+            this.label23.Text = "Add the best time once for each segment.";
             // 
             // AddBestCountBox
             // 
-            this.AddBestCountBox.Location = new System.Drawing.Point(17, 470);
+            this.AddBestCountBox.Location = new System.Drawing.Point(8, 147);
             this.AddBestCountBox.Name = "AddBestCountBox";
             this.AddBestCountBox.Size = new System.Drawing.Size(40, 20);
             this.AddBestCountBox.TabIndex = 80;
@@ -888,7 +876,7 @@
             // 
             this.label38.AutoSize = true;
             this.label38.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label38.Location = new System.Drawing.Point(63, 483);
+            this.label38.Location = new System.Drawing.Point(54, 160);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(241, 13);
             this.label38.TabIndex = 82;
@@ -898,87 +886,423 @@
             // 
             this.label40.AutoSize = true;
             this.label40.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label40.Location = new System.Drawing.Point(14, 414);
+            this.label40.Location = new System.Drawing.Point(8, 138);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(285, 13);
             this.label40.TabIndex = 85;
             this.label40.Text = "If it\'s set to 0, it will display once per segment (in the middle)";
             // 
+            // btnUpdList
+            // 
+            this.btnUpdList.Location = new System.Drawing.Point(9, 132);
+            this.btnUpdList.Name = "btnUpdList";
+            this.btnUpdList.Size = new System.Drawing.Size(115, 24);
+            this.btnUpdList.TabIndex = 87;
+            this.btnUpdList.Text = "Refresh List";
+            this.btnUpdList.UseVisualStyleBackColor = true;
+            this.btnUpdList.Click += new System.EventHandler(this.btnUpdList_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(9, 162);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(451, 269);
+            this.dataGridView1.TabIndex = 86;
+            // 
+            // chkDispGoodPace
+            // 
+            this.chkDispGoodPace.AutoSize = true;
+            this.chkDispGoodPace.Location = new System.Drawing.Point(16, 19);
+            this.chkDispGoodPace.Name = "chkDispGoodPace";
+            this.chkDispGoodPace.Size = new System.Drawing.Size(117, 17);
+            this.chkDispGoodPace.TabIndex = 88;
+            this.chkDispGoodPace.Text = "Display Pace to PB";
+            this.chkDispGoodPace.UseVisualStyleBackColor = true;
+            // 
+            // chkGoodPaceTotal
+            // 
+            this.chkGoodPaceTotal.AutoSize = true;
+            this.chkGoodPaceTotal.Location = new System.Drawing.Point(139, 19);
+            this.chkGoodPaceTotal.Name = "chkGoodPaceTotal";
+            this.chkGoodPaceTotal.Size = new System.Drawing.Size(182, 17);
+            this.chkGoodPaceTotal.TabIndex = 89;
+            this.chkGoodPaceTotal.Text = "Split time instead of segment time";
+            this.chkGoodPaceTotal.UseVisualStyleBackColor = true;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(130, 138);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(247, 13);
+            this.label39.TabIndex = 90;
+            this.label39.Text = "See \"Pace to PB\" for live calculation next segment";
+            // 
+            // chkPaceWorst
+            // 
+            this.chkPaceWorst.AutoSize = true;
+            this.chkPaceWorst.Location = new System.Drawing.Point(139, 35);
+            this.chkPaceWorst.Name = "chkPaceWorst";
+            this.chkPaceWorst.Size = new System.Drawing.Size(293, 17);
+            this.chkPaceWorst.TabIndex = 91;
+            this.chkPaceWorst.Text = "Worst segments instead of average in a successful pace";
+            this.chkPaceWorst.UseVisualStyleBackColor = true;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(220, 56);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(134, 13);
+            this.label41.TabIndex = 94;
+            this.label41.Text = "Milliseconds faster then PB";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(76, 56);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(57, 13);
+            this.label42.TabIndex = 93;
+            this.label42.Text = "Extra goal:";
+            // 
+            // PaceExtraGoalMSCountBox
+            // 
+            this.PaceExtraGoalMSCountBox.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.PaceExtraGoalMSCountBox.Location = new System.Drawing.Point(139, 54);
+            this.PaceExtraGoalMSCountBox.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.PaceExtraGoalMSCountBox.Name = "PaceExtraGoalMSCountBox";
+            this.PaceExtraGoalMSCountBox.Size = new System.Drawing.Size(76, 20);
+            this.PaceExtraGoalMSCountBox.TabIndex = 92;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(210, 34);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(48, 13);
+            this.label43.TabIndex = 96;
+            this.label43.Text = "Max fails";
+            // 
+            // MalusMaxCountBox
+            // 
+            this.MalusMaxCountBox.Location = new System.Drawing.Point(258, 27);
+            this.MalusMaxCountBox.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.MalusMaxCountBox.Name = "MalusMaxCountBox";
+            this.MalusMaxCountBox.Size = new System.Drawing.Size(40, 20);
+            this.MalusMaxCountBox.TabIndex = 95;
+            this.MalusMaxCountBox.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.PaceDigitsCountBox);
+            this.groupBox1.Controls.Add(this.chkDispGoodPace);
+            this.groupBox1.Controls.Add(this.chkGoodPaceTotal);
+            this.groupBox1.Controls.Add(this.chkPaceWorst);
+            this.groupBox1.Controls.Add(this.label41);
+            this.groupBox1.Controls.Add(this.PaceExtraGoalMSCountBox);
+            this.groupBox1.Controls.Add(this.label42);
+            this.groupBox1.Location = new System.Drawing.Point(10, 16);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(451, 106);
+            this.groupBox1.TabIndex = 97;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Pace to PB";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(172, 82);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 13);
+            this.label1.TabIndex = 96;
+            this.label1.Text = "Digits of milliseconds";
+            // 
+            // PaceDigitsCountBox
+            // 
+            this.PaceDigitsCountBox.Location = new System.Drawing.Point(139, 80);
+            this.PaceDigitsCountBox.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.PaceDigitsCountBox.Name = "PaceDigitsCountBox";
+            this.PaceDigitsCountBox.Size = new System.Drawing.Size(33, 20);
+            this.PaceDigitsCountBox.TabIndex = 95;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.RecentLabel);
+            this.groupBox2.Controls.Add(this.label24);
+            this.groupBox2.Controls.Add(this.AttemptCountBox);
+            this.groupBox2.Controls.Add(this.DisplayOddsCheckbox);
+            this.groupBox2.Controls.Add(this.IgnoreRunCountBox);
+            this.groupBox2.Controls.Add(this.rdoPercentAttempt);
+            this.groupBox2.Controls.Add(this.rdoAbsAttempt);
+            this.groupBox2.Controls.Add(this.MinTimesCountBox);
+            this.groupBox2.Controls.Add(this.chkConsiderFails);
+            this.groupBox2.Controls.Add(this.label33);
+            this.groupBox2.Controls.Add(this.label25);
+            this.groupBox2.Location = new System.Drawing.Point(10, 16);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(451, 116);
+            this.groupBox2.TabIndex = 98;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Number of attempts used";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.Location = new System.Drawing.Point(11, 13);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(179, 24);
+            this.label44.TabIndex = 99;
+            this.label44.Text = "PB Chance V1.4.2";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.TimediffCountBox);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.btnDebug);
+            this.groupBox3.Controls.Add(this.label17);
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Controls.Add(this.label19);
+            this.groupBox3.Controls.Add(this.SkipNewestCountBox);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.CalcToSplitUpDown);
+            this.groupBox3.Controls.Add(this.label32);
+            this.groupBox3.Controls.Add(this.label34);
+            this.groupBox3.Controls.Add(this.label35);
+            this.groupBox3.Location = new System.Drawing.Point(10, 210);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(451, 100);
+            this.groupBox3.TabIndex = 100;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Debugging settings, should be 0 during regular runs";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label31);
+            this.groupBox4.Controls.Add(this.MalusCountBox);
+            this.groupBox4.Controls.Add(this.SplitclipCountBox);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.label43);
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Controls.Add(this.MalusMaxCountBox);
+            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.chkExpSplitsvalue);
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.label14);
+            this.groupBox4.Controls.Add(this.label38);
+            this.groupBox4.Controls.Add(this.label30);
+            this.groupBox4.Controls.Add(this.label23);
+            this.groupBox4.Controls.Add(this.SplitsvalueCountBox);
+            this.groupBox4.Controls.Add(this.label26);
+            this.groupBox4.Controls.Add(this.AddBestCountBox);
+            this.groupBox4.Controls.Add(this.label29);
+            this.groupBox4.Location = new System.Drawing.Point(8, 224);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(453, 182);
+            this.groupBox4.TabIndex = 101;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Settings affect the PB Chance";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label31.Location = new System.Drawing.Point(303, 34);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(126, 13);
+            this.label31.TabIndex = 97;
+            this.label31.Text = "then the penalty is infinite";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label27);
+            this.groupBox5.Controls.Add(this.UpdateCountBox);
+            this.groupBox5.Controls.Add(this.label28);
+            this.groupBox5.Controls.Add(this.chkIgnoreSkipClip);
+            this.groupBox5.Controls.Add(this.chkSurvival);
+            this.groupBox5.Controls.Add(this.chkDeviation);
+            this.groupBox5.Controls.Add(this.chkInfoNext);
+            this.groupBox5.Controls.Add(this.label37);
+            this.groupBox5.Controls.Add(this.label40);
+            this.groupBox5.Controls.Add(this.label16);
+            this.groupBox5.Controls.Add(this.label20);
+            this.groupBox5.Controls.Add(this.label22);
+            this.groupBox5.Controls.Add(this.RndInfoEveryCountBox);
+            this.groupBox5.Controls.Add(this.RndInfoForCountBox);
+            this.groupBox5.Controls.Add(this.label21);
+            this.groupBox5.Location = new System.Drawing.Point(10, 16);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(451, 157);
+            this.groupBox5.TabIndex = 102;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Display Options";
+            // 
+            // tabPages
+            // 
+            this.tabPages.Controls.Add(this.tabPage1);
+            this.tabPages.Controls.Add(this.tabPage2);
+            this.tabPages.Controls.Add(this.tabPage3);
+            this.tabPages.Location = new System.Drawing.Point(3, 46);
+            this.tabPages.Name = "tabPages";
+            this.tabPages.SelectedIndex = 0;
+            this.tabPages.Size = new System.Drawing.Size(475, 463);
+            this.tabPages.TabIndex = 103;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.groupBox6);
+            this.tabPage1.Controls.Add(this.groupBox2);
+            this.tabPage1.Controls.Add(this.groupBox4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(467, 437);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "General";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // lblFaster
+            // 
+            this.lblFaster.AutoSize = true;
+            this.lblFaster.Location = new System.Drawing.Point(196, 514);
+            this.lblFaster.Name = "lblFaster";
+            this.lblFaster.Size = new System.Drawing.Size(39, 13);
+            this.lblFaster.TabIndex = 105;
+            this.lblFaster.Text = "Faster:";
+            // 
+            // lblSampleSize
+            // 
+            this.lblSampleSize.AutoSize = true;
+            this.lblSampleSize.Location = new System.Drawing.Point(10, 514);
+            this.lblSampleSize.Name = "lblSampleSize";
+            this.lblSampleSize.Size = new System.Drawing.Size(99, 13);
+            this.lblSampleSize.TabIndex = 74;
+            this.lblSampleSize.Text = "Actual Sample size:";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label13);
+            this.groupBox6.Controls.Add(this.lblCalctime1);
+            this.groupBox6.Controls.Add(this.lblCalctime2);
+            this.groupBox6.Controls.Add(this.CalctimeCountBox);
+            this.groupBox6.Controls.Add(this.label15);
+            this.groupBox6.Controls.Add(this.label10);
+            this.groupBox6.Controls.Add(this.SamplesCountBox);
+            this.groupBox6.Location = new System.Drawing.Point(8, 143);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(451, 70);
+            this.groupBox6.TabIndex = 104;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Sample size";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.groupBox1);
+            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.btnUpdList);
+            this.tabPage2.Controls.Add(this.label39);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(467, 437);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "PB Pace";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Enter += new System.EventHandler(this.tabHistory_Enter);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.groupBox5);
+            this.tabPage3.Controls.Add(this.label45);
+            this.tabPage3.Controls.Add(this.groupBox3);
+            this.tabPage3.Controls.Add(this.label36);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(467, 437);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Display Options";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label45.Location = new System.Drawing.Point(138, 415);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(213, 13);
+            this.label45.TabIndex = 103;
+            this.label45.Text = "Advanced settings and rewritten by kasi777";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label36.Location = new System.Drawing.Point(156, 398);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(175, 13);
+            this.label36.TabIndex = 102;
+            this.label36.Text = "Idea and initial Version by SethBling";
+            // 
+            // lblChance
+            // 
+            this.lblChance.AutoSize = true;
+            this.lblChance.Location = new System.Drawing.Point(326, 514);
+            this.lblChance.Name = "lblChance";
+            this.lblChance.Size = new System.Drawing.Size(47, 13);
+            this.lblChance.TabIndex = 106;
+            this.lblChance.Text = "Chance:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(36, 82);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(97, 13);
+            this.label12.TabIndex = 97;
+            this.label12.Text = "Display Resolution:";
+            // 
             // PBChanceSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label40);
-            this.Controls.Add(this.label38);
-            this.Controls.Add(this.label23);
-            this.Controls.Add(this.AddBestCountBox);
-            this.Controls.Add(this.chkExpSplitsvalue);
+            this.Controls.Add(this.lblChance);
+            this.Controls.Add(this.lblFaster);
+            this.Controls.Add(this.tabPages);
+            this.Controls.Add(this.lblSampleSize);
+            this.Controls.Add(this.label44);
             this.Controls.Add(this.btnNewVersion);
-            this.Controls.Add(this.label22);
-            this.Controls.Add(this.RndInfoForCountBox);
-            this.Controls.Add(this.label21);
-            this.Controls.Add(this.RndInfoEveryCountBox);
-            this.Controls.Add(this.label20);
-            this.Controls.Add(this.chkConsiderFails);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label37);
-            this.Controls.Add(this.chkInfoNext);
-            this.Controls.Add(this.chkDeviation);
-            this.Controls.Add(this.label36);
-            this.Controls.Add(this.chkIgnoreSkipClip);
-            this.Controls.Add(this.lblCalctime1);
-            this.Controls.Add(this.lblCalctime2);
-            this.Controls.Add(this.CalctimeCountBox);
-            this.Controls.Add(this.rdoAbsAttempt);
-            this.Controls.Add(this.rdoPercentAttempt);
-            this.Controls.Add(this.label35);
-            this.Controls.Add(this.label34);
-            this.Controls.Add(this.label33);
-            this.Controls.Add(this.label32);
-            this.Controls.Add(this.CalcToSplitUpDown);
-            this.Controls.Add(this.label31);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.SkipNewestCountBox);
-            this.Controls.Add(this.label30);
-            this.Controls.Add(this.label29);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label28);
-            this.Controls.Add(this.label27);
-            this.Controls.Add(this.UpdateCountBox);
-            this.Controls.Add(this.label26);
-            this.Controls.Add(this.SplitsvalueCountBox);
-            this.Controls.Add(this.label25);
-            this.Controls.Add(this.label24);
-            this.Controls.Add(this.MinTimesCountBox);
-            this.Controls.Add(this.label19);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.btnDebug);
-            this.Controls.Add(this.chkSurvival);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.SamplesCountBox);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.TimediffCountBox);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.SplitclipCountBox);
-            this.Controls.Add(this.MalusCountBox);
-            this.Controls.Add(this.IgnoreRunCountBox);
-            this.Controls.Add(this.DisplayOddsCheckbox);
-            this.Controls.Add(this.CreditsLabel);
-            this.Controls.Add(this.AttemptCountBox);
-            this.Controls.Add(this.RecentLabel);
             this.Name = "PBChanceSettings";
-            this.Size = new System.Drawing.Size(458, 636);
+            this.Size = new System.Drawing.Size(481, 530);
             ((System.ComponentModel.ISupportInitialize)(this.AttemptCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MalusCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitclipCountBox)).EndInit();
@@ -993,6 +1317,28 @@
             ((System.ComponentModel.ISupportInitialize)(this.RndInfoEveryCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RndInfoForCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddBestCountBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PaceExtraGoalMSCountBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MalusMaxCountBox)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PaceDigitsCountBox)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.tabPages.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1001,7 +1347,6 @@
         #endregion
         private System.Windows.Forms.Label RecentLabel;
         private System.Windows.Forms.NumericUpDown AttemptCountBox;
-        private System.Windows.Forms.Label CreditsLabel;
         private System.Windows.Forms.CheckBox DisplayOddsCheckbox;
         private System.Windows.Forms.CheckBox IgnoreRunCountBox;
         private System.Windows.Forms.NumericUpDown MalusCountBox;
@@ -1020,17 +1365,14 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.NumericUpDown SkipNewestCountBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.NumericUpDown CalcToSplitUpDown;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.NumericUpDown SamplesCountBox;
         private System.Windows.Forms.Label label15;
@@ -1052,7 +1394,6 @@
         private System.Windows.Forms.Label lblCalctime2;
         private System.Windows.Forms.Label lblCalctime1;
         private System.Windows.Forms.CheckBox chkIgnoreSkipClip;
-        private System.Windows.Forms.Label label36;
         private System.Windows.Forms.CheckBox chkDeviation;
         private System.Windows.Forms.CheckBox chkInfoNext;
         private System.Windows.Forms.Label label37;
@@ -1068,5 +1409,36 @@
         private System.Windows.Forms.NumericUpDown AddBestCountBox;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Button btnUpdList;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.CheckBox chkDispGoodPace;
+        private System.Windows.Forms.CheckBox chkGoodPaceTotal;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.CheckBox chkPaceWorst;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.NumericUpDown PaceExtraGoalMSCountBox;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.NumericUpDown MalusMaxCountBox;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown PaceDigitsCountBox;
+        private System.Windows.Forms.TabControl tabPages;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label lblFaster;
+        private System.Windows.Forms.Label lblSampleSize;
+        private System.Windows.Forms.Label lblChance;
+        private System.Windows.Forms.Label label12;
     }
 }
