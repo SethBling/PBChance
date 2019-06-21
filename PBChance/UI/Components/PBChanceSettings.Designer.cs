@@ -104,6 +104,7 @@
             this.label43 = new System.Windows.Forms.Label();
             this.MalusMaxCountBox = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.PaceDigitsCountBox = new System.Windows.Forms.NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -112,17 +113,17 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label31 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.chkSkipSplitStroke = new System.Windows.Forms.CheckBox();
             this.tabPages = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.lblFaster = new System.Windows.Forms.Label();
-            this.lblSampleSize = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label45 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
+            this.lblFaster = new System.Windows.Forms.Label();
+            this.lblSampleSize = new System.Windows.Forms.Label();
             this.lblChance = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AttemptCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MalusCountBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitclipCountBox)).BeginInit();
@@ -518,7 +519,7 @@
             // chkSurvival
             // 
             this.chkSurvival.AutoSize = true;
-            this.chkSurvival.Location = new System.Drawing.Point(9, 78);
+            this.chkSurvival.Location = new System.Drawing.Point(9, 96);
             this.chkSurvival.Name = "chkSurvival";
             this.chkSurvival.Size = new System.Drawing.Size(138, 17);
             this.chkSurvival.TabIndex = 27;
@@ -698,7 +699,6 @@
             0,
             0,
             0});
-            this.CalctimeCountBox.Visible = false;
             // 
             // lblCalctime2
             // 
@@ -708,7 +708,6 @@
             this.lblCalctime2.Size = new System.Drawing.Size(66, 13);
             this.lblCalctime2.TabIndex = 65;
             this.lblCalctime2.Text = "milliseconds.";
-            this.lblCalctime2.Visible = false;
             // 
             // lblCalctime1
             // 
@@ -718,7 +717,6 @@
             this.lblCalctime1.Size = new System.Drawing.Size(42, 13);
             this.lblCalctime1.TabIndex = 66;
             this.lblCalctime1.Text = "At least";
-            this.lblCalctime1.Visible = false;
             // 
             // chkIgnoreSkipClip
             // 
@@ -733,7 +731,7 @@
             // chkDeviation
             // 
             this.chkDeviation.AutoSize = true;
-            this.chkDeviation.Location = new System.Drawing.Point(9, 96);
+            this.chkDeviation.Location = new System.Drawing.Point(9, 114);
             this.chkDeviation.Name = "chkDeviation";
             this.chkDeviation.Size = new System.Drawing.Size(150, 17);
             this.chkDeviation.TabIndex = 69;
@@ -743,7 +741,7 @@
             // chkInfoNext
             // 
             this.chkInfoNext.AutoSize = true;
-            this.chkInfoNext.Location = new System.Drawing.Point(9, 60);
+            this.chkInfoNext.Location = new System.Drawing.Point(9, 78);
             this.chkInfoNext.Name = "chkInfoNext";
             this.chkInfoNext.Size = new System.Drawing.Size(128, 17);
             this.chkInfoNext.TabIndex = 70;
@@ -754,7 +752,7 @@
             // 
             this.label37.AutoSize = true;
             this.label37.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label37.Location = new System.Drawing.Point(140, 61);
+            this.label37.Location = new System.Drawing.Point(140, 79);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(152, 13);
             this.label37.TabIndex = 71;
@@ -764,11 +762,11 @@
             // 
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label16.Location = new System.Drawing.Point(149, 79);
+            this.label16.Location = new System.Drawing.Point(149, 97);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(201, 13);
+            this.label16.Size = new System.Drawing.Size(148, 13);
             this.label16.TabIndex = 72;
-            this.label16.Text = "Successfully runs / Remaining failed runs";
+            this.label16.Text = "This Segment / Up to the end";
             // 
             // chkConsiderFails
             // 
@@ -783,7 +781,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(6, 123);
+            this.label20.Location = new System.Drawing.Point(6, 141);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(70, 13);
             this.label20.TabIndex = 74;
@@ -791,7 +789,7 @@
             // 
             // RndInfoEveryCountBox
             // 
-            this.RndInfoEveryCountBox.Location = new System.Drawing.Point(82, 118);
+            this.RndInfoEveryCountBox.Location = new System.Drawing.Point(82, 136);
             this.RndInfoEveryCountBox.Maximum = new decimal(new int[] {
             999,
             0,
@@ -809,7 +807,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(128, 123);
+            this.label21.Location = new System.Drawing.Point(128, 141);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(163, 13);
             this.label21.TabIndex = 76;
@@ -817,7 +815,7 @@
             // 
             // RndInfoForCountBox
             // 
-            this.RndInfoForCountBox.Location = new System.Drawing.Point(297, 118);
+            this.RndInfoForCountBox.Location = new System.Drawing.Point(297, 136);
             this.RndInfoForCountBox.Maximum = new decimal(new int[] {
             999,
             0,
@@ -835,7 +833,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(343, 123);
+            this.label22.Location = new System.Drawing.Point(343, 141);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(50, 13);
             this.label22.TabIndex = 78;
@@ -886,7 +884,7 @@
             // 
             this.label40.AutoSize = true;
             this.label40.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label40.Location = new System.Drawing.Point(8, 138);
+            this.label40.Location = new System.Drawing.Point(8, 156);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(285, 13);
             this.label40.TabIndex = 85;
@@ -915,15 +913,15 @@
             this.chkDispGoodPace.AutoSize = true;
             this.chkDispGoodPace.Location = new System.Drawing.Point(16, 19);
             this.chkDispGoodPace.Name = "chkDispGoodPace";
-            this.chkDispGoodPace.Size = new System.Drawing.Size(117, 17);
+            this.chkDispGoodPace.Size = new System.Drawing.Size(139, 17);
             this.chkDispGoodPace.TabIndex = 88;
-            this.chkDispGoodPace.Text = "Display Pace to PB";
+            this.chkDispGoodPace.Text = "Display Avg Pace to PB";
             this.chkDispGoodPace.UseVisualStyleBackColor = true;
             // 
             // chkGoodPaceTotal
             // 
             this.chkGoodPaceTotal.AutoSize = true;
-            this.chkGoodPaceTotal.Location = new System.Drawing.Point(139, 19);
+            this.chkGoodPaceTotal.Location = new System.Drawing.Point(161, 19);
             this.chkGoodPaceTotal.Name = "chkGoodPaceTotal";
             this.chkGoodPaceTotal.Size = new System.Drawing.Size(182, 17);
             this.chkGoodPaceTotal.TabIndex = 89;
@@ -942,17 +940,17 @@
             // chkPaceWorst
             // 
             this.chkPaceWorst.AutoSize = true;
-            this.chkPaceWorst.Location = new System.Drawing.Point(139, 35);
+            this.chkPaceWorst.Location = new System.Drawing.Point(161, 38);
             this.chkPaceWorst.Name = "chkPaceWorst";
-            this.chkPaceWorst.Size = new System.Drawing.Size(293, 17);
+            this.chkPaceWorst.Size = new System.Drawing.Size(148, 17);
             this.chkPaceWorst.TabIndex = 91;
-            this.chkPaceWorst.Text = "Worst segments instead of average in a successful pace";
+            this.chkPaceWorst.Text = "Display Worst Pace to PB";
             this.chkPaceWorst.UseVisualStyleBackColor = true;
             // 
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(220, 56);
+            this.label41.Location = new System.Drawing.Point(243, 59);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(134, 13);
             this.label41.TabIndex = 94;
@@ -961,7 +959,7 @@
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(76, 56);
+            this.label42.Location = new System.Drawing.Point(100, 59);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(57, 13);
             this.label42.TabIndex = 93;
@@ -974,7 +972,7 @@
             0,
             0,
             0});
-            this.PaceExtraGoalMSCountBox.Location = new System.Drawing.Point(139, 54);
+            this.PaceExtraGoalMSCountBox.Location = new System.Drawing.Point(161, 57);
             this.PaceExtraGoalMSCountBox.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -1028,10 +1026,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pace to PB";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(102, 82);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(55, 13);
+            this.label12.TabIndex = 97;
+            this.label12.Text = "Accuracy:";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(172, 82);
+            this.label1.Location = new System.Drawing.Point(200, 82);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(104, 13);
             this.label1.TabIndex = 96;
@@ -1039,7 +1046,7 @@
             // 
             // PaceDigitsCountBox
             // 
-            this.PaceDigitsCountBox.Location = new System.Drawing.Point(139, 80);
+            this.PaceDigitsCountBox.Location = new System.Drawing.Point(161, 80);
             this.PaceDigitsCountBox.Maximum = new decimal(new int[] {
             3,
             0,
@@ -1077,7 +1084,7 @@
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(179, 24);
             this.label44.TabIndex = 99;
-            this.label44.Text = "PB Chance V1.4.2";
+            this.label44.Text = "PB Chance V1.4.3";
             // 
             // groupBox3
             // 
@@ -1095,7 +1102,7 @@
             this.groupBox3.Controls.Add(this.label32);
             this.groupBox3.Controls.Add(this.label34);
             this.groupBox3.Controls.Add(this.label35);
-            this.groupBox3.Location = new System.Drawing.Point(10, 210);
+            this.groupBox3.Location = new System.Drawing.Point(10, 249);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(451, 100);
             this.groupBox3.TabIndex = 100;
@@ -1142,6 +1149,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.chkSkipSplitStroke);
             this.groupBox5.Controls.Add(this.label27);
             this.groupBox5.Controls.Add(this.UpdateCountBox);
             this.groupBox5.Controls.Add(this.label28);
@@ -1159,10 +1167,20 @@
             this.groupBox5.Controls.Add(this.label21);
             this.groupBox5.Location = new System.Drawing.Point(10, 16);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(451, 157);
+            this.groupBox5.Size = new System.Drawing.Size(451, 178);
             this.groupBox5.TabIndex = 102;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Display Options";
+            // 
+            // chkSkipSplitStroke
+            // 
+            this.chkSkipSplitStroke.AutoSize = true;
+            this.chkSkipSplitStroke.Location = new System.Drawing.Point(9, 60);
+            this.chkSkipSplitStroke.Name = "chkSkipSplitStroke";
+            this.chkSkipSplitStroke.Size = new System.Drawing.Size(299, 17);
+            this.chkSkipSplitStroke.TabIndex = 86;
+            this.chkSkipSplitStroke.Text = "On \"Skip Split\" display \"-\" only, else old value will be hold.";
+            this.chkSkipSplitStroke.UseVisualStyleBackColor = true;
             // 
             // tabPages
             // 
@@ -1187,24 +1205,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // lblFaster
-            // 
-            this.lblFaster.AutoSize = true;
-            this.lblFaster.Location = new System.Drawing.Point(196, 514);
-            this.lblFaster.Name = "lblFaster";
-            this.lblFaster.Size = new System.Drawing.Size(39, 13);
-            this.lblFaster.TabIndex = 105;
-            this.lblFaster.Text = "Faster:";
-            // 
-            // lblSampleSize
-            // 
-            this.lblSampleSize.AutoSize = true;
-            this.lblSampleSize.Location = new System.Drawing.Point(10, 514);
-            this.lblSampleSize.Name = "lblSampleSize";
-            this.lblSampleSize.Size = new System.Drawing.Size(99, 13);
-            this.lblSampleSize.TabIndex = 74;
-            this.lblSampleSize.Text = "Actual Sample size:";
             // 
             // groupBox6
             // 
@@ -1273,6 +1273,24 @@
             this.label36.TabIndex = 102;
             this.label36.Text = "Idea and initial Version by SethBling";
             // 
+            // lblFaster
+            // 
+            this.lblFaster.AutoSize = true;
+            this.lblFaster.Location = new System.Drawing.Point(196, 514);
+            this.lblFaster.Name = "lblFaster";
+            this.lblFaster.Size = new System.Drawing.Size(39, 13);
+            this.lblFaster.TabIndex = 105;
+            this.lblFaster.Text = "Faster:";
+            // 
+            // lblSampleSize
+            // 
+            this.lblSampleSize.AutoSize = true;
+            this.lblSampleSize.Location = new System.Drawing.Point(10, 514);
+            this.lblSampleSize.Name = "lblSampleSize";
+            this.lblSampleSize.Size = new System.Drawing.Size(99, 13);
+            this.lblSampleSize.TabIndex = 74;
+            this.lblSampleSize.Text = "Actual Sample size:";
+            // 
             // lblChance
             // 
             this.lblChance.AutoSize = true;
@@ -1281,15 +1299,6 @@
             this.lblChance.Size = new System.Drawing.Size(47, 13);
             this.lblChance.TabIndex = 106;
             this.lblChance.Text = "Chance:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(36, 82);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(97, 13);
-            this.label12.TabIndex = 97;
-            this.label12.Text = "Display Resolution:";
             // 
             // PBChanceSettings
             // 
@@ -1440,5 +1449,6 @@
         private System.Windows.Forms.Label lblSampleSize;
         private System.Windows.Forms.Label lblChance;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.CheckBox chkSkipSplitStroke;
     }
 }

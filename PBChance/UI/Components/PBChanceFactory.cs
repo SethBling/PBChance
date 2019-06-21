@@ -22,6 +22,6 @@ namespace PBChance.UI.Components
 
         public string UpdateURL => "http://livesplit.org/update/";
 
-        public Version Version => Version.Parse("1.4.2");
+        public Version Version => Version.Parse("1.4.3");
     }
 }
