@@ -1,3 +1,20 @@
+1.4.3.                        
+Update Notes V1.4.3 (2019-06-21)
+
+New settings
+- Sample size: At least x milliseconds.
+- Display options: On "Skip Split" display "-", otherwise, the old value is retained.
+
+PB Pace
+- Display worst PB Pace can be combined with average PB Pace.
+- New column "Split Time" in the table PB Pace.
+
+Minor changes
+- More alternative (shorter) text, if LiveSplit window is compact.
+- New information: Health Status. It tells you are on PB Pace, based on linear chance increases each split.
+- Fixed random informations (in particular survival chance)
+
+
 1.4.2             
 Update Notes V1.4.2 (2019-06-01)
 
@@ -20,6 +37,7 @@ In addition, if it's set to a low number, the number of combinations per second 
 
 7. The settings have been rearranged and sorted into groups and tabs "General", "PB Pace" and "Display Options".
 
+
 1.4.1
 Update Notes V1.4.1 (2019-05-28)
 
@@ -34,6 +52,8 @@ Update Notes V1.4.1 (2019-05-28)
   So, if you want to beat a certain pb-time, you can also adjust the setting "Time difference" for this, to shift the Goal PB Time what you want.
 
 4. New random information "Good pace to PB", "Worth to continue" and "Run is currently".
+
+
 
 1.4.0                
 Update Notes V1.4.0 (2019-05-14)
