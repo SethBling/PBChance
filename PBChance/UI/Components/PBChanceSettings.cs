@@ -435,7 +435,7 @@ namespace PBChance.UI.Components
             if (DataGridViewV.Rows.Count > 2)
             {
                 this.lblSampleSize.Text = "Sample size: " + DataGridViewV.Rows[0][3];
-                this.lblFaster.Text = "Faslter: " + DataGridViewV.Rows[0][1];
+                this.lblFaster.Text = "Faster: " + DataGridViewV.Rows[0][1];
                 this.lblChance.Text = "Chance: " + (Convert.ToDouble(DataGridViewV.Rows[0][1]) / Convert.ToDouble(DataGridViewV.Rows[0][3])).ToString("0.000%");
             }
             else
