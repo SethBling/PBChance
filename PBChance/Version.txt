@@ -1,4 +1,4 @@
-1.4.3.                        
+1.4.3                        
 Update Notes V1.4.3 (2019-06-21)
 
 New settings
