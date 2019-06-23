@@ -12,8 +12,8 @@ PB Pace
 Minor changes
 - More alternative (shorter) text, if LiveSplit window is compact.
 - New information: Health Status. It tells you are on PB Pace, based on linear chance increases each split.
-- New information: PB Chance Extra Goal. If a extra goal is set, the chance to beat it.
-- New information: Considered Runs (here/end). It tells the number of runs are considered in actual segment, on the last segment, and the total number of runs available.
+- New information: PB Chance Extra Goal. If an extra goal is set, the chance to beat it.
+- New information: Considered Runs (here/end). It tells the number of runs is considered in the actual segment, on the last segment, and the total number of runs available.
 - Fixed several informations (in particular survival chance)
 
 
