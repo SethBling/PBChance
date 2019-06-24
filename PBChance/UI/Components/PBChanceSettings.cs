@@ -11,8 +11,6 @@ using System.Xml;
 using LiveSplit.UI;
 using System.Net; //because WebClient
 
-
-
 namespace PBChance.UI.Components
 {
     public partial class PBChanceSettings : UserControl
@@ -157,7 +155,7 @@ namespace PBChance.UI.Components
 
         private int CreateSettingsNode(XmlDocument document, XmlElement parent)
         {
-            return SettingsHelper.CreateSetting(document, parent, "Version", "1.3.9") ^
+            return SettingsHelper.CreateSetting(document, parent, "Version", sVersion) ^
                 SettingsHelper.CreateSetting(document, parent, "AttemptCount", AttemptCount) ^
                 SettingsHelper.CreateSetting(document, parent, "UsePercentOfAttempts", UsePercentOfAttempts) ^
                 SettingsHelper.CreateSetting(document, parent, "UseFixedAttempts", UseFixedAttempts) ^
@@ -299,10 +297,10 @@ namespace PBChance.UI.Components
             {
                 string sVersion = wc.DownloadString("https://github.com/kasi777/PBChance/raw/master/PBChance/Version.txt");
 
-                if (sVersion.Remove(10, sVersion.Length - 10) != "1.4.3     ")
+                if (sVersion.Remove(10, sVersion.Length - 10) != "1.4.3     ")//sVersion + "     ")
                 {
                     wc.DownloadFile("https://github.com/kasi777/PBChance/raw/master/PBChance.dll", "PBChance.dll");
-                    MessageBox.Show("New Version available: Installed: 1.4.3, Available: " + sVersion.Remove(10, sVersion.Length - 10) +
+                    MessageBox.Show("New Version available: Installed: " + sVersion + ", Available: " + sVersion.Remove(10, sVersion.Length - 10) +
                         "\n\r\n\rPBChance.dll is already downloaded into your LiveSplit directory. Move it into the Components directory to install it.\n\r\n\r" +
                         sVersion.Remove(0, 10) + "\n\r\n\rhttps://github.com/kasi777/PBChance");
                 }
@@ -352,10 +350,11 @@ namespace PBChance.UI.Components
         public void updateDataTable_Core2(DataGridView control, bool bStar) // this.UIThreadSync(() => X)   this.Invoke(new MethodInvoker( X ))
         {
             this.UIThreadSync(() => control.DataSource = DataGridViewV);
-            this.UIThreadSync(() => control.Columns[0].Width = 143);
-            this.UIThreadSync(() => control.Columns[1].Width = 80);
-            this.UIThreadSync(() => control.Columns[2].Width = 87);
-            this.UIThreadSync(() => control.Columns[3].Width = 80);
+            this.UIThreadSync(() => control.Columns[0].Width = 130);
+            this.UIThreadSync(() => control.Columns[1].Width = 65);
+            this.UIThreadSync(() => control.Columns[2].Width = 65);
+            this.UIThreadSync(() => control.Columns[3].Width = 65);
+            this.UIThreadSync(() => control.Columns[4].Width = 65);
 
             if (DataGridViewV.Rows.Count > 2)
                 {
@@ -431,18 +430,25 @@ namespace PBChance.UI.Components
 
         public void viewUpdateDisplay()
         {
-
             if (DataGridViewV.Rows.Count > 2)
             {
+                //this.UIThreadSync(() => lblSampleSize.Text = "Sample size:" + DataGridViewV.Rows[0][3]);
+                //this.UIThreadSync(() => lblFaster.Text = "Faster: " + DataGridViewV.Rows[0][1]);
+                //this.UIThreadSync(() => lblChance.Text = "Chance: " + (Convert.ToDouble(DataGridViewV.Rows[0][1]) / Convert.ToDouble(DataGridViewV.Rows[0][3])).ToString("0.000%"));
+
                 this.lblSampleSize.Text = "Sample size: " + DataGridViewV.Rows[0][3];
                 this.lblFaster.Text = "Faster: " + DataGridViewV.Rows[0][1];
                 this.lblChance.Text = "Chance: " + (Convert.ToDouble(DataGridViewV.Rows[0][1]) / Convert.ToDouble(DataGridViewV.Rows[0][3])).ToString("0.000%");
             }
             else
             {
+                //this.UIThreadSync(() => lblSampleSize.Text = "Sample size:" + DataGridViewV.Rows[0][1]);
+                //this.UIThreadSync(() => lblFaster.Text = "Faster: 0");
+                //this.UIThreadSync(() => lblChance.Text = "Chance: 0%");
+
                 this.lblSampleSize.Text = "Sample size:" + DataGridViewV.Rows[0][1];
-                this.lblFaster.Text = "Faster: " + "0";
-                this.lblChance.Text = "Chance: " + "0%";
+                this.lblFaster.Text = "Faster: 0";
+                this.lblChance.Text = "Chance: 0%";
             }
         }
 
