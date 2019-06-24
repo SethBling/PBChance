@@ -119,6 +119,7 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label46 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.lblFaster = new System.Windows.Forms.Label();
@@ -841,7 +842,7 @@
             // 
             // btnNewVersion
             // 
-            this.btnNewVersion.Location = new System.Drawing.Point(359, 16);
+            this.btnNewVersion.Location = new System.Drawing.Point(353, 16);
             this.btnNewVersion.Name = "btnNewVersion";
             this.btnNewVersion.Size = new System.Drawing.Size(115, 24);
             this.btnNewVersion.TabIndex = 79;
@@ -1190,7 +1191,7 @@
             this.tabPages.Location = new System.Drawing.Point(3, 46);
             this.tabPages.Name = "tabPages";
             this.tabPages.SelectedIndex = 0;
-            this.tabPages.Size = new System.Drawing.Size(475, 463);
+            this.tabPages.Size = new System.Drawing.Size(471, 463);
             this.tabPages.TabIndex = 103;
             // 
             // tabPage1
@@ -1201,7 +1202,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(467, 437);
+            this.tabPage1.Size = new System.Drawing.Size(463, 437);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1239,6 +1240,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label46);
             this.tabPage3.Controls.Add(this.groupBox5);
             this.tabPage3.Controls.Add(this.label45);
             this.tabPage3.Controls.Add(this.groupBox3);
@@ -1251,12 +1253,23 @@
             this.tabPage3.Text = "Display Options";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label46.Location = new System.Drawing.Point(150, 414);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(184, 13);
+            this.label46.TabIndex = 104;
+            this.label46.Text = "www.github.com/kasi777/PBChance";
+            // 
             // label45
             // 
             this.label45.AutoSize = true;
             this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label45.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label45.Location = new System.Drawing.Point(138, 415);
+            this.label45.Location = new System.Drawing.Point(134, 401);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(213, 13);
             this.label45.TabIndex = 103;
@@ -1267,7 +1280,7 @@
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label36.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label36.Location = new System.Drawing.Point(156, 398);
+            this.label36.Location = new System.Drawing.Point(152, 388);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(175, 13);
             this.label36.TabIndex = 102;
@@ -1311,7 +1324,7 @@
             this.Controls.Add(this.label44);
             this.Controls.Add(this.btnNewVersion);
             this.Name = "PBChanceSettings";
-            this.Size = new System.Drawing.Size(481, 530);
+            this.Size = new System.Drawing.Size(475, 530);
             ((System.ComponentModel.ISupportInitialize)(this.AttemptCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MalusCountBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitclipCountBox)).EndInit();
@@ -1450,5 +1463,6 @@
         private System.Windows.Forms.Label lblChance;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox chkSkipSplitStroke;
+        private System.Windows.Forms.Label label46;
     }
 }
