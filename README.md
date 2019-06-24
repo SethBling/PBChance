@@ -91,14 +91,15 @@ It will display a randomly chosen information at periodic intervals. For example
       4. Survival to the End
       5. Standard Deviation
       6. Average Difference to Best
-      7. Until here have Survived
+      7. Until here has Survived
       8. Combinations per Second
       9. Worth to continue
-      10. Run is currently
+      10. Health Status
       11. Pace to PB
-      12. Avg Dif to Best (All/Suc)
+      12. Avg Difference to Best (All/Suc)
       13. Worst Pace to PB
       14. Avg/Worst Pace to PB
+      15. Considered Runs (here/end)
 
 2. Debugging settings (should be 0 during regular runs)
    1. Time difference # seconds
