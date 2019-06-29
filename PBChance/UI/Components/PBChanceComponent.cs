@@ -265,55 +265,87 @@ namespace PBChance.UI.Components
             //if (iFirstAttempt < 1) iFirstAttempt = 1;
             //iSurvToHereAttempt = iLastAttempt;
 
-            for (int iAttempt = iLastAttempt; iAttempt >= 0; iAttempt--)
+            try
             {
-                iFailState = 0;
-                iLastKnownSplit = 0;
-                for (iSegment = iMaxSplit - 1; iSegment >= 0; iSegment--)
+
+                for (int iAttempt = iLastAttempt; iAttempt >= 0; iAttempt--)
                 {
-                    if (State.Run[iSegment].SegmentHistory == null || State.Run[iSegment].SegmentHistory.Count == 0)
+                    iFailState = 0;
+                    iLastKnownSplit = 0;
+                    for (iSegment = iMaxSplit - 1; iSegment >= 0; iSegment--)
                     {
-                        if (State.Run[iSegment].BestSegmentTime[tmTimingMethod].HasValue)
+                        if (State.Run.Count>iSegment)
+                        if (State.Run[iSegment].SegmentHistory == null || State.Run[iSegment].SegmentHistory.Count == 0)
                         {
-                            splits[iSegment].Add(State.Run[iSegment].BestSegmentTime); // no split times available, take the best split time, display a warning
-                            InternalComponent.InformationValue = "W1 no times found in S" + (1 + iSegment) + " " + State.Run[iSegment].Name;
-                            if (Settings.bDebug) sWriteDebug2 += "Segment: " + iSegment.ToString("00") + " Attempt: " + iAttempt.ToString("0000") + " Best: " + State.Run[iSegment].BestSegmentTime[tmTimingMethod].Value.TotalSeconds.ToString("000.000") + " Time: " + State.Run[iSegment].SegmentHistory[iAttempt][tmTimingMethod].Value.TotalSeconds.ToString("0000.000") + " Name: " + State.Run[iSegment].Name + " (Warning 1: no historial times found)\r\n";
-                            lCountSplits[iSegment]++;
-                            lOldestAttempt[iSegment] = iAttempt;
+                            if (State.Run[iSegment].BestSegmentTime[tmTimingMethod].HasValue)
+                            {
+                                splits[iSegment].Add(State.Run[iSegment].BestSegmentTime); // no split times available, take the best split time, display a warning
+                                InternalComponent.InformationValue = "W1 no times found in S" + (1 + iSegment) + " " + State.Run[iSegment].Name;
+                                if (Settings.bDebug) sWriteDebug2 += "Segment: " + iSegment.ToString("00") + " Attempt: " + iAttempt.ToString("0000") + " Best: " + State.Run[iSegment].BestSegmentTime[tmTimingMethod].Value.TotalSeconds.ToString("000.000") + " Time: " + State.Run[iSegment].SegmentHistory[iAttempt][tmTimingMethod].Value.TotalSeconds.ToString("0000.000") + " Name: " + State.Run[iSegment].Name + " (Warning 1: no historial times found)\r\n";
+                                lCountSplits[iSegment]++;
+                                lOldestAttempt[iSegment] = iAttempt;
+                            }
+                            else
+                            {
+                                InternalComponent.InformationValue = "E1 no (best) times found in S" + (1 + iSegment) + " " + State.Run[iSegment].Name;
+                                System.IO.File.AppendAllText(@"pbchance_Debug.txt", sWriteDebug1 + "\r\n--- Clipping segments --- " + watch.ElapsedMilliseconds + "ms\r\n" + sWriteDebug2);
+                                return;
+                            }
                         }
-                        else
+                        else if (State.Run[iSegment].SegmentHistory.ContainsKey(iAttempt) && State.Run[iSegment].SegmentHistory[iAttempt][tmTimingMethod] > TimeSpan.Zero)
                         {
-                            InternalComponent.InformationValue = "E1 no (best) times found in S" + (1 + iSegment) + " " + State.Run[iSegment].Name;
-                            System.IO.File.AppendAllText(@"pbchance_Debug.txt", sWriteDebug1 + "\r\n--- Clipping segments --- " + watch.ElapsedMilliseconds + "ms\r\n" + sWriteDebug2);
-                            return;
-                        }
-                    }
-                    else if (State.Run[iSegment].SegmentHistory.ContainsKey(iAttempt) && State.Run[iSegment].SegmentHistory[iAttempt][tmTimingMethod] > TimeSpan.Zero)
-                    {
-                        if (State.Run[iSegment].BestSegmentTime[tmTimingMethod].HasValue)
-                        {
-                            if ((State.Run[iSegment].SegmentHistory[iAttempt][tmTimingMethod].Value.TotalSeconds <= Settings.SplitclipCount * 0.01 * State.Run[iSegment].BestSegmentTime[tmTimingMethod].Value.TotalSeconds))  // | (State.Run[iSegment].BestSegmentTime[tmTimingMethod].Value.TotalSeconds < 60))
+                            if (State.Run[iSegment].BestSegmentTime[tmTimingMethod].HasValue)
+                            {
+                                if ((State.Run[iSegment].SegmentHistory[iAttempt][tmTimingMethod].Value.TotalSeconds <= Settings.SplitclipCount * 0.01 * State.Run[iSegment].BestSegmentTime[tmTimingMethod].Value.TotalSeconds))  // | (State.Run[iSegment].BestSegmentTime[tmTimingMethod].Value.TotalSeconds < 60))
+                                {
+                                    if (iAttempt >= iFirstAttempt || lCountSplits[iSegment] < Settings.iMinTimes)
+                                    {
+                                        splits[iSegment].Add(State.Run[iSegment].SegmentHistory[iAttempt]); // add a valid split time
+                                        lCountSplits[iSegment]++;
+                                        lOldestAttempt[iSegment] = iAttempt;
+
+                                        while (iLastKnownSplit > iSegment + 1)
+                                            lCountSkippedSplits[iLastKnownSplit--]++;
+                                        lCountTimedSplits[iSegment]++;
+                                        iLastKnownSplit = iSegment;
+
+
+                                        if (iSegment == iCurrentSplitIndex - 1) { iSurvToHereCount++; if (iSurvToHereAttempt > iAttempt) iSurvToHereAttempt = iAttempt; }
+                                        if (Settings.bDebug && iAttempt < iFirstAttempt) sWriteDebug3 += "Segment: " + iSegment.ToString("00") + " Attempt: " + iAttempt.ToString("0000") + " Added Time: " + State.Run[iSegment].SegmentHistory[iAttempt][tmTimingMethod].Value.ToString() + " Factor: " + Math.Round(State.Run[iSegment].SegmentHistory[iAttempt][tmTimingMethod].Value.TotalSeconds / (State.Run[iSegment].BestSegmentTime[tmTimingMethod].Value.TotalSeconds + .0001), 2).ToString("0.00") + " Count of Valid/Total Times: " + lCountSplits[iSegment].ToString("0000") + "/" + splits[iSegment].Count.ToString("0000") + " Name: " + State.Run[iSegment].Name + "\r\n";
+
+                                        //while (iLastSetSegment > 0 && iSegment < iLastSetSegment - 1)
+                                        //{ lCountSkippedSplits[iLastSetSegment--]++;
+                                        //    //sWriteDebug1 +="Atp" + iAttempt + " Segm " + iLastSetSegment + " skipped \n";
+                                        //}
+                                        //iLastSetSegment = iSegment;
+                                    }
+
+                                    if (iSegment == iMaxSplit - 1)
+                                        iFailState = 1; // Run is finished
+                                    else if (iFailState == 0) // Run didn't finish, add a failure for the last known split
+                                    {
+                                        iFailState = (iSegment == iCurrentSplitIndex - 1) ? 2 : (iSegment > iCurrentSplitIndex - 1) ? 3 : 4; // Failure is set
+                                        if (iAttempt >= iFirstAttempt || (lCountSplits[iSegment + 1] < Settings.iMinTimes && Settings.bConsiderFails))
+                                        {
+                                            splits[iSegment + 1].Add(null);
+                                            if (Settings.bDebug) sWriteDebug1 += "#" + iSurvivalFailure.ToString("00") + ":  Attempt: " + iAttempt.ToString("00") + " Segment: " + (iSegment + 1).ToString("00") + " LastSegment: " + iSegment.ToString("00") + " CountSplit: " + lCountSplits[iSegment].ToString("00") + "\r\n";
+                                        }
+                                    }
+                                }
+                                else
+                                    //{ if (iAttempt >= iFirstAttempt || lCountSplits[iSegment] < Settings.iMinTimes) if (iSegment == iCurrentSplitIndex - 1) { iSurvToHereCount++; if (iSurvToHereAttempt > iAttempt) iSurvToHereAttempt = iAttempt; }
+                                    if (Settings.bDebug && (iAttempt >= iFirstAttempt || lCountSplits[iSegment] < Settings.iMinTimes)) sWriteDebug2 += "Segment: " + iSegment.ToString("00") + " Attempt: " + iAttempt.ToString("0000") + " Factor: " + Math.Round(State.Run[iSegment].SegmentHistory[iAttempt][tmTimingMethod].Value.TotalSeconds / State.Run[iSegment].BestSegmentTime[tmTimingMethod].Value.TotalSeconds, 2).ToString("0.00") + " Best: " + State.Run[iSegment].BestSegmentTime[tmTimingMethod].Value.TotalSeconds.ToString("000.000") + " Time: " + State.Run[iSegment].SegmentHistory[iAttempt][tmTimingMethod].Value.TotalSeconds.ToString("0000.000") + " Name: " + State.Run[iSegment].Name + "\r\n";
+                            }
+                            else // no Best Time, then allways add
                             {
                                 if (iAttempt >= iFirstAttempt || lCountSplits[iSegment] < Settings.iMinTimes)
                                 {
-                                    splits[iSegment].Add(State.Run[iSegment].SegmentHistory[iAttempt]); // add a valid split time
+                                    splits[iSegment].Add(State.Run[iSegment].SegmentHistory[iAttempt]);
+                                    InternalComponent.InformationValue = "W2 no best time found in S" + (1 + iSegment) + " " + State.Run[iSegment].Name;
                                     lCountSplits[iSegment]++;
                                     lOldestAttempt[iSegment] = iAttempt;
-
-                                    while (iLastKnownSplit > iSegment + 1)
-                                        lCountSkippedSplits[iLastKnownSplit--]++;
-                                    lCountTimedSplits[iSegment]++;
-                                    iLastKnownSplit = iSegment;
-
-
                                     if (iSegment == iCurrentSplitIndex - 1) { iSurvToHereCount++; if (iSurvToHereAttempt > iAttempt) iSurvToHereAttempt = iAttempt; }
-                                    if (Settings.bDebug && iAttempt < iFirstAttempt) sWriteDebug3 += "Segment: " + iSegment.ToString("00") + " Attempt: " + iAttempt.ToString("0000") + " Added Time: " + State.Run[iSegment].SegmentHistory[iAttempt][tmTimingMethod].Value.ToString() + " Factor: " + Math.Round(State.Run[iSegment].SegmentHistory[iAttempt][tmTimingMethod].Value.TotalSeconds / (State.Run[iSegment].BestSegmentTime[tmTimingMethod].Value.TotalSeconds + .0001), 2).ToString("0.00") + " Count of Valid/Total Times: " + lCountSplits[iSegment].ToString("0000") + "/" + splits[iSegment].Count.ToString("0000") + " Name: " + State.Run[iSegment].Name + "\r\n";
-
-                                    //while (iLastSetSegment > 0 && iSegment < iLastSetSegment - 1)
-                                    //{ lCountSkippedSplits[iLastSetSegment--]++;
-                                    //    //sWriteDebug1 +="Atp" + iAttempt + " Segm " + iLastSetSegment + " skipped \n";
-                                    //}
-                                    //iLastSetSegment = iSegment;
+                                    if (Settings.bDebug) sWriteDebug2 += "Segment: " + iSegment.ToString("00") + " Attempt: " + iAttempt.ToString("0000") + " Time: " + State.Run[iSegment].SegmentHistory[iAttempt][tmTimingMethod].Value.TotalSeconds.ToString("0000.000") + " Name: " + State.Run[iSegment].Name + " Warning 2: No best Time found\r\n";
                                 }
 
                                 if (iSegment == iMaxSplit - 1)
@@ -321,102 +353,80 @@ namespace PBChance.UI.Components
                                 else if (iFailState == 0) // Run didn't finish, add a failure for the last known split
                                 {
                                     iFailState = (iSegment == iCurrentSplitIndex - 1) ? 2 : (iSegment > iCurrentSplitIndex - 1) ? 3 : 4; // Failure is set
-                                    if (iAttempt >= iFirstAttempt || (lCountSplits[iSegment + 1] < Settings.iMinTimes && Settings.bConsiderFails))
+                                    if (iAttempt >= iFirstAttempt || lCountSplits[iSegment + 1] < Settings.iMinTimes)
                                     {
                                         splits[iSegment + 1].Add(null);
-                                        if (Settings.bDebug) sWriteDebug1 += "#" + iSurvivalFailure.ToString("00") + ":  Attempt: " + iAttempt.ToString("00") + " Segment: " + (iSegment + 1).ToString("00") + " LastSegment: " + iSegment.ToString("00") + " CountSplit: " + lCountSplits[iSegment].ToString("00") + "\r\n";
+                                        if (Settings.bDebug) sWriteDebug1 += "#" + iSurvivalFailure.ToString("00") + ":  Attempt: " + iAttempt.ToString("00") + " Segment: " + (iSegment + 1).ToString("00") + " LastSegment: " + iSegment.ToString("00") + "\r\n";
                                     }
                                 }
                             }
-                            else
-                                //{ if (iAttempt >= iFirstAttempt || lCountSplits[iSegment] < Settings.iMinTimes) if (iSegment == iCurrentSplitIndex - 1) { iSurvToHereCount++; if (iSurvToHereAttempt > iAttempt) iSurvToHereAttempt = iAttempt; }
-                                if (Settings.bDebug && (iAttempt >= iFirstAttempt || lCountSplits[iSegment] < Settings.iMinTimes)) sWriteDebug2 += "Segment: " + iSegment.ToString("00") + " Attempt: " + iAttempt.ToString("0000") + " Factor: " + Math.Round(State.Run[iSegment].SegmentHistory[iAttempt][tmTimingMethod].Value.TotalSeconds / State.Run[iSegment].BestSegmentTime[tmTimingMethod].Value.TotalSeconds, 2).ToString("0.00") + " Best: " + State.Run[iSegment].BestSegmentTime[tmTimingMethod].Value.TotalSeconds.ToString("000.000") + " Time: " + State.Run[iSegment].SegmentHistory[iAttempt][tmTimingMethod].Value.TotalSeconds.ToString("0000.000") + " Name: " + State.Run[iSegment].Name + "\r\n";
                         }
-                        else // no Best Time, then allways add
-                        {
-                            if (iAttempt >= iFirstAttempt || lCountSplits[iSegment] < Settings.iMinTimes)
-                            {
-                                splits[iSegment].Add(State.Run[iSegment].SegmentHistory[iAttempt]);
-                                InternalComponent.InformationValue = "W2 no best time found in S" + (1 + iSegment) + " " + State.Run[iSegment].Name;
-                                lCountSplits[iSegment]++;
-                                lOldestAttempt[iSegment] = iAttempt;
-                                if (iSegment == iCurrentSplitIndex - 1) { iSurvToHereCount++; if (iSurvToHereAttempt > iAttempt) iSurvToHereAttempt = iAttempt; }
-                                if (Settings.bDebug) sWriteDebug2 += "Segment: " + iSegment.ToString("00") + " Attempt: " + iAttempt.ToString("0000") + " Time: " + State.Run[iSegment].SegmentHistory[iAttempt][tmTimingMethod].Value.TotalSeconds.ToString("0000.000") + " Name: " + State.Run[iSegment].Name + " Warning 2: No best Time found\r\n";
-                            }
+                    }
 
-                            if (iSegment == iMaxSplit - 1)
-                                iFailState = 1; // Run is finished
-                            else if (iFailState == 0) // Run didn't finish, add a failure for the last known split
+                    if (iAttempt >= iFirstAttempt || lCountSplits[iCurrentSplitIndex] < Settings.iMinTimes)
+                    {
+                        if (iFailState == 0 && iCurrentSplitIndex == 0) // Failure on first Split
+                        {
+                            splits[iCurrentSplitIndex].Add(null);
+                            if (Settings.bDebug) sWriteDebug1 += "#" + iSurvivalFailure.ToString("00") + ":  Attempt: " + iAttempt.ToString("00") + " Segment: 00 LastSegment: -1\r\n";
+
+                            if (iAttempt >= iFirstAttempt || (iNextSurvSuc < Settings.iMinTimes))
                             {
-                                iFailState = (iSegment == iCurrentSplitIndex - 1) ? 2 : (iSegment > iCurrentSplitIndex - 1) ? 3 : 4; // Failure is set
-                                if (iAttempt >= iFirstAttempt || lCountSplits[iSegment + 1] < Settings.iMinTimes)
-                                {
-                                    splits[iSegment + 1].Add(null);
-                                    if (Settings.bDebug) sWriteDebug1 += "#" + iSurvivalFailure.ToString("00") + ":  Attempt: " + iAttempt.ToString("00") + " Segment: " + (iSegment + 1).ToString("00") + " LastSegment: " + iSegment.ToString("00") + "\r\n";
-                                }
+                                iNextSurvFail++;
+                                iSurvivalFailure++;
                             }
                         }
                     }
-                }
-
-                if (iAttempt >= iFirstAttempt || lCountSplits[iCurrentSplitIndex] < Settings.iMinTimes)
-                {
-                    if (iFailState == 0 && iCurrentSplitIndex == 0) // Failure on first Split
+                    if (iAttempt >= iFirstAttempt || (iNextSurvSuc < Settings.iMinTimes))//+++++++++++++++++++++++
                     {
-                        splits[iCurrentSplitIndex].Add(null);
-                        if (Settings.bDebug) sWriteDebug1 += "#" + iSurvivalFailure.ToString("00") + ":  Attempt: " + iAttempt.ToString("00") + " Segment: 00 LastSegment: -1\r\n";
-
-                        if (iAttempt >= iFirstAttempt || (iNextSurvSuc < Settings.iMinTimes))
+                        switch (iFailState)
                         {
-                            iNextSurvFail++;
-                            iSurvivalFailure++;
+                            case 1: // Run is finished
+                                iNextSurvSuc++;
+                                break;
+                            case 2: // Failure on next Split
+                                iNextSurvFail++;
+                                break;
+                            case 3: // Failure is in Future
+                                iNextSurvSuc++;
+                                break;
+                            case 4: // Failure is in Past
+                            default:
+                                break;
+                        }
+                    }
+                    if (iAttempt >= iFirstAttempt || (iSurvivalSuccess < Settings.iMinTimes))//+++++++++++++++++++++++
+                    {
+                        switch (iFailState)
+                        {
+                            case 1: // Run is finished
+                                iSurvivalSuccess++;
+                                break;
+                            case 2: // Failure on next Split
+                                iSurvivalFailure++;
+                                break;
+                            case 3: // Failure is in Future
+                                iSurvivalFailure++;
+                                break;
+                            case 4: // Failure is in Past
+                                iSurvivalFailurePast++;
+                                break;
+                            default:
+                                break;
                         }
                     }
                 }
-                if (iAttempt >= iFirstAttempt || (iNextSurvSuc < Settings.iMinTimes))//+++++++++++++++++++++++
-                {
-                    switch (iFailState)
-                    {
-                        case 1: // Run is finished
-                            iNextSurvSuc++;
-                            break;
-                        case 2: // Failure on next Split
-                            iNextSurvFail++;
-                            break;
-                        case 3: // Failure is in Future
-                            iNextSurvSuc++;
-                            break;
-                        case 4: // Failure is in Past
-                        default:
-                            break;
-                    }
-                }
-                if (iAttempt >= iFirstAttempt || (iSurvivalSuccess < Settings.iMinTimes))//+++++++++++++++++++++++
-                {
-                    switch (iFailState)
-                    {
-                        case 1: // Run is finished
-                            iSurvivalSuccess++;
-                            break;
-                        case 2: // Failure on next Split
-                            iSurvivalFailure++;
-                            break;
-                        case 3: // Failure is in Future
-                            iSurvivalFailure++;
-                            break;
-                        case 4: // Failure is in Past
-                            iSurvivalFailurePast++;
-                            break;
-                        default:
-                            break;
-                    }
-                }
+                if (Settings.iAddBest > 0)
+                    for (iSegment = 0; iSegment < iMaxSplit; iSegment++)
+                        if (State.Run.Count > iSegment)
+                            if (State.Run[iSegment].BestSegmentTime[tmTimingMethod].HasValue)
+                                splits[iSegment].Insert(splits[iSegment].Count * (100 - Settings.iAddBest) / 99, State.Run[iSegment].BestSegmentTime);
             }
-
-            if (Settings.iAddBest > 0)
-                for (iSegment = 0; iSegment < iMaxSplit; iSegment++)
-                    if (State.Run[iSegment].BestSegmentTime[tmTimingMethod].HasValue)
-                        splits[iSegment].Insert(splits[iSegment].Count * (100 - Settings.iAddBest) / 99, State.Run[iSegment].BestSegmentTime);
+            catch (System.ArgumentOutOfRangeException e)  // CS0168
+            {
+                InternalComponent.InformationValue = "W3 Out of Range " + e.Message;
+            //throw new System.ArgumentOutOfRangeException("index parameter is out of range.", e);
+            }
         }
 
         private int CheckForPB()
@@ -632,7 +642,8 @@ InterruptedRunBecauseToMuchFailures:
             }
 
             iCurrentSplitIndex = (State.CurrentSplitIndex < 0 ? 0 : State.CurrentSplitIndex) + (bCheckUpdate ? 1 : 0);
-            iMaxSplit = (Settings.iCalcToSplit == 0 || Settings.iCalcToSplit > State.Run.Count) ? State.Run.Count : Settings.iCalcToSplit;
+            if (Settings.iCalcToSplit > State.Run.Count) Settings.iCalcToSplit = State.Run.Count;
+            iMaxSplit = (Settings.iCalcToSplit == 0) ? State.Run.Count : Settings.iCalcToSplit;
             //if (iCurrentSplitIndex > iMaxSplit) return; // Last split do no check for an update
 
             // Array of the count of valid split times per split (without failing attemps)
@@ -716,7 +727,10 @@ InterruptedRunBecauseToMuchFailures:
             for (iSegment = iCurrentSplitIndex; iSegment < iMaxSplit; iSegment++)
                 if (splits[iSegment].Count == 0) // This split contains no split times, so we cannot calculate a probability
                 {
-                    InternalComponent.InformationValue = "E3 no times found in S" + (1 + iSegment) + " " + State.Run[iSegment].Name; // + " split contains no times"
+                    if (State.Run.Count > iSegment)
+                        InternalComponent.InformationValue = "E3 no times found in S" + (1 + iSegment) + " " + State.Run[iSegment].Name; // + " split contains no times"
+                    else
+                        InternalComponent.InformationValue = "E6 Segment " + (1 + iSegment) + " not found.";
                     if (Settings.bDebug) System.IO.File.AppendAllText(@"pbchance_Debug.txt", sWriteDebug1);
                     return;
                 }
@@ -817,7 +831,7 @@ InterruptedRunBecauseToMuchFailures:
 
             // Total Best Time
             fTotalBestTime = 0;
-            for (iSegment = State.CurrentSplitIndex + 1; iSegment < iMaxSplit; iSegment++)
+            for (iSegment = State.CurrentSplitIndex + 1; iSegment < iMaxSplit && State.Run.Count > iSegment; iSegment++)
                 fTotalBestTime += State.Run[iSegment].BestSegmentTime[tmTimingMethod].Value.TotalMilliseconds * .001;
             fTotalBestTime -= Settings.TimediffCount;
 
@@ -944,16 +958,16 @@ InterruptedRunBecauseToMuchFailures:
                             InternalComponent.InformationName += " (" + (int)(fAvgTime * .001 - State.Run[iCurrentSplitIndex].BestSegmentTime[tmTimingMethod].Value.TotalMilliseconds * .001) + "s " + (iNextSurvFail / (iNextSurvSuc + iNextSurvFail + .0) * 100).ToString("0") + "%)";
                     if (Settings.bDispGoodPace && iFasterPace > 0)
                         if (!Settings.bGoodPaceTotal || iCurrentSplitIndex < 1)
-                            InternalComponent.InformationName += " - " + secondsToTime(lSumPBTimes[iCurrentSplitIndex], Settings.iPaceDigits, true);
+                            InternalComponent.InformationName += ", " + secondsToTime(lSumPBTimes[iCurrentSplitIndex], Settings.iPaceDigits, true);
                         else
                             if (State.Run[iCurrentSplitIndex - 1].SplitTime[tmTimingMethod].HasValue)
-                                InternalComponent.InformationName += " - " + secondsToTime(lSumPBTimes[iCurrentSplitIndex] + State.Run[iCurrentSplitIndex - 1].SplitTime[tmTimingMethod].Value.TotalMilliseconds * .001, Settings.iPaceDigits, true);
+                                InternalComponent.InformationName += ", " + secondsToTime(lSumPBTimes[iCurrentSplitIndex] + State.Run[iCurrentSplitIndex - 1].SplitTime[tmTimingMethod].Value.TotalMilliseconds * .001, Settings.iPaceDigits, true);
                     if (Settings.bPaceWorst && iFasterPace > 0)
                         if (!Settings.bGoodPaceTotal || iCurrentSplitIndex < 1)
-                            InternalComponent.InformationName += " - " + secondsToTime(Settings.bPaceWorst ? lWorstPBTimes[iCurrentSplitIndex] : lSumPBTimes[iCurrentSplitIndex], Settings.iPaceDigits, true);
+                            InternalComponent.InformationName += ", " + secondsToTime(Settings.bPaceWorst ? lWorstPBTimes[iCurrentSplitIndex] : lSumPBTimes[iCurrentSplitIndex], Settings.iPaceDigits, true);
                         else
                             if (State.Run[iCurrentSplitIndex - 1].SplitTime[tmTimingMethod].HasValue)
-                                InternalComponent.InformationName += " - " + secondsToTime((Settings.bPaceWorst ? lWorstPBTimes[iCurrentSplitIndex] : lSumPBTimes[iCurrentSplitIndex]) + State.Run[iCurrentSplitIndex - 1].SplitTime[tmTimingMethod].Value.TotalMilliseconds * .001, Settings.iPaceDigits, true);
+                                InternalComponent.InformationName += ", " + secondsToTime((Settings.bPaceWorst ? lWorstPBTimes[iCurrentSplitIndex] : lSumPBTimes[iCurrentSplitIndex]) + State.Run[iCurrentSplitIndex - 1].SplitTime[tmTimingMethod].Value.TotalMilliseconds * .001, Settings.iPaceDigits, true);
                 }
 
                 // Zero success, display 0% instead of 0.00%. If it's <0.01%, it will display the number of success runs and total runs
@@ -961,7 +975,7 @@ InterruptedRunBecauseToMuchFailures:
 
                 if (Settings.DisplayOdds && fProb > 0 && (fProb >= 0.00000001 || bCheckUpdate)) // Displaying odds
                     if (bCheckUpdate)
-                        text = "1 in " + RoundExtended(1 / fProb, fProb > 0.000001 ? fProb > 0.00001 ? fProb > 0.0001 ? fProb > 0.001 ? fProb > 0.01 ? fProb > .05 ? fProb > .25 ? 2 : 1 : 0 : -1 : -2 : -3 : -4 : -5).ToString(fProb > .000100055 ? fProb > .00100055 ? fProb > .010055 ? fProb > .100055 ? fProb > .91 ? fProb > .9999 ? "0      " : "0.00   " : "0.00   " : "0.0   " : "0    " : "0  " : "0") + (fProb > .00000100055 ? fProb > .0000100055 ? "" : "     0%" : "   0%") + (fProb >= .1 ? fProb == 1 ? "" : "" : "  ") + text;
+                        text = "1 : " + RoundExtended(1 / fProb, fProb > 0.000001 ? fProb > 0.00001 ? fProb > 0.0001 ? fProb > 0.001 ? fProb > 0.01 ? fProb > .05 ? fProb > .25 ? 2 : 1 : 0 : -1 : -2 : -3 : -4 : -5).ToString(fProb > .000100055 ? fProb > .00100055 ? fProb > .010055 ? fProb > .100055 ? fProb > .91 ? fProb > .9999 ? "0      " : "0.00   " : "0.00   " : "0.0   " : "0    " : "0  " : "0") + (fProb > .00000100055 ? fProb > .0000100055 ? "" : "     0%" : "   0%") + (fProb >= .1 ? fProb == 1 ? "" : "" : "  ") + text;
                     //                text = "1 in " + RoundExtended(1 / fProb, fProb > 0.0000002 ? fProb > 0.000002 ? fProb > 0.00002 ? fProb > 0.0002 ? fProb > 0.002 ? fProb > .02 ? fProb > .2 ? 3 : 1 : 0 : -1 : -2 : -3 : -4 : -5).ToString(fProb > .0100055 ? fProb > .100055 ? fProb > .91 ? fProb == 1 ? "0 " : "0.00  " : "0.00" : "0.0" : "0") + (fProb > .000100055 ? fProb > .00100055 ? fProb > .0100055 ? fProb > .100055 ? fProb > .91 ? fProb == 1 ? "    " : "" : "  " : "  " : "   " : " " : "") + "" + (fProb >= .1 ? fProb == 1 ? "" : "" : "  ") + text; //.ToString(fProb > .0100055 ? fProb > .100055 ? fProb > .91 ? fProb == 1 ? "0" : "0.000" : "0.00" : "0.0" : "0") + " | " + text; 
                     else
                         text = "1 in " + (1 / fProb).ToString(fProb > .000100055 ? fProb > .00100055 ? fProb > .0100055 ? fProb > .100055 ? fProb > .91 ? fProb > .9999 ? "0      " : "0.00   " : "0.00   " : "0.0   " : "0    " : "0  " : "0") + (fProb > .00000100055 ? fProb > .0000100055 ? "" : "     0%" : "   0%") + (fProb >= .1 ? fProb == 1 ? "" : "" : "  ") + text;
@@ -982,7 +996,7 @@ InterruptedRunBecauseToMuchFailures:
                 }
 
                 //InternalComponent.InformationName = fTotalBestTime + " + " + Settings.TimediffCount /*+ " + " + State.CurrentTime[tmTimingMethod].Value.TotalMilliseconds * .001*/ + " <= " + -fSecStart + " + " + pb[tmTimingMethod].Value.TotalMilliseconds * .001 + " + " + Settings.TimediffCount;
-
+                //text += "\t";
                 InternalComponent.InformationValue = text;
                 
                 sInformationAlternative = new string[]
@@ -1033,7 +1047,7 @@ InterruptedRunBecauseToMuchFailures:
                 dataTable1.Rows.Add(new string[] { "Faster/Extra Goal/Total", iFaster.ToString("#,##0"), iFasterPace.ToString("#,##0"), (iFaster+iSlower).ToString("#,##0") });
                 dataTable1.Rows.Add(new string[] { "PB Regular/Extra Goal", (1.0*iFaster / (iFaster + iSlower)).ToString("0.00%"), (iFasterPace / (iFaster + iSlower * 1.0)).ToString("0.00%") });
                 dataTable1.Rows.Add(new string[] { "Total Time", secondsToTime(fSum, 3, false), secondsToTime(fSum, 3, false), secondsToTime(fSumWorst, 3, false), secondsToTime(fTotalBestTime, 3, false) });
-                for (iSegment = iCurrentSplitIndex; iSegment < iMaxSplit; iSegment++)
+                for (iSegment = iCurrentSplitIndex; iSegment < iMaxSplit && iSegment < State.Run.Count; iSegment++)
                     if (State.Run[iSegment].BestSegmentTime[tmTimingMethod].HasValue && lSumPBTimes.Length > iSegment && lWorstPBTimes.Length > iSegment)
                     {
                         fActSum += lSumPBTimes[iSegment];
@@ -1064,7 +1078,7 @@ InterruptedRunBecauseToMuchFailures:
                 if (random.Next(1, 4) == 1 && !Settings.bDispGoodPace)
                     iRandom = 11; // 25% chance Pace to PB, if it isn't displayed
             }
-            iRandom = 6;
+            //iRandom = 6;
 
             switch (iRandom)
             {
