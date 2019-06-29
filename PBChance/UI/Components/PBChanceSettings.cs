@@ -317,7 +317,6 @@ namespace PBChance.UI.Components
         public delegate void updateDataTable_Delegate(DataGridView control, bool bStar);  // defines a delegate type
         public void updateDataTable_Core(DataGridView control, bool bStar)
         {
-            
             if (this.InvokeRequired)
                 this.Invoke(new updateDataTable_Delegate(updateDataTable_Core), new object[] { control, bStar });  // invoking itself
             else      // the "functional part", executing only on the main thread
@@ -346,9 +345,53 @@ namespace PBChance.UI.Components
                     }
                 }
             }
+
         }
         public void updateDataTable_Core2(DataGridView control, bool bStar) // this.UIThreadSync(() => X)   this.Invoke(new MethodInvoker( X ))
         {
+            /*
+            Random random = new Random();
+            for (int i = 0; i < 10000; i++)
+            {
+                UsePercentOfAttempts = random.Next(0, 1) == 1 ? true : false;
+                UseFixedAttempts = random.Next(0, 1) == 1 ? true : false;
+                IgnoreRunCount = random.Next(0, 1) == 1 ? true : false;
+                AttemptCount = random.Next(1, 999);
+                MalusCount = random.Next(0, 999);
+                SplitclipCount = random.Next(1, 999);
+                TimediffCount = random.Next(0, 999);
+                SamplesCount = random.Next(1, 999999);
+                iCalctime = random.Next(0, 999);
+                bSurvival = random.Next(0, 1) == 1 ? true : false;
+                bDebug = random.Next(0, 1) == 1 ? true : false;
+                iOptimistic = random.Next(0, 999);
+                bRebalance = random.Next(0, 1) == 1 ? true : false;
+                bValueRuns = random.Next(0, 1) == 1 ? true : false;
+                iMinTimes = random.Next(1, 999);
+                iUpdate = random.Next(0, 999);
+                iSplitsvalue = random.Next(0, 100);
+                iSkipNewest = random.Next(0, 99);
+                iCalcToSplit = random.Next(0, 99);
+                bExpSplitsvalue = random.Next(0, 1) == 1 ? true : false;
+                bConsiderFails = random.Next(0, 1) == 1 ? true : false;
+                bIgnoreSkipClip = random.Next(0, 1) == 1 ? true : false;
+                iRndInfoEvery = random.Next(1, 999); // once per segment, in the middle (e.g. Best Segment Time=2:00, for 10 seconds, it will display between 0:55-1:05)
+                iRndInfoFor = random.Next(1, 999);
+                iAddBest = random.Next(0, 100);
+                bDispGoodPace = random.Next(0, 1) == 1 ? true : false;
+                bGoodPaceTotal = random.Next(0, 1) == 1 ? true : false;
+                iMalusMax = random.Next(1, 999);
+                iPaceExtraGoalMS = random.Next(1, 9999);
+                bPaceWorst = random.Next(0, 1) == 1 ? true : false;
+                iPaceDigits = random.Next(1, 3);
+                DisplayOdds = random.Next(0, 1) == 1 ? true : false;
+                IgnoreRunCount = random.Next(0, 1) == 1 ? true : false;
+                bInfoNext = random.Next(0, 1) == 1 ? true : false;
+                bSkipSplitStroke = random.Next(0, 1) == 1 ? true : false;
+                bDeviation = random.Next(0, 1) == 1 ? true : false;
+    }
+            */
+
             this.UIThreadSync(() => control.DataSource = DataGridViewV);
             this.UIThreadSync(() => control.Columns[0].Width = 130);
             this.UIThreadSync(() => control.Columns[1].Width = 65);
