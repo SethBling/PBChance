@@ -626,7 +626,7 @@ InterruptedRunBecauseToMuchFailures:
             iSurvivalFailure = 0; iSurvivalSuccess = 0; iSurvivalFailurePast = 0; iNextSurvSuc = 0; iNextSurvFail = 0;iSurvToHereAttempt = 0; iSurvToHereCount = 0;
             tmTimingMethod = State.CurrentTimingMethod;
             //Random random = new Random(); InternalComponent.InformationValue = random.Next(1, 10000) + "";
-            if (Settings.sVersion != "1.4.3")
+            if (Settings.sVersion != "1.4.5")
             {
                 Settings.iCalctime = 750;
                 Settings.bDispGoodPace = true;
@@ -637,7 +637,7 @@ InterruptedRunBecauseToMuchFailures:
                 Settings.iRndInfoFor = 12;
                 Settings.bPaceWorst = false;
                 Settings.bSkipSplitStroke = true;
-                Settings.sVersion = "1.4.3";
+                Settings.sVersion = "1.4.5";
                 InternalComponent.InformationValue = "Welcome to V" + Settings.sVersion;
             }
 
@@ -1199,7 +1199,7 @@ InterruptedRunBecauseToMuchFailures:
                     //lOldestAttempt[iSegment]
                     break;
                 case 16:
-                    if (random.Next(0, 100) < 50) goto TryAgain; // 1/2 chance
+                    if (random.Next(0, 100) < 20) goto TryAgain; // 1/5 chance
                     sBaseText = new string[] { "Github.com/kasi777/PBChance" };
                     InternalComponent.InformationValue = "";
                     break;
@@ -1269,7 +1269,8 @@ InterruptedRunBecauseToMuchFailures:
                 //InternalComponent.InformationName = secondsToTime(fTimer/1000,3); // Test actual Timer
 
                 // background calculation, if actual split time is slower than best split time, and the actual chance is > 0
-                //if (iCurrentSplitIndex > -1)
+                if (iCurrentSplitIndex > -1)
+
                 if (State.Run[iCurrentSplitIndex].BestSegmentTime[tmTimingMethod].HasValue)
                 {
                     if (thread == null || thread.ThreadState != System.Threading.ThreadState.Running) // do it if the thread isn't running
