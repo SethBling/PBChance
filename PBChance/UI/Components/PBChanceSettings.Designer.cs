@@ -1085,7 +1085,7 @@
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(179, 24);
             this.label44.TabIndex = 99;
-            this.label44.Text = "PB Chance V1.4.3";
+            this.label44.Text = "PB Chance V1.4.5";
             // 
             // groupBox3
             // 

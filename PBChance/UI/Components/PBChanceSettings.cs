@@ -296,8 +296,8 @@ namespace PBChance.UI.Components
             try
             {
                 string sVersion = wc.DownloadString("https://github.com/kasi777/PBChance/raw/master/PBChance/Version.txt");
-
-                if (sVersion.Remove(10, sVersion.Length - 10) != "1.4.3     ")//sVersion + "     ")
+                
+                if (sVersion.Remove(10, sVersion.Length - 10) != "1.4.5     ")//sVersion + "     ")
                 {
                     wc.DownloadFile("https://github.com/kasi777/PBChance/raw/master/PBChance.dll", "PBChance.dll");
                     MessageBox.Show("New Version available: Installed: " + sVersion + ", Available: " + sVersion.Remove(10, sVersion.Length - 10) +
@@ -473,26 +473,30 @@ namespace PBChance.UI.Components
 
         public void viewUpdateDisplay()
         {
-            if (DataGridViewV.Rows.Count > 2)
+            try
             {
-                //this.UIThreadSync(() => lblSampleSize.Text = "Sample size:" + DataGridViewV.Rows[0][3]);
-                //this.UIThreadSync(() => lblFaster.Text = "Faster: " + DataGridViewV.Rows[0][1]);
-                //this.UIThreadSync(() => lblChance.Text = "Chance: " + (Convert.ToDouble(DataGridViewV.Rows[0][1]) / Convert.ToDouble(DataGridViewV.Rows[0][3])).ToString("0.000%"));
+                if (DataGridViewV.Rows.Count > 2)
+                {
+                    //this.UIThreadSync(() => lblSampleSize.Text = "Sample size:" + DataGridViewV.Rows[0][3]);
+                    //this.UIThreadSync(() => lblFaster.Text = "Faster: " + DataGridViewV.Rows[0][1]);
+                    //this.UIThreadSync(() => lblChance.Text = "Chance: " + (Convert.ToDouble(DataGridViewV.Rows[0][1]) / Convert.ToDouble(DataGridViewV.Rows[0][3])).ToString("0.000%"));
 
-                this.lblSampleSize.Text = "Sample size: " + DataGridViewV.Rows[0][3];
-                this.lblFaster.Text = "Faster: " + DataGridViewV.Rows[0][1];
-                this.lblChance.Text = "Chance: " + (Convert.ToDouble(DataGridViewV.Rows[0][1]) / Convert.ToDouble(DataGridViewV.Rows[0][3])).ToString("0.000%");
-            }
-            else
-            {
-                //this.UIThreadSync(() => lblSampleSize.Text = "Sample size:" + DataGridViewV.Rows[0][1]);
-                //this.UIThreadSync(() => lblFaster.Text = "Faster: 0");
-                //this.UIThreadSync(() => lblChance.Text = "Chance: 0%");
+                    this.lblSampleSize.Text = "Sample size: " + DataGridViewV.Rows[0][3];
+                    this.lblFaster.Text = "Faster: " + DataGridViewV.Rows[0][1];
+                    this.lblChance.Text = "Chance: " + (Convert.ToDouble(DataGridViewV.Rows[0][1]) / Convert.ToDouble(DataGridViewV.Rows[0][3])).ToString("0.000%");
+                }
+                else
+                {
+                    //this.UIThreadSync(() => lblSampleSize.Text = "Sample size:" + DataGridViewV.Rows[0][1]);
+                    //this.UIThreadSync(() => lblFaster.Text = "Faster: 0");
+                    //this.UIThreadSync(() => lblChance.Text = "Chance: 0%");
 
-                this.lblSampleSize.Text = "Sample size:" + DataGridViewV.Rows[0][1];
-                this.lblFaster.Text = "Faster: 0";
-                this.lblChance.Text = "Chance: 0%";
+                    this.lblSampleSize.Text = "Sample size:" + DataGridViewV.Rows[0][1];
+                    this.lblFaster.Text = "Faster: 0";
+                    this.lblChance.Text = "Chance: 0%";
+                }
             }
+            catch (System.ComponentModel.Win32Exception) { }
         }
 
         //private void TabPages_Selected(Object sender, TabControlEventArgs e)
