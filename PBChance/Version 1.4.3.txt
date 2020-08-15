@@ -1,0 +1,17 @@
+1.4.3.                        
+Update Notes (2019-06-21)
+
+New settings
+- Sample size: At least x milliseconds.
+- Display options: On "Skip Split" display "-", otherwise, the old value is retained.
+
+PB Pace
+- Display worst PB Pace can be combined with average PB Pace.
+- New column "Split Time" in the table PB Pace.
+
+Minor changes
+- More alternative (shorter) text, if LiveSplit window is compact.
+- New information: Health Status. It tells you are on PB Pace, based on linear chance increases each split.
+- New information: PB Chance Extra Goal. If an extra goal is set, the chance to beat it.
+- New information: Considered Runs (here/end). It tells the number of runs is considered in the actual segment, on the last segment, and the total number of runs available.
+- Fixed several informations (in particular survival chance)

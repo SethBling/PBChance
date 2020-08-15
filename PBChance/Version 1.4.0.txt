@@ -1,0 +1,8 @@
+1.4.0
+Update Notes V1.4.0 (2019-05-14)
+
+1. About three times faster calculation with the help of a lookup-table, if the setting "Newer segment times are more important than old ones" is set to 100. Roughly 1,000,000 calculations and checks per second, if there are 15 splits left, tested with an average CPU.
+
+2. Skipped splits will no longer decrease and influence the PB-chance. For example, if one segment contains 8 correct split times, 2 skips and 3 failures, the chance to select a failure is 3/13 instead of 3/11.
+
+3. No live calculations in segment two have been fixed.

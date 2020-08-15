@@ -1,0 +1,14 @@
+1.4.1
+Update Notes V1.4.1 (2019-05-28)
+
+1. The calculation for a good pace. It calculates the average segment time, for all successfully simulated runs.
+
+2. "Display Good Pace to PB" will display a good segment time, due to (1.).
+  It's not a static information, so if a pb isn't possible, it can't display, and if it's only barely possible, the times will be going harder to beat.
+  If you want to display the total time, check "Total time instead of Segment Time".
+
+3. You can make a data-table of a complete run based on (1.). Go into the settings and scroll down. The table will be updated automatically, however you can click on "Refresh List" for a more accurate result.
+  It will display the "Goal Time" (see 1.) in total and separately by the segments. In addition, it displays the best possible time, you can compare to this.
+  So, if you want to beat a certain pb-time, you can also adjust the setting "Time difference" for this, to shift the Goal PB Time what you want.
+
+4. New random information "Good pace to PB" and "Worth to continue".
