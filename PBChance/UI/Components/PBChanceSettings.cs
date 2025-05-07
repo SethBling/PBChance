@@ -16,6 +16,7 @@ namespace PBChance.UI.Components
     {
         public Boolean UsePercentOfAttempts { get; set; }
         public Boolean UseFixedAttempts { get; set; }
+        public Boolean UseAttemptsAfter { get; set; }
         public int AttemptCount { get; set; }
         public bool DisplayOdds { get; set; }
         public bool IgnoreRunCount { get; set; }
@@ -32,6 +33,7 @@ namespace PBChance.UI.Components
 
             PercentOfAttempts.DataBindings.Add("Checked", this, "UsePercentOfAttempts", true, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             FixedAttempts.DataBindings.Add("Checked", this, "UseFixedAttempts", true, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
+            AttemptsAfter.DataBindings.Add("Checked", this, "UseAttemptsAfter", true, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             AttemptCountBox.DataBindings.Add("Value", this, "AttemptCount", true, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             DisplayOddsCheckbox.DataBindings.Add("Checked", this, "DisplayOdds", true, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
             IgnoreRunCountBox.DataBindings.Add("Checked", this, "IgnoreRunCount", true, DataSourceUpdateMode.OnPropertyChanged).BindingComplete += OnSettingChanged;
@@ -57,6 +59,7 @@ namespace PBChance.UI.Components
                 SettingsHelper.CreateSetting(document, parent, "AttemptCount", AttemptCount) ^
                 SettingsHelper.CreateSetting(document, parent, "UsePercentOfAttempts", UsePercentOfAttempts) ^
                 SettingsHelper.CreateSetting(document, parent, "UseFixedAttempts", UseFixedAttempts) ^
+                SettingsHelper.CreateSetting(document, parent, "UseAttemptsAfter", UseAttemptsAfter) ^
                 SettingsHelper.CreateSetting(document, parent, "DisplayOdds", DisplayOdds) ^
                 SettingsHelper.CreateSetting(document, parent, "IgnoreRunCount", IgnoreRunCount);
         }
@@ -66,6 +69,7 @@ namespace PBChance.UI.Components
             AttemptCount = SettingsHelper.ParseInt(settings["AttemptCount"]);
             UsePercentOfAttempts = SettingsHelper.ParseBool(settings["UsePercentOfAttempts"]);
             UseFixedAttempts = SettingsHelper.ParseBool(settings["UseFixedAttempts"]);
+            UseAttemptsAfter = SettingsHelper.ParseBool(settings["UseAttemptsAfter"]);
             DisplayOdds = SettingsHelper.ParseBool(settings["DisplayOdds"]);
             IgnoreRunCount = SettingsHelper.ParseBool(settings["IgnoreRunCount"]);
         }

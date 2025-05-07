@@ -14,6 +14,8 @@ namespace PBChance.UI.Components
 {
     class PBChanceComponent : IComponent
     {
+        const int Simulations = 10000;
+
         protected InfoTextComponent InternalComponent { get; set; }
         protected PBChanceSettings Settings { get; set; }
         protected LiveSplitState State;
@@ -51,11 +53,11 @@ namespace PBChance.UI.Components
         public PBChanceComponent(LiveSplitState state)
         {
             State = state;
-            InternalComponent = new InfoTextComponent("PB Chance                   .", "0.0%")
+            InternalComponent = new InfoTextComponent("PBChance:", "0.0%")
             {
                 AlternateNameText = new string[]
                 {
-                    "PB Chance",
+                    "PBChance",
                     "PB%:"
                 }
             };
@@ -123,6 +125,7 @@ namespace PBChance.UI.Components
 
             // Create the lists of split times
             List<Time?>[] splits = new List<Time?>[State.Run.Count];
+            TimeSpan[] best = new TimeSpan[State.Run.Count];
             for(int i=0; i<State.Run.Count; i++)
             {
                 splits[i] = new List<Time?>();
@@ -131,37 +134,34 @@ namespace PBChance.UI.Components
             // Find the range of attempts to gather times from
             int lastAttempt = State.Run.AttemptHistory.Count;
             int runCount = State.Run.AttemptHistory.Count;
-            if (!Settings.IgnoreRunCount)
+            if (!Settings.IgnoreRunCount && State.Run.AttemptCount <= State.Run.AttemptHistory.Count)
             {
                 runCount = State.Run.AttemptCount;
-                if (runCount > State.Run.AttemptHistory.Count)
-                {
-                    runCount = State.Run.AttemptHistory.Count;
-                }
             }
+
             int firstAttempt = lastAttempt / 2;
             if(Settings.UseFixedAttempts)
             {
                 // Fixed number of attempts
                 firstAttempt = lastAttempt - Settings.AttemptCount;
-                
-                if (firstAttempt < State.Run.GetMinSegmentHistoryIndex())
-                {
-                    firstAttempt = State.Run.GetMinSegmentHistoryIndex();
-                }
+            }
+            else if(Settings.UseAttemptsAfter)
+            {
+                int missingRuns = State.Run.AttemptCount - State.Run.AttemptHistory.Count;
+                firstAttempt = Settings.AttemptCount - missingRuns + 1;
             }
             else
             {
                 // Percentage of attempts
                 firstAttempt = lastAttempt - runCount * Settings.AttemptCount / 100;
-                if(firstAttempt < State.Run.GetMinSegmentHistoryIndex())
-                {
-                    firstAttempt = State.Run.GetMinSegmentHistoryIndex();
-                }
+            }
+            if (firstAttempt < State.Run.GetMinSegmentHistoryIndex())
+            {
+                firstAttempt = State.Run.GetMinSegmentHistoryIndex();
             }
 
             // Gather split times
-            for (int a = firstAttempt; a < lastAttempt; a++)
+            for (int a = firstAttempt; a <= lastAttempt; a++)
             {
                 int lastSegment = -1;
 
@@ -174,10 +174,22 @@ namespace PBChance.UI.Components
                         return;
                     }
 
-                    if (State.Run[segment].SegmentHistory.ContainsKey(a) && State.Run[segment].SegmentHistory[a][State.CurrentTimingMethod] > TimeSpan.Zero)
+                    if (State.Run[segment].SegmentHistory.ContainsKey(a))
                     {
-                        splits[segment].Add(State.Run[segment].SegmentHistory[a]);
-                        lastSegment = segment;
+                        Time segmentTime = State.Run[segment].SegmentHistory[a];
+                        if (segmentTime[State.CurrentTimingMethod].HasValue)
+                        {
+                            TimeSpan? segmentSpan = segmentTime[State.CurrentTimingMethod];
+                            if (segmentSpan > TimeSpan.Zero)
+                            {
+                                splits[segment].Add(segmentTime);
+                                lastSegment = segment;
+                                if (best[segment] == TimeSpan.Zero || segmentSpan < best[segment])
+                                {
+                                    best[segment] = segmentSpan.Value;
+                                }
+                            }
+                        }
                     }
                 }
 
@@ -188,60 +200,135 @@ namespace PBChance.UI.Components
                 }
             }
 
-            // Calculate probability of PB
-            int success = 0;
-            for (int i = 0; i < 10000; i++)
+            if (State.CurrentSplitIndex >= State.Run.Count)
             {
-                // Get current time as a baseline
-                Time test = State.CurrentTime;
-                if (test[State.CurrentTimingMethod] < TimeSpan.Zero)
+                // Run is finished
+                if (State.CurrentTime[State.CurrentTimingMethod] < pb[State.CurrentTimingMethod])
                 {
-                    test[State.CurrentTimingMethod] = TimeSpan.Zero;
+                    InternalComponent.InformationValue = "100% (Congrats!)";
                 }
-
-                // Add random split times for each remaining segment
-                for (int segment = 0; segment < State.Run.Count; segment++)
+                else if (State.CurrentTime[State.CurrentTimingMethod] > pb[State.CurrentTimingMethod])
                 {
-                    if (segment < State.CurrentSplitIndex)
-                    {
-                        continue;
-                    }
-
-                    if(splits[segment].Count == 0)
-                    {
-                        // This split contains no split times, so we cannot calculate a probability
-                        InternalComponent.InformationValue = "-";
-                        return;
-                    }
-
-                    int attempt = rand.Next(splits[segment].Count);
-                    Time? split = splits[segment][attempt];
-                    if (split == null)
-                    {
-                        // Split is a reset, so count it as a failure
-                        test += pb;
-                        break;
-                    }
-                    else
-                    {
-                        // Add the split time
-                        test += split.Value;
-                    }
+                    InternalComponent.InformationValue = "0%";
                 }
-
-                if (test[State.CurrentTimingMethod] < pb[State.CurrentTimingMethod])
+                else
                 {
-                    success++;
+                    InternalComponent.InformationValue = "- (Tied)";
                 }
             }
-
-            double prob = success / 10000.0;
-            string text = (prob * 100.0).ToString() + "%";
-            if (Settings.DisplayOdds && prob > 0)
+            else
             {
-                text += " (1 in " + Math.Round(1 / prob, 2).ToString() + ")";
+                // Calculate probability of PB
+                int success = 0;
+                for (int i = 0; i < Simulations; i++)
+                {
+                    // Get current time as a baseline
+                    Time test = State.CurrentTime;
+                    if (test[State.CurrentTimingMethod] < TimeSpan.Zero)
+                    {
+                        test[State.CurrentTimingMethod] = TimeSpan.Zero;
+                    }
+
+                    // Add random split times for each remaining segment
+                    for (int segment = 0; segment < State.Run.Count; segment++)
+                    {
+                        if (segment < State.CurrentSplitIndex)
+                        {
+                            continue;
+                        }
+
+                        if (splits[segment].Count == 0)
+                        {
+                            // This split contains no split times, so we cannot calculate a probability
+                            InternalComponent.InformationValue = "-";
+                            return;
+                        }
+
+                        int attempt = rand.Next(splits[segment].Count);
+                        Time? split = splits[segment][attempt];
+                        if (split == null)
+                        {
+                            // Split is a reset, so count it as a failure
+                            test += pb;
+                            break;
+                        }
+                        else
+                        {
+                            // Add the split time
+                            test += split.Value;
+                        }
+                    }
+
+                    if (test[State.CurrentTimingMethod] < pb[State.CurrentTimingMethod])
+                    {
+                        success++;
+                    }
+                }
+
+                double prob = success / (double)Simulations;
+
+                if (prob == 0)
+                {
+                    if (State.CurrentTime[State.CurrentTimingMethod].HasValue) {
+                        TimeSpan test = State.CurrentTime[State.CurrentTimingMethod].Value;
+                        if (test < TimeSpan.Zero)
+                        {
+                            test = TimeSpan.Zero;
+                        }
+
+                        bool splitsExist = true;
+
+                        for (int segment = 0; segment < State.Run.Count; segment++)
+                        {
+                            if (segment < State.CurrentSplitIndex-1)
+                            {
+                                continue;
+                            }
+                            if (best[segment] == null) {
+                                splitsExist = false;
+                                break;
+                            } else {
+                                test += best[segment];
+                            }
+                        }
+                        
+                        if (splitsExist)
+                        {
+                            if (test <= pb[State.CurrentTimingMethod])
+                            {
+                                InternalComponent.InformationValue = "< 0.01%";
+                            }
+                            else
+                            {
+                                InternalComponent.InformationValue = "0%";
+                            }
+                        }
+                        else
+                        {
+                            InternalComponent.InformationValue = "-";
+                        }
+                        // TODO: Compute whether sum of best will allow for PB
+                    }
+                }
+                else
+                {
+                    string text = (prob * 100.0).ToString() + "%";
+
+                    if (Settings.DisplayOdds)
+                    {
+                        if (1 / prob >= 10)
+                        {
+                            text += " (1 in " + (int)(1 / prob) + ")";
+                        }
+                        else
+                        {
+                            text += " (1 in " + Math.Round(1 / prob, 1).ToString() + ")";
+                        }
+                    }
+
+                    InternalComponent.InformationValue = text;
+                }
             }
-            InternalComponent.InformationValue = text;
         }
 
         void IComponent.DrawHorizontal(Graphics g, LiveSplitState state, float height, Region clipRegion)

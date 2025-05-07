@@ -35,13 +35,14 @@
             this.CreditsLabel = new System.Windows.Forms.Label();
             this.DisplayOddsCheckbox = new System.Windows.Forms.CheckBox();
             this.IgnoreRunCountBox = new System.Windows.Forms.CheckBox();
+            this.AttemptsAfter = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.AttemptCountBox)).BeginInit();
             this.SuspendLayout();
             // 
             // RecentLabel
             // 
             this.RecentLabel.AutoSize = true;
-            this.RecentLabel.Location = new System.Drawing.Point(3, 41);
+            this.RecentLabel.Location = new System.Drawing.Point(3, 55);
             this.RecentLabel.Name = "RecentLabel";
             this.RecentLabel.Size = new System.Drawing.Size(87, 13);
             this.RecentLabel.TabIndex = 1;
@@ -72,7 +73,7 @@
             // 
             // AttemptCountBox
             // 
-            this.AttemptCountBox.Location = new System.Drawing.Point(93, 39);
+            this.AttemptCountBox.Location = new System.Drawing.Point(93, 53);
             this.AttemptCountBox.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -105,7 +106,7 @@
             // DisplayOddsCheckbox
             // 
             this.DisplayOddsCheckbox.AutoSize = true;
-            this.DisplayOddsCheckbox.Location = new System.Drawing.Point(6, 72);
+            this.DisplayOddsCheckbox.Location = new System.Drawing.Point(6, 98);
             this.DisplayOddsCheckbox.Name = "DisplayOddsCheckbox";
             this.DisplayOddsCheckbox.Size = new System.Drawing.Size(125, 17);
             this.DisplayOddsCheckbox.TabIndex = 5;
@@ -115,17 +116,29 @@
             // IgnoreRunCountBox
             // 
             this.IgnoreRunCountBox.AutoSize = true;
-            this.IgnoreRunCountBox.Location = new System.Drawing.Point(6, 95);
+            this.IgnoreRunCountBox.Location = new System.Drawing.Point(6, 121);
             this.IgnoreRunCountBox.Name = "IgnoreRunCountBox";
             this.IgnoreRunCountBox.Size = new System.Drawing.Size(205, 17);
             this.IgnoreRunCountBox.TabIndex = 6;
             this.IgnoreRunCountBox.Text = "Use All Runs (Ignore Attempt Counter)";
             this.IgnoreRunCountBox.UseVisualStyleBackColor = true;
             // 
+            // AttemptsAfter
+            // 
+            this.AttemptsAfter.AutoSize = true;
+            this.AttemptsAfter.Location = new System.Drawing.Point(150, 78);
+            this.AttemptsAfter.Name = "AttemptsAfter";
+            this.AttemptsAfter.Size = new System.Drawing.Size(124, 17);
+            this.AttemptsAfter.TabIndex = 7;
+            this.AttemptsAfter.TabStop = true;
+            this.AttemptsAfter.Text = "Attempts After Run #";
+            this.AttemptsAfter.UseVisualStyleBackColor = true;
+            // 
             // PBChanceSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.AttemptsAfter);
             this.Controls.Add(this.IgnoreRunCountBox);
             this.Controls.Add(this.DisplayOddsCheckbox);
             this.Controls.Add(this.CreditsLabel);
@@ -134,7 +147,7 @@
             this.Controls.Add(this.PercentOfAttempts);
             this.Controls.Add(this.RecentLabel);
             this.Name = "PBChanceSettings";
-            this.Size = new System.Drawing.Size(289, 121);
+            this.Size = new System.Drawing.Size(289, 141);
             ((System.ComponentModel.ISupportInitialize)(this.AttemptCountBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -145,6 +158,7 @@
         private System.Windows.Forms.Label RecentLabel;
         private System.Windows.Forms.RadioButton PercentOfAttempts;
         private System.Windows.Forms.RadioButton FixedAttempts;
+        private System.Windows.Forms.RadioButton AttemptsAfter;
         private System.Windows.Forms.NumericUpDown AttemptCountBox;
         private System.Windows.Forms.Label CreditsLabel;
         private System.Windows.Forms.CheckBox DisplayOddsCheckbox;
